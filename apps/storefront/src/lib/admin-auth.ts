@@ -70,12 +70,19 @@ export const isAdminAuthenticated = async () => {
   return isValidSessionToken(token, Date.now())
 }
 
+/**
+ * Secure by default. This was previously keyed to NODE_ENV, which meant a stray
+ * NODE_ENV=development in the deploy environment silently downgraded the
+ * session cookie to travel over plaintext HTTP.
+ *
+ * Local development over http://localhost cannot send a Secure cookie, so it
+ * must opt out explicitly by setting ADMIN_COOKIE_INSECURE=true. Anything that
+ * forgets to set it gets the safe behaviour, not the unsafe one.
+ */
 export const adminCookieOptions = {
   httpOnly: true,
   sameSite: "lax" as const,
-  // Always secure. Tying this to NODE_ENV meant a stray NODE_ENV=development in
-  // the deploy environment would silently downgrade the session cookie.
-  secure: true,
+  secure: process.env.ADMIN_COOKIE_INSECURE !== "true",
   path: "/",
   maxAge: SESSION_TTL_MS / 1000,
 }
