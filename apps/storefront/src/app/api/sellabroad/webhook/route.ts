@@ -93,10 +93,83 @@ async function fetchCartTotal(cartId: string): Promise<number | null> {
 }
 
 /**
+ * SellAbroad settles the money outside Medusa, so it is not registered as a
+ * Medusa payment provider. Medusa still refuses to complete a cart that has no
+ * payment collection with an initialised session — it returns a bare 400 — so
+ * we record the payment against the manual/system provider before completing.
+ *
+ * Without this the webhook can never create an order, however valid the event.
+ */
+const PAYMENT_PROVIDER =
+  process.env.MEDUSA_MANUAL_PAYMENT_PROVIDER_ID || "pp_system_default"
+
+async function ensurePaymentSession(cartId: string) {
+  const cartRes = await fetch(`${MEDUSA_URL}/store/carts/${cartId}`, {
+    headers: { "x-publishable-api-key": PUBLISHABLE_KEY! },
+    cache: "no-store",
+  })
+
+  if (!cartRes.ok) {
+    throw new Error(`Could not read cart ${cartId} (${cartRes.status})`)
+  }
+
+  const { cart } = await cartRes.json()
+
+  // Already has an initialised session — nothing to do. This also makes repeat
+  // deliveries of the same event safe.
+  if (cart?.payment_collection?.payment_sessions?.length) return
+
+  let collectionId = cart?.payment_collection?.id
+
+  if (!collectionId) {
+    const created = await fetch(`${MEDUSA_URL}/store/payment-collections`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-publishable-api-key": PUBLISHABLE_KEY!,
+      },
+      body: JSON.stringify({ cart_id: cartId }),
+      cache: "no-store",
+    })
+
+    const body = await created.json().catch(() => ({}))
+    collectionId = body?.payment_collection?.id
+
+    if (!collectionId) {
+      throw new Error(
+        `Could not create payment collection (${created.status}): ${JSON.stringify(body).slice(0, 200)}`
+      )
+    }
+  }
+
+  const session = await fetch(
+    `${MEDUSA_URL}/store/payment-collections/${collectionId}/payment-sessions`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-publishable-api-key": PUBLISHABLE_KEY!,
+      },
+      body: JSON.stringify({ provider_id: PAYMENT_PROVIDER }),
+      cache: "no-store",
+    }
+  )
+
+  if (!session.ok) {
+    const body = await session.text().catch(() => "")
+    throw new Error(
+      `Could not create payment session with ${PAYMENT_PROVIDER} (${session.status}): ${body.slice(0, 200)}`
+    )
+  }
+}
+
+/**
  * Per SellAbroad's docs the order is created here, in the webhook — not on the
  * thank-you page. Completing the Medusa cart is what creates the order.
  */
 async function completeCart(cartId: string) {
+  await ensurePaymentSession(cartId)
+
   const res = await fetch(`${MEDUSA_URL}/store/carts/${cartId}/complete`, {
     method: "POST",
     headers: {
