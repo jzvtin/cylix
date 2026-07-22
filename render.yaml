@@ -1,0 +1,40 @@
+# Render Blueprint — free-tier path for the Cylix backend.
+# In Render: New > Blueprint > connect the jzvtin/cylix repo. This provisions the
+# Medusa backend + a Postgres database automatically.
+# NOTE: Render's free web service SLEEPS after 15 min idle (cold starts ~10-30s), and
+# the free Postgres expires after 90 days. Upgrade the plans for a real store.
+services:
+  - type: web
+    name: cylix-backend
+    runtime: node
+    rootDir: apps/backend
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: cd .medusa/server && npm install && npx medusa db:migrate && npx medusa start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "9000"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: COOKIE_SECRET
+        generateValue: true
+      - key: AUTH_MFA_ENCRYPTION_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: cylix-db
+          property: connectionString
+      - key: STORE_CORS
+        value: https://cylixlab.com,https://www.cylixlab.com
+      - key: ADMIN_CORS
+        value: https://cylixlab.com,https://www.cylixlab.com
+      - key: AUTH_CORS
+        value: https://cylixlab.com,https://www.cylixlab.com
+
+databases:
+  - name: cylix-db
+    plan: free
+    databaseName: medusa
