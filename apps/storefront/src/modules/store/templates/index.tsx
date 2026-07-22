@@ -19,7 +19,7 @@ const StoreTemplate = ({
   return (
     <>
       {/* CATALOG HEADER */}
-      <div style={{background:"#111",padding:"48px 32px 40px"}}>
+      <div style={{background:"#111",padding:"clamp(32px, 7vw, 48px) clamp(16px, 4vw, 32px) 40px"}}>
         <div style={{maxWidth:"1200px",margin:"0 auto"}}>
           <div style={{fontFamily:"'Outfit',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"1.4px",textTransform:"uppercase" as const,color:"#C9963A",marginBottom:"10px"}}>Full Catalog</div>
           <h1 style={{fontFamily:"'Outfit',sans-serif",fontSize:"clamp(28px,5vw,44px)",fontWeight:900,color:"#fff",letterSpacing:"-1.2px",marginBottom:"8px",lineHeight:1.05}}>
@@ -33,10 +33,10 @@ const StoreTemplate = ({
 
       {/* CATALOG BODY */}
       <div style={{background:"#F9F7F4",minHeight:"60vh"}}>
-        <div style={{maxWidth:"1200px",margin:"0 auto",padding:"32px 32px 64px",display:"flex",gap:"32px",alignItems:"flex-start"}}>
-          
+        <div className="catalog-layout">
+
           {/* SIDEBAR */}
-          <div style={{width:"200px",flexShrink:0,position:"sticky",top:"80px"}}>
+          <div className="catalog-sidebar">
             <div style={{background:"#fff",border:"1px solid #E8E4DE",borderRadius:"12px",padding:"20px",marginBottom:"16px"}}>
               <div style={{fontFamily:"'Outfit',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"1px",textTransform:"uppercase" as const,color:"#999",marginBottom:"14px"}}>Sort & Filter</div>
               <RefinementList sortBy={sort} />
@@ -58,7 +58,7 @@ const StoreTemplate = ({
           </div>
 
           {/* GRID */}
-          <div style={{flex:1}}>
+          <div className="catalog-main">
             <Suspense fallback={<SkeletonProductGrid />}>
               <PaginatedProducts
                 sortBy={sort}

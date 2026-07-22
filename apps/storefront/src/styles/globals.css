@@ -217,3 +217,47 @@ input[type="password"]:focus {
   font-family: 'Outfit', sans-serif !important;
   font-weight: 700 !important;
 }
+/* ---- Catalog (/store) responsive layout ----
+   The catalog body was a non-wrapping flex row with a fixed 200px sidebar,
+   which overflowed the viewport on phones and caused horizontal scrolling. */
+.catalog-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 32px 64px;
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.catalog-sidebar {
+  width: 200px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 80px;
+}
+
+/* min-width:0 lets the grid shrink below its content width instead of
+   forcing the row wider than the screen. */
+.catalog-main {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 1023px) {
+  .catalog-layout {
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px 16px 48px;
+  }
+  .catalog-sidebar {
+    width: 100%;
+    position: static;
+    top: auto;
+  }
+}
+
+/* Belt-and-braces: nothing should ever scroll the page sideways. */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
