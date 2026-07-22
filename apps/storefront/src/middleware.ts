@@ -108,8 +108,17 @@ export async function middleware(request: NextRequest) {
   const cacheIdCookie = request.cookies.get("_medusa_cache_id")
   const cacheId = cacheIdCookie?.value || crypto.randomUUID()
 
-  const regionMap = await getRegionMap(cacheId)
-  const countryCode = await getCountryCode(request, regionMap)
+  let regionMap: Map<string, HttpTypes.StoreRegion>
+  let countryCode: string | undefined
+  try {
+    regionMap = await getRegionMap(cacheId)
+    countryCode = await getCountryCode(request, regionMap)
+  } catch (e) {
+    // If the backend is unreachable, don't take the whole site down — serve the
+    // request as-is rather than throwing a 500 on every route (incl. the homepage).
+    console.error("[middleware] region lookup failed, serving without region redirect:", e)
+    return NextResponse.next()
+  }
 
   // if the country code is available, use it, otherwise use the default region
   const country = countryCode || DEFAULT_REGION
