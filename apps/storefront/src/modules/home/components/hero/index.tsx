@@ -6,7 +6,7 @@ const Hero = () => {
       {/* SPLIT HERO */}
       <div style={{
         display: "grid",
-        gridTemplateColumns: "1fr 1fr",
+        gridTemplateColumns: "repeat(auto-fit, minmax(min(340px, 100%), 1fr))",
         minHeight: "560px",
       }}>
         {/* LEFT — text */}
@@ -14,7 +14,7 @@ const Hero = () => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "72px 56px",
+          padding: "clamp(40px, 8vw, 72px) clamp(20px, 6vw, 56px)",
           background: "#fff",
         }}>
           <div style={{
@@ -122,7 +122,7 @@ const Hero = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          minHeight: "480px",
+          minHeight: "clamp(280px, 50vw, 480px)",
           position: "relative",
           overflow: "hidden",
         }}>

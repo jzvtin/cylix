@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function SupportPage() {
   return (
     <>
-      <div style={{background:"#111",padding:"56px 32px 48px",textAlign:"center"}}>
+      <div style={{background:"#111",padding:"clamp(36px, 8vw, 56px) clamp(18px, 5vw, 32px) 48px",textAlign:"center"}}>
         <div style={{fontFamily:"'Outfit',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"1.4px",textTransform:"uppercase",color:"#C9963A",marginBottom:"10px"}}>Get Help</div>
         <h1 style={{fontFamily:"'Outfit',sans-serif",fontSize:"clamp(28px,5vw,44px)",fontWeight:900,color:"#fff",letterSpacing:"-1.2px",marginBottom:"10px"}}>
           We&apos;re here to <em style={{fontStyle:"normal",color:"#C9963A"}}>help.</em>
@@ -19,7 +19,7 @@ export default function SupportPage() {
         </p>
       </div>
 
-      <div style={{maxWidth:"960px",margin:"0 auto",padding:"52px 32px 80px",display:"grid",gridTemplateColumns:"1fr 1.5fr",gap:"48px"}}>
+      <div style={{maxWidth:"960px",margin:"0 auto",padding:"52px clamp(18px, 5vw, 32px) 80px",display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(min(280px, 100%), 1fr))",gap:"clamp(24px, 5vw, 48px)"}}>
         
         {/* INFO CARDS */}
         <div style={{display:"flex",flexDirection:"column",gap:"14px"}}>

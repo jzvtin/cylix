@@ -24,14 +24,14 @@ export default async function Home(props: {
       <Hero />
 
       {/* WHY CYLIX */}
-      <section style={{background: "#F9F7F4", padding: "72px 32px", borderTop: "1px solid #E8E4DE"}}>
+      <section style={{background: "#F9F7F4", padding: "clamp(40px, 8vw, 72px) clamp(18px, 5vw, 32px)", borderTop: "1px solid #E8E4DE"}}>
         <div style={{maxWidth: "1200px", margin: "0 auto"}}>
           <div style={{marginBottom: "44px"}}>
             <div style={{fontFamily: "'Outfit', sans-serif", fontSize: "10px", fontWeight: 800, letterSpacing: "1.4px", textTransform: "uppercase" as const, color: "#C9963A", marginBottom: "10px"}}>Why Cylix</div>
             <h2 style={{fontFamily: "'Outfit', sans-serif", fontSize: "clamp(22px, 3.5vw, 30px)", fontWeight: 800, color: "#111", letterSpacing: "-0.6px", marginBottom: "8px"}}>Built different, for a reason.</h2>
             <p style={{fontSize: "14px", color: "#999", lineHeight: 1.7, maxWidth: "480px"}}>The research compound space is full of noise. We cut through it with one standard: you deserve to know exactly what you&apos;re getting.</p>
           </div>
-          <div style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1px", background: "#E8E4DE", border: "1px solid #E8E4DE", borderRadius: "14px", overflow: "hidden", marginBottom: "36px"}}>
+          <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(240px, 100%), 1fr))", gap: "1px", background: "#E8E4DE", border: "1px solid #E8E4DE", borderRadius: "14px", overflow: "hidden", marginBottom: "36px"}}>
             {[
               {color: "#4CAF6E", icon: "🧪", title: "Independent Third-Party Testing", body: "Every batch tested by Janoshik Analytical — not us. Their HPLC results ship with your order."},
               {color: "#5B8FD6", icon: "🛡️", title: "99%+ Purity, Not \"Research Grade\"", body: "We specify purity by percentage on every CoA — above 99% across our entire catalog, or it doesn't ship."},
@@ -53,9 +53,9 @@ export default async function Home(props: {
       </section>
 
       {/* FEATURED PRODUCTS */}
-      <section style={{background: "#fff", padding: "64px 32px", borderTop: "1px solid #E8E4DE"}}>
+      <section style={{background: "#fff", padding: "clamp(40px, 7vw, 64px) clamp(18px, 5vw, 32px)", borderTop: "1px solid #E8E4DE"}}>
         <div style={{maxWidth: "1200px", margin: "0 auto"}}>
-          <div style={{display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "28px"}}>
+          <div style={{display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "28px", flexWrap: "wrap", gap: "14px"}}>
             <div>
               <div style={{fontFamily: "'Outfit', sans-serif", fontSize: "10px", fontWeight: 800, letterSpacing: "1.4px", textTransform: "uppercase" as const, color: "#C9963A", marginBottom: "6px"}}>Featured Products</div>
               <h2 style={{fontFamily: "'Outfit', sans-serif", fontSize: "clamp(20px, 3vw, 26px)", fontWeight: 800, color: "#111", letterSpacing: "-0.4px"}}>Research-grade compounds</h2>
@@ -72,8 +72,8 @@ export default async function Home(props: {
       </section>
 
       {/* COMPLIANCE */}
-      <div style={{background: "#F0EDE8", borderTop: "1px solid #E8E4DE", padding: "40px 32px"}}>
-        <div style={{maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "28px"}}>
+      <div style={{background: "#F0EDE8", borderTop: "1px solid #E8E4DE", padding: "40px clamp(18px, 5vw, 32px)"}}>
+        <div style={{maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(260px, 100%), 1fr))", gap: "28px"}}>
           {[
             {label: "Documentation", text: "Every lot ships with a Certificate of Analysis from Janoshik Analytical. Identity and purity verified by independent third-party testing."},
             {label: "Age & Buyer Verification", text: "Purchasers must be 21 or older and a qualified researcher. By ordering you confirm qualified laboratory research use only."},

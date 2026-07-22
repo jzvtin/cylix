@@ -35,7 +35,7 @@ export default function FAQPage() {
   return (
     <>
       {/* HEADER */}
-      <div style={{background:"#111",padding:"56px 32px 48px",textAlign:"center"}}>
+      <div style={{background:"#111",padding:"clamp(36px, 8vw, 56px) clamp(18px, 5vw, 32px) 48px",textAlign:"center"}}>
         <div style={{fontFamily:"'Outfit',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"1.4px",textTransform:"uppercase",color:"#C9963A",marginBottom:"10px"}}>Help Center</div>
         <h1 style={{fontFamily:"'Outfit',sans-serif",fontSize:"clamp(28px,5vw,44px)",fontWeight:900,color:"#fff",letterSpacing:"-1.2px",marginBottom:"10px"}}>
           Frequently Asked <em style={{fontStyle:"normal",color:"#C9963A"}}>Questions</em>
@@ -46,7 +46,7 @@ export default function FAQPage() {
       </div>
 
       {/* FAQ BODY */}
-      <div style={{maxWidth:"720px",margin:"0 auto",padding:"52px 32px 80px"}}>
+      <div style={{maxWidth:"720px",margin:"0 auto",padding:"52px clamp(18px, 5vw, 32px) 80px"}}>
         {faqs.map((group) => (
           <div key={group.category} style={{marginBottom:"40px"}}>
             <div style={{fontFamily:"'Outfit',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"1.4px",textTransform:"uppercase",color:"#C9963A",marginBottom:"16px",display:"flex",alignItems:"center",gap:"10px"}}>
