@@ -16,12 +16,12 @@ export default async function Nav() {
 
   return (
     <div style={{position:"sticky",top:0,insetInline:0,zIndex:50,background:"#fff",borderBottom:"1px solid #E8E4DE"}}>
-      <header style={{height:"58px",maxWidth:"1200px",margin:"0 auto",padding:"0 32px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:"20px"}}>
-        
+      <header className="nav-header" style={{height:"58px",maxWidth:"1200px",margin:"0 auto",padding:"0 32px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:"20px"}}>
+
         {/* LEFT — mobile menu + nav links */}
-        <div style={{display:"flex",alignItems:"center",gap:"24px",flex:1}}>
+        <div className="nav-side" style={{display:"flex",alignItems:"center",gap:"24px",flex:1}}>
           <SideMenu regions={regions} locales={locales} currentLocale={currentLocale} />
-          <div style={{display:"flex",gap:"24px",alignItems:"center"}}>
+          <div className="nav-desktop-links" style={{display:"flex",gap:"24px",alignItems:"center"}}>
             <LocalizedClientLink href="/store" style={{fontFamily:"'Outfit',sans-serif",fontSize:"13px",fontWeight:500,color:"#444",textDecoration:"none"}}>
               Products
             </LocalizedClientLink>
@@ -35,14 +35,14 @@ export default async function Nav() {
         </div>
 
         {/* CENTER — brand */}
-        <LocalizedClientLink href="/" style={{fontFamily:"'Outfit',sans-serif",fontSize:"15px",fontWeight:900,color:"#111",textDecoration:"none",textTransform:"uppercase",letterSpacing:"-0.2px",display:"flex",alignItems:"center",gap:"4px",whiteSpace:"nowrap"}}>
+        <LocalizedClientLink className="nav-brand" href="/" style={{fontFamily:"'Outfit',sans-serif",fontSize:"15px",fontWeight:900,color:"#111",textDecoration:"none",textTransform:"uppercase",letterSpacing:"-0.2px",display:"flex",alignItems:"center",gap:"4px",whiteSpace:"nowrap"}}>
           Cylix Research
           <span style={{width:"5px",height:"5px",background:"#C9963A",borderRadius:"50%",display:"inline-block",marginLeft:"1px"}}></span>
         </LocalizedClientLink>
 
         {/* RIGHT — account + cart */}
-        <div style={{display:"flex",alignItems:"center",gap:"8px",flex:1,justifyContent:"flex-end"}}>
-          <LocalizedClientLink href="/account" style={{fontFamily:"'Outfit',sans-serif",fontSize:"12px",fontWeight:600,color:"#666",textDecoration:"none",padding:"6px 12px",border:"1px solid #E8E4DE",borderRadius:"20px",transition:"all .15s"}}>
+        <div className="nav-side" style={{display:"flex",alignItems:"center",gap:"8px",flex:1,justifyContent:"flex-end"}}>
+          <LocalizedClientLink className="nav-account" href="/account" style={{fontFamily:"'Outfit',sans-serif",fontSize:"12px",fontWeight:600,color:"#666",textDecoration:"none",padding:"6px 12px",border:"1px solid #E8E4DE",borderRadius:"20px",transition:"all .15s"}}>
             Account
           </LocalizedClientLink>
           <Suspense fallback={

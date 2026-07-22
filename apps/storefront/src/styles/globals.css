@@ -261,3 +261,18 @@ html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
+
+/* ---- Header nav responsive ----
+   The header rendered the hamburger + Products/FAQ/Support links + brand +
+   Account + Cart all in one row, which overflowed on phones and clipped the
+   brand. Below 1024px we drop the inline links and the Account pill -- the
+   side menu already contains Products, FAQ, Support and Account. */
+@media (max-width: 1023px) {
+  .nav-desktop-links { display: none !important; }
+  .nav-header { padding: 0 16px !important; gap: 10px !important; }
+  .nav-side { flex: 0 0 auto !important; }
+}
+@media (max-width: 460px) {
+  .nav-account { display: none !important; }
+  .nav-brand { font-size: 13px !important; }
+}
