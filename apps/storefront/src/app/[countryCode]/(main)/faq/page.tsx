@@ -10,7 +10,7 @@ const faqs = [
     category: "Compounds & Quality",
     items: [
       { q: "Are your compounds tested for purity?", a: "Yes. All Cylix Research compounds undergo third-party testing through Janoshik Analytical. Each batch is tested using HPLC-MS/MS to verify purity, identity, and concentration. Certificates of Analysis are available for all current batches. Our purity standards consistently exceed 99%." },
-      { q: "What is a Certificate of Analysis (CoA)?", a: "A CoA is a lot-specific analytical document confirming the identity, purity, and quality of a reference material. Each CoA includes identity verification by HPLC or mass spectrometry, purity percentage, lot number, testing laboratory name, and test date. Request a CoA by emailing support@cylixresearch.com with your order number." },
+      { q: "What is a Certificate of Analysis (CoA)?", a: "A CoA is a lot-specific analytical document confirming the identity, purity, and quality of a reference material. Each CoA includes identity verification by HPLC or mass spectrometry, purity percentage, lot number, testing laboratory name, and test date. Request a CoA by emailing support@cylixlab.com with your order number." },
       { q: "How should I store research compounds?", a: "Lyophilized powder: Store at −20°C in a desiccated environment. Reconstituted solution: Store at 2–8°C and use within 30 days. Avoid repeated freeze-thaw cycles, light exposure, and high humidity." },
     ]
   },
@@ -18,8 +18,8 @@ const faqs = [
     category: "Ordering & Payment",
     items: [
       { q: "What payment methods do you accept?", a: "We accept credit cards, cryptocurrency (BTC, ETH, USDC), Zelle, Venmo, and bank wire for institutional orders. All transactions are processed through secure, encrypted payment gateways." },
-      { q: "How do I track my order?", a: "Tracking information is emailed as soon as your order ships. You can also view order history and tracking in your account dashboard. If tracking is not received within 48 hours, contact support@cylixresearch.com." },
-      { q: "Do you offer institutional pricing?", a: "Yes. We offer discounted pricing for qualified research institutions, universities, and laboratories. Contact support@cylixresearch.com with your institution name, credentials, and expected order volume." },
+      { q: "How do I track my order?", a: "Tracking information is emailed as soon as your order ships. You can also view order history and tracking in your account dashboard. If tracking is not received within 48 hours, contact support@cylixlab.com." },
+      { q: "Do you offer institutional pricing?", a: "Yes. We offer discounted pricing for qualified research institutions, universities, and laboratories. Contact support@cylixlab.com with your institution name, credentials, and expected order volume." },
     ]
   },
   {

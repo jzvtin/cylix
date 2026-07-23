@@ -76,10 +76,10 @@ export default async function OrderCompletedTemplate({
             <p className="text-sm mt-4" style={{ color: "#555" }}>
               Questions? Email{" "}
               <a
-                href="mailto:support@cylixresearch.com"
+                href="mailto:support@cylixlab.com"
                 style={{ color: "#C9963A", fontWeight: 700 }}
               >
-                support@cylixresearch.com
+                support@cylixlab.com
               </a>
               .
             </p>

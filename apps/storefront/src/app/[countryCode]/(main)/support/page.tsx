@@ -24,7 +24,7 @@ export default function SupportPage() {
         {/* INFO CARDS */}
         <div style={{display:"flex",flexDirection:"column",gap:"14px"}}>
           {[
-            {icon:"✉️", label:"Email Support", value:"support@cylixresearch.com", detail:"For order inquiries, CoA requests, and general questions."},
+            {icon:"✉️", label:"Email Support", value:"support@cylixlab.com", detail:"For order inquiries, CoA requests, and general questions."},
             {icon:"⏰", label:"Support Hours", value:"Mon–Fri, 9am–6pm EST", detail:"Saturday–Sunday: 10am–4pm EST. Response within 12–24 hours."},
             {icon:"🧪", label:"Technical Support", value:"Reconstitution & Storage", detail:"Include your compound name and lot number for fastest response."},
             {icon:"📄", label:"Documentation", value:"Certificates of Analysis", detail:"Request the CoA for your lot — include your order and lot number."},

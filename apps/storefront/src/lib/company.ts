@@ -17,8 +17,8 @@ export const COMPANY = {
   /** TODO: US state whose law governs the Terms, e.g. "Delaware". */
   governingState: "TODO_GOVERNING_STATE",
 
-  supportEmail: "support@cylixresearch.com",
-  privacyEmail: "support@cylixresearch.com",
+  supportEmail: "support@cylixlab.com",
+  privacyEmail: "support@cylixlab.com",
 
   /** Business days/hours quoted on the support and shipping pages. */
   supportHours: "Mon–Fri, 9am–6pm EST",

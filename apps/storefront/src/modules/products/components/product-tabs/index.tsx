@@ -87,8 +87,8 @@ const SpecificationsTab = ({ product }: ProductTabsProps) => {
       <p className="mt-8 text-xs text-ui-fg-subtle max-w-xl">
         Every lot ships with a batch-specific Certificate of Analysis from an
         independent laboratory. Request the CoA for your lot at{" "}
-        <a className="underline" href="mailto:support@cylixresearch.com">
-          support@cylixresearch.com
+        <a className="underline" href="mailto:support@cylixlab.com">
+          support@cylixlab.com
         </a>
         .
       </p>

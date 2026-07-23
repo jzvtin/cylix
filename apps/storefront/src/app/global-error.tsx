@@ -59,7 +59,7 @@ export default function GlobalError({
           >
             We hit an unexpected error. Your cart and any completed order are
             safe. Try again, and if it keeps happening email
-            support@cylixresearch.com
+            support@cylixlab.com
             {error.digest ? ` quoting reference ${error.digest}` : ""}.
           </p>
           <button
