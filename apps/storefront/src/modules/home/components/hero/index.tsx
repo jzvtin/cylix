@@ -130,31 +130,33 @@ const Hero = () => {
             position: "absolute", inset: 0,
             background: "radial-gradient(ellipse 80% 80% at 60% 40%, rgba(255,255,255,0.6) 0%, transparent 70%)",
           }} />
-          {/* Placeholder vial display — swap with real product images */}
+          {/* Real product vials, fanned out. Images are hosted from the
+              storefront's own /public so they stay in sync with the catalog. */}
           <div style={{
             position: "relative",
             zIndex: 1,
             display: "flex",
             alignItems: "flex-end",
             justifyContent: "center",
-            gap: "8px",
+            gap: "10px",
             padding: "40px",
           }}>
             {[
-              {h: "180px", rotate: "-8deg", translate: "4px"},
-              {h: "220px", rotate: "0deg", translate: "-8px"},
-              {h: "160px", rotate: "8deg", translate: "-4px"},
-              {h: "140px", rotate: "14deg", translate: "-8px"},
+              {img: "/products/bpc-157.png", h: "180px", rotate: "-8deg", translate: "4px"},
+              {img: "/products/nad.png", h: "230px", rotate: "0deg", translate: "-10px"},
+              {img: "/products/ghk-cu.png", h: "170px", rotate: "8deg", translate: "-4px"},
+              {img: "/products/tesamorelin.png", h: "150px", rotate: "14deg", translate: "-8px"},
             ].map((v, i) => (
               <div key={i} style={{
-                width: "64px",
+                width: "92px",
                 height: v.h,
-                background: "linear-gradient(160deg, rgba(255,255,255,0.9) 0%, rgba(220,230,245,0.7) 100%)",
-                borderRadius: "8px 8px 6px 6px",
-                border: "1px solid rgba(255,255,255,0.8)",
-                boxShadow: "0 20px 48px rgba(0,0,0,0.12)",
+                backgroundImage: `url(${v.img})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center top",
+                backgroundColor: "#fff",
+                borderRadius: "10px",
+                boxShadow: "0 20px 48px rgba(0,0,0,0.16)",
                 transform: `rotate(${v.rotate}) translateY(${v.translate})`,
-                backdropFilter: "blur(10px)",
               }} />
             ))}
           </div>
