@@ -44,13 +44,48 @@ const OptionsPicker = ({
     fetchOptions()
   }, [])
 
+  // Each product carries its own option (e.g. a "Size" option holding a single
+  // dose like "10mg"), so the raw list has one entry per product. Merge them by
+  // title into a single filter, de-duping values by label and collecting every
+  // underlying value id so selecting "10mg" matches all products offering it.
+  const mergedOptions = (() => {
+    const byTitle = new Map<
+      string,
+      { title: string; values: Map<string, string[]> }
+    >()
+
+    for (const option of options) {
+      const title = option.title || "Option"
+      if (!byTitle.has(title)) {
+        byTitle.set(title, { title, values: new Map() })
+      }
+      const group = byTitle.get(title)!
+      for (const value of option.values ?? []) {
+        if (!value.id || !value.value) continue
+        const ids = group.values.get(value.value) ?? []
+        ids.push(value.id)
+        group.values.set(value.value, ids)
+      }
+    }
+
+    return Array.from(byTitle.values()).map((group) => ({
+      title: group.title,
+      values: Array.from(group.values.entries())
+        .map(([label, ids]) => ({ label, ids }))
+        // Natural sort so "70mg" and "1000mg" order numerically, not lexically.
+        .sort((a, b) =>
+          a.label.localeCompare(b.label, undefined, { numeric: true })
+        ),
+    }))
+  })()
+
   useEffect(() => {
-    if (options.length) {
-      setOpenItems(options.map((option) => option.id))
+    if (mergedOptions.length) {
+      setOpenItems(mergedOptions.map((option) => option.title))
     }
   }, [options])
 
-  if (!options.length) {
+  if (!mergedOptions.length) {
     return null
   }
 
@@ -67,40 +102,33 @@ const OptionsPicker = ({
         onValueChange={(values) => setOpenItems(values as string[])}
         className="flex flex-col gap-y-3 pr-6"
       >
-        {options.map((option) => {
-          const values =
-            option.values
-              ?.map((value) => ({
-                id: value.id,
-                label: value.value,
-              }))
-              .filter(
-                (value): value is { id: string; label: string } =>
-                  !!value.id && !!value.label
-              ) || []
+        {mergedOptions.map((option) => {
+          const values = option.values
 
           if (!values.length) {
             return null
           }
 
-          const toggleValue = (valueId: string) => {
-            const isSelected = selectedValueIds.includes(valueId)
+          // A dose label maps to one or more underlying value ids (one per
+          // product). Toggling adds/removes them all together.
+          const toggleValue = (ids: string[]) => {
+            const isSelected = ids.some((id) => selectedValueIds.includes(id))
             const nextSelections = isSelected
-              ? selectedValueIds.filter((id) => id !== valueId)
-              : [...selectedValueIds, valueId]
+              ? selectedValueIds.filter((id) => !ids.includes(id))
+              : [...selectedValueIds, ...ids]
 
             setOptionValueIds(Array.from(new Set(nextSelections)))
           }
 
-          const isOpen = openItems.includes(option.id)
+          const isOpen = openItems.includes(option.title)
           const selectedCount = values.filter((value) =>
-            selectedValueIds.includes(value.id)
+            value.ids.some((id) => selectedValueIds.includes(id))
           ).length
 
           return (
             <Accordion.Item
-              key={option.id}
-              value={option.id}
+              key={option.title}
+              value={option.title}
               className="overflow-hidden"
             >
               <Accordion.Header>
@@ -128,12 +156,14 @@ const OptionsPicker = ({
               <Accordion.Content className="pb-4 pt-1">
                 <div className="flex flex-wrap gap-2">
                   {values.map((value) => {
-                    const isSelected = selectedValueIds.includes(value.id)
+                    const isSelected = value.ids.some((id) =>
+                      selectedValueIds.includes(id)
+                    )
 
                     return (
                       <button
-                        key={value.id}
-                        onClick={() => toggleValue(value.id)}
+                        key={value.label}
+                        onClick={() => toggleValue(value.ids)}
                         className={clsx(
                           "border-ui-border-base border text-small-regular h-10 rounded-rounded px-3 flex items-center transition-colors duration-150",
                           {
