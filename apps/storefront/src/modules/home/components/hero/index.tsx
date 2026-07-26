@@ -131,10 +131,6 @@ const Hero = () => {
           isolation: "isolate",
         }}>
           <div style={{
-            position: "absolute", inset: 0,
-            background: "radial-gradient(ellipse 70% 70% at 55% 45%, rgba(201,150,58,0.06) 0%, transparent 70%)",
-          }} />
-          <div style={{
             position: "relative",
             zIndex: 1,
             display: "flex",
