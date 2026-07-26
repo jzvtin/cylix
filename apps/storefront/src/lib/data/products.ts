@@ -58,6 +58,12 @@ export const listProducts = async ({
 
   const next = {
     ...(await getCacheOptions("products")),
+    // Time-based revalidation instead of indefinite force-cache. There is no
+    // Medusa->storefront revalidation webhook wired up, so without this the
+    // catalog is cached forever and products/images/prices the store owner
+    // edits in the admin never appear on the site. 60s keeps it fast while
+    // making owner edits show up on their own within about a minute.
+    revalidate: 60,
   }
 
   return sdk.client
@@ -75,7 +81,6 @@ export const listProducts = async ({
         },
         headers,
         next,
-        cache: "force-cache",
       }
     )
     .then(({ products, count }) => {
