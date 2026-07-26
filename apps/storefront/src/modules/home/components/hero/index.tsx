@@ -116,46 +116,47 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* RIGHT — pastel + floating vials */}
+        {/* RIGHT — vials floating on white. The vial renders have a white
+            background, so `mix-blend-mode: multiply` against the white panel
+            dissolves that background and leaves only the vial — truly floating,
+            no card or edges. */}
         <div style={{
-          background: "#EBF0F8",
+          background: "#fff",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           minHeight: "clamp(280px, 50vw, 480px)",
           position: "relative",
           overflow: "hidden",
+          isolation: "isolate",
         }}>
           <div style={{
             position: "absolute", inset: 0,
-            background: "radial-gradient(ellipse 80% 80% at 60% 40%, rgba(255,255,255,0.6) 0%, transparent 70%)",
+            background: "radial-gradient(ellipse 70% 70% at 55% 45%, rgba(201,150,58,0.06) 0%, transparent 70%)",
           }} />
-          {/* Real product vials, fanned out. Images are hosted from the
-              storefront's own /public so they stay in sync with the catalog. */}
           <div style={{
             position: "relative",
             zIndex: 1,
             display: "flex",
             alignItems: "flex-end",
             justifyContent: "center",
-            gap: "10px",
+            gap: "2px",
             padding: "40px",
           }}>
             {[
-              {img: "/products/bpc-157.png", h: "180px", rotate: "-8deg", translate: "4px"},
-              {img: "/products/nad.png", h: "230px", rotate: "0deg", translate: "-10px"},
-              {img: "/products/ghk-cu.png", h: "170px", rotate: "8deg", translate: "-4px"},
-              {img: "/products/tesamorelin.png", h: "150px", rotate: "14deg", translate: "-8px"},
+              {img: "/products/bpc-157.png", h: "210px", rotate: "-9deg", translate: "6px"},
+              {img: "/products/nad.png", h: "260px", rotate: "-2deg", translate: "-12px"},
+              {img: "/products/ghk-cu.png", h: "230px", rotate: "6deg", translate: "-6px"},
+              {img: "/products/tesamorelin.png", h: "195px", rotate: "13deg", translate: "0px"},
             ].map((v, i) => (
               <div key={i} style={{
-                width: "92px",
+                width: "120px",
                 height: v.h,
                 backgroundImage: `url(${v.img})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center top",
-                backgroundColor: "#fff",
-                borderRadius: "10px",
-                boxShadow: "0 20px 48px rgba(0,0,0,0.16)",
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center bottom",
+                mixBlendMode: "multiply",
                 transform: `rotate(${v.rotate}) translateY(${v.translate})`,
               }} />
             ))}
