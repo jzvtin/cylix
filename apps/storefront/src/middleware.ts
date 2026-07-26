@@ -1,9 +1,12 @@
 import { HttpTypes } from "@medusajs/types"
 import { NextRequest, NextResponse } from "next/server"
 
+import { AGE_COOKIE } from "@lib/age-gate"
+
 const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
 const PUBLISHABLE_API_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY
-const DEFAULT_REGION = process.env.NEXT_PUBLIC_DEFAULT_REGION || "dk"
+// Cylix sells to the US only, so the store defaults everyone to the US region.
+const DEFAULT_REGION = process.env.NEXT_PUBLIC_DEFAULT_REGION || "us"
 
 const regionMapCache = {
   regionMap: new Map<string, HttpTypes.StoreRegion>(),
@@ -74,20 +77,11 @@ async function getCountryCode(
 
   const urlCountryCode = request.nextUrl.pathname.split("/")[1]?.toLowerCase()
 
-  // Cloudflare Workers provides country via request.cf.country
-  const cloudflareCountryCode = (request as { cf?: { country?: string } }).cf?.country?.toLowerCase()
-
-  // Vercel provides x-vercel-ip-country header
-  const vercelCountryCode = request.headers
-    .get("x-vercel-ip-country")
-    ?.toLowerCase()
-
+  // US-only store: an explicit, valid country already in the URL is honoured,
+  // but everyone else lands on the default region (US). We deliberately do NOT
+  // geo-route by IP — that is what dropped visitors into a /fr (France) region.
   if (urlCountryCode && regionMap.has(urlCountryCode)) {
     countryCode = urlCountryCode
-  } else if (cloudflareCountryCode && regionMap.has(cloudflareCountryCode)) {
-    countryCode = cloudflareCountryCode
-  } else if (vercelCountryCode && regionMap.has(vercelCountryCode)) {
-    countryCode = vercelCountryCode
   } else if (regionMap.has(DEFAULT_REGION)) {
     countryCode = DEFAULT_REGION
   } else if (regionMap.keys().next().value) {
@@ -103,6 +97,19 @@ async function getCountryCode(
 export async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.includes(".")) {
     return NextResponse.next()
+  }
+
+  // Age / research-use gate. Until the visitor has confirmed 21+ on the
+  // /age-verification page (which sets this httpOnly cookie), send every
+  // storefront page there first. Enforced server-side so it can't be skipped.
+  const ageVerified = request.cookies.get(AGE_COOKIE)?.value === "true"
+  if (!ageVerified) {
+    const returnTo = request.nextUrl.pathname + (request.nextUrl.search || "")
+    const gateUrl = new URL("/age-verification", request.nextUrl.origin)
+    if (returnTo && returnTo !== "/") {
+      gateUrl.searchParams.set("returnTo", returnTo)
+    }
+    return NextResponse.redirect(gateUrl, 307)
   }
 
   const cacheIdCookie = request.cookies.get("_medusa_cache_id")
@@ -148,7 +155,9 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     // `admin` is excluded so the client-facing admin panel is not rewritten
-    // into a /[countryCode] route.
-    "/((?!api|admin|_next/static|_next/image|favicon.ico|images|assets|png|svg|jpg|jpeg|gif|webp).*)",
+    // into a /[countryCode] route. `age-verification` is excluded so the gate
+    // page (and its POST handler under /api) is reachable without a region or a
+    // redirect loop.
+    "/((?!api|admin|age-verification|_next/static|_next/image|favicon.ico|images|assets|png|svg|jpg|jpeg|gif|webp).*)",
   ],
 }

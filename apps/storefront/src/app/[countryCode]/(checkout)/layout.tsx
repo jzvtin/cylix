@@ -1,6 +1,5 @@
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import ChevronDown from "@modules/common/icons/chevron-down"
-import AgeGate from "@modules/layout/components/age-gate"
 
 export default function CheckoutLayout({
   children,
@@ -12,7 +11,6 @@ export default function CheckoutLayout({
       className="w-full relative small:min-h-screen"
       style={{ background: "#F9F7F4", fontFamily: "'Outfit', sans-serif" }}
     >
-      <AgeGate />
       <div className="h-16" style={{ background: "#111" }}>
         <nav className="flex h-full items-center content-container justify-between">
           <LocalizedClientLink

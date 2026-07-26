@@ -12,3 +12,6 @@
 .next
 out
 tsconfig.tsbuildinfo
+
+.vercel
+.env*

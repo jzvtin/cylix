@@ -3,6 +3,13 @@ import "server-only"
 const MEDUSA_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
 const ADMIN_API_KEY = process.env.MEDUSA_ADMIN_API_KEY
 
+// Medusa v2 authenticates admin secret API keys via HTTP Basic auth — the key is
+// the username, password empty (`Authorization: Basic base64("sk_xxx:")`). The
+// old `x-medusa-access-token` header is Medusa v1 and is ignored by v2, so every
+// admin call 401'd and surfaced to the owner as "could not reach the backend".
+const adminAuthHeader = () =>
+  `Basic ${Buffer.from(`${ADMIN_API_KEY}:`).toString("base64")}`
+
 export type AdminOrder = {
   id: string
   display_id: number
@@ -25,26 +32,67 @@ export class AdminNotConfiguredError extends Error {
 
 export const isAdminApiConfigured = () => Boolean(MEDUSA_URL && ADMIN_API_KEY)
 
+// The backend can be momentarily unreachable — a cold container waking, a brief
+// Railway edge blip — and the admin dashboard is run by a non-technical owner, so
+// a single transient miss must not surface as an error. Retry a few times with a
+// short backoff and a per-attempt timeout before giving up.
+const ADMIN_FETCH_TIMEOUT_MS = 10_000
+const ADMIN_FETCH_RETRIES = 3
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
+
+// 5xx and 429 are transient (backend starting up / rate limited); retry those.
+// 4xx (bad key, not found) are permanent — fail fast, retrying won't help.
+const isRetryableStatus = (status: number) => status >= 500 || status === 429
+
 async function adminFetch(path: string, init?: RequestInit) {
   if (!isAdminApiConfigured()) {
     throw new AdminNotConfiguredError()
   }
 
-  const res = await fetch(`${MEDUSA_URL}${path}`, {
-    ...init,
-    headers: {
-      "Content-Type": "application/json",
-      "x-medusa-access-token": ADMIN_API_KEY!,
-      ...(init?.headers ?? {}),
-    },
-    cache: "no-store",
-  })
+  let lastError: unknown
 
-  if (!res.ok) {
-    throw new Error(`Medusa admin ${path} failed (${res.status})`)
+  for (let attempt = 1; attempt <= ADMIN_FETCH_RETRIES; attempt++) {
+    const controller = new AbortController()
+    const timer = setTimeout(() => controller.abort(), ADMIN_FETCH_TIMEOUT_MS)
+
+    let res: Response
+    try {
+      res = await fetch(`${MEDUSA_URL}${path}`, {
+        ...init,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: adminAuthHeader(),
+          ...(init?.headers ?? {}),
+        },
+        cache: "no-store",
+        signal: controller.signal,
+      })
+    } catch (err) {
+      // Network error or timeout (AbortError) — retryable.
+      lastError = err
+      if (attempt < ADMIN_FETCH_RETRIES) await sleep(500 * attempt)
+      continue
+    } finally {
+      clearTimeout(timer)
+    }
+
+    if (res.ok) {
+      return res.json()
+    }
+
+    // Permanent errors (bad key, not found) won't fix on retry — fail fast.
+    if (!isRetryableStatus(res.status)) {
+      throw new Error(`Medusa admin ${path} failed (${res.status})`)
+    }
+
+    // Retryable server error (backend starting up / rate limited).
+    lastError = new Error(`Medusa admin ${path} failed (${res.status})`)
+    if (attempt < ADMIN_FETCH_RETRIES) await sleep(500 * attempt) // 500ms, then 1000ms
   }
 
-  return res.json()
+  throw lastError instanceof Error
+    ? lastError
+    : new Error(`Medusa admin ${path} failed`)
 }
 
 export async function listOrders(limit = 50): Promise<AdminOrder[]> {
