@@ -53,6 +53,13 @@ export default function ProductActions({
       return
     }
 
+    // Single-variant products (every Cylix product is one dose) are always the
+    // one variant — select it directly rather than matching option keymaps,
+    // which can fail if the variant's option values aren't fully populated.
+    if (product.variants.length === 1) {
+      return product.variants[0]
+    }
+
     return product.variants.find((v) => {
       const variantOptions = optionsAsKeymap(v.options)
       return isEqual(variantOptions, options)
@@ -69,6 +76,9 @@ export default function ProductActions({
 
   //check if the selected options produce a valid variant
   const isValidVariant = useMemo(() => {
+    if (product.variants?.length === 1) {
+      return true
+    }
     return product.variants?.some((v) => {
       const variantOptions = optionsAsKeymap(v.options)
       return isEqual(variantOptions, options)
