@@ -460,6 +460,10 @@ export async function listCartOptions() {
   }
   const next = {
     ...(await getCacheOptions("shippingOptions")),
+    // Do not cache shipping options indefinitely: a cart evaluated before a
+    // shipping option existed would cache an empty list and block checkout
+    // forever ("no delivery method"). Refresh frequently instead.
+    revalidate: 30,
   }
 
   return await sdk.client.fetch<{
@@ -468,6 +472,5 @@ export async function listCartOptions() {
     query: { cart_id: cartId },
     next,
     headers,
-    cache: "force-cache",
   })
 }
