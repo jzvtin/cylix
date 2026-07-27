@@ -17,21 +17,16 @@ export const metadata: Metadata = {
     title: "Cylix Research — Analytical-Grade Research Peptides",
     description:
       "Third-party tested reference standards with a Certificate of Analysis on every lot. For in-vitro laboratory research only.",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Cylix Research — research peptides you can trust",
-      },
-    ],
+    // Social share image comes from the file-based src/app/opengraph-image.jpg
+    // (Next.js auto-generates the og:image tag from it and it takes precedence
+    // over any images set here).
   },
   twitter: {
     card: "summary_large_image",
     title: "Cylix Research — Analytical-Grade Research Peptides",
     description:
       "Third-party tested reference standards with a Certificate of Analysis on every lot. For in-vitro laboratory research only.",
-    images: ["/og-image.jpg"],
+    // Share image comes from the file-based src/app/twitter-image.jpg.
   },
   icons: {
     icon: [
