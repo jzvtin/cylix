@@ -61,16 +61,24 @@ export default async function OrderCompletedTemplate({
               style={{ color: "#555", lineHeight: 1.6 }}
             >
               <li>
-                <strong style={{ color: "#111" }}>1. Confirmation.</strong> A
-                receipt is on its way to {order.email}.
+                <strong style={{ color: "#111" }}>1. Confirmation.</strong> Save
+                your order number above — that&apos;s your confirmation of this
+                order.
               </li>
               <li>
                 <strong style={{ color: "#111" }}>2. Processing.</strong> Orders
                 are dispatched within 12–24 hours.
               </li>
               <li>
-                <strong style={{ color: "#111" }}>3. Shipping.</strong> You will
-                get a tracking link by email as soon as it ships.
+                <strong style={{ color: "#111" }}>3. Shipping.</strong> For a
+                tracking update, email{" "}
+                <a
+                  href="mailto:support@cylixlab.com"
+                  style={{ color: "#C9963A", fontWeight: 700 }}
+                >
+                  support@cylixlab.com
+                </a>{" "}
+                with your order number.
               </li>
             </ol>
             <p className="text-sm mt-4" style={{ color: "#555" }}>
