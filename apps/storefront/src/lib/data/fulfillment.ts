@@ -11,6 +11,10 @@ export const listCartShippingMethods = async (cartId: string) => {
 
   const next = {
     ...(await getCacheOptions("fulfillment")),
+    // Never cache shipping options indefinitely: a cart evaluated before a
+    // shipping option existed would cache an empty list and permanently show
+    // "no delivery method" at checkout, blocking every order. Refresh often.
+    revalidate: 30,
   }
 
   return sdk.client
@@ -23,7 +27,6 @@ export const listCartShippingMethods = async (cartId: string) => {
         },
         headers,
         next,
-        cache: "force-cache",
       }
     )
     .then(({ shipping_options }) => shipping_options)
