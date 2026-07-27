@@ -276,3 +276,34 @@ html, body {
   .nav-account { display: none !important; }
   .nav-brand { font-size: 13px !important; }
 }
+
+/* ---- Product page responsive ----
+   The product layout is a hardcoded inline `grid-template-columns: 1fr 1fr`,
+   which inline styles can't make responsive. On phones the right column
+   (price + Add to cart) was squeezed off-screen and clipped by the body's
+   overflow-x:hidden. Below 900px we stack to one column and un-stick the
+   image so it flows normally above the buy box. */
+@media (max-width: 900px) {
+  .cx-product-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .cx-product-grid > div:first-child {
+    position: static !important;
+    top: auto !important;
+  }
+}
+
+/* ---- Footer responsive ----
+   Footer is a hardcoded inline `grid-template-columns: 2fr 1fr 1fr 1fr`, so the
+   4th column (Account) ran off the right edge on phones. Below 768px the brand
+   block spans the full width and the three link groups flow into two columns. */
+@media (max-width: 768px) {
+  .cx-footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 28px 24px !important;
+  }
+  .cx-footer-grid > div:first-child {
+    grid-column: 1 / -1 !important;
+  }
+}

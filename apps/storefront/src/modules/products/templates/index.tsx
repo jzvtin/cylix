@@ -34,7 +34,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
 
       {/* PRODUCT LAYOUT */}
       <div style={{background:"#fff",padding:"40px 32px 64px"}}>
-        <div style={{maxWidth:"1100px",margin:"0 auto",display:"grid",gridTemplateColumns:"1fr 1fr",gap:"64px",alignItems:"start"}}>
+        <div className="cx-product-grid" style={{maxWidth:"1100px",margin:"0 auto",display:"grid",gridTemplateColumns:"1fr 1fr",gap:"64px",alignItems:"start"}}>
 
           {/* LEFT — image */}
           <div style={{position:"sticky",top:"80px"}}>

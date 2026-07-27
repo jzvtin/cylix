@@ -17,15 +17,30 @@ export const metadata: Metadata = {
     title: "Cylix Research — Analytical-Grade Research Peptides",
     description:
       "Third-party tested reference standards with a Certificate of Analysis on every lot. For in-vitro laboratory research only.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Cylix Research — research peptides you can trust",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cylix Research — Analytical-Grade Research Peptides",
     description:
       "Third-party tested reference standards with a Certificate of Analysis on every lot. For in-vitro laboratory research only.",
+    images: ["/og-image.jpg"],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   robots: {
     index: true,

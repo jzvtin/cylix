@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer style={{background: "#0D0D0D", padding: "52px 32px 28px"}}>
       <div style={{maxWidth: "1200px", margin: "0 auto"}}>
-        <div style={{display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: "40px", marginBottom: "44px"}}>
+        <div className="cx-footer-grid" style={{display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: "40px", marginBottom: "44px"}}>
           <div>
             <div style={{fontFamily: "'Outfit', sans-serif", fontSize: "15px", fontWeight: 900, color: "#fff", textTransform: "uppercase", marginBottom: "10px", letterSpacing: "-0.2px"}}>
               Cylix Research<span style={{width: "5px", height: "5px", background: "#C9963A", borderRadius: "50%", display: "inline-block", marginLeft: "4px", verticalAlign: "middle"}}></span>
