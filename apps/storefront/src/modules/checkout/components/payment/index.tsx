@@ -36,7 +36,7 @@ const Payment = ({
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(
     activeSession?.provider_id ?? ""
   )
-  const [tab, setTab] = useState<"sellabroad" | "stripe">("sellabroad")
+  const [tab, setTab] = useState<"sellabroad" | "stripe">("stripe")
 
   const stripeMethod = availablePaymentMethods?.find((m) => isStripeLike(m.id))
   const otherMethods =
@@ -115,13 +115,15 @@ const Payment = ({
     setError(null)
   }, [isOpen])
 
-  /* Default tab is SellAbroad — make sure it has a Medusa session backing it. */
+  /* Initiate a Medusa payment session for whichever tab is active (Stripe by
+     default). SellAbroad still needs a system session backing it so the cart
+     can be completed once its widget confirms payment. */
   useEffect(() => {
-    if (isOpen && tab === "sellabroad" && !selectedPaymentMethod) {
-      const fallback = otherMethods[0]
-      if (fallback) {
-        setPaymentMethod(fallback.id)
-      }
+    if (!isOpen || selectedPaymentMethod) return
+    if (tab === "stripe" && stripeMethod) {
+      setPaymentMethod(stripeMethod.id)
+    } else if (tab === "sellabroad" && otherMethods[0]) {
+      setPaymentMethod(otherMethods[0].id)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, tab])
@@ -165,8 +167,8 @@ const Payment = ({
               >
                 {(
                   [
-                    { key: "sellabroad", label: "Pay by card" },
-                    { key: "stripe", label: "Stripe" },
+                    { key: "stripe", label: "Pay by card" },
+                    { key: "sellabroad", label: "Other (SellAbroad)" },
                   ] as const
                 ).map(({ key, label }) => (
                   <button
