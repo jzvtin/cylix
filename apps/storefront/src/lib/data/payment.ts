@@ -11,6 +11,9 @@ export const listCartPaymentMethods = async (regionId: string) => {
 
   const next = {
     ...(await getCacheOptions("payment_providers")),
+    // Not force-cached: otherwise enabling a provider (e.g. Stripe) in the admin
+    // never shows up and checkout keeps saying "not enabled".
+    revalidate: 30,
   }
 
   return sdk.client
@@ -21,7 +24,6 @@ export const listCartPaymentMethods = async (regionId: string) => {
         query: { region_id: regionId },
         headers,
         next,
-        cache: "force-cache",
       }
     )
     .then(({ payment_providers }) =>
