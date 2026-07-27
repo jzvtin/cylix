@@ -18,6 +18,7 @@ export const retrieveVariant = async (
 
   const next = {
     ...(await getCacheOptions("variants")),
+    revalidate: 60,
   }
 
   return await sdk.client
@@ -30,7 +31,6 @@ export const retrieveVariant = async (
         },
         headers,
         next,
-        cache: "force-cache",
       }
     )
     .then(({ variant }) => variant)

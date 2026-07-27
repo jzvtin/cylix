@@ -8,14 +8,17 @@ export const COMPANY = {
   /** Trading name shown throughout the storefront. */
   brand: "Cylix Research",
 
-  /** TODO: registered legal entity, e.g. "Cylix Research LLC". */
-  legalName: "TODO_LEGAL_ENTITY_NAME",
-
-  /** TODO: registered business address used for legal notices. */
-  address: "TODO_REGISTERED_ADDRESS",
-
-  /** TODO: US state whose law governs the Terms, e.g. "Delaware". */
-  governingState: "TODO_GOVERNING_STATE",
+  /**
+   * INTERIM honest defaults so the legal pages don't show raw TODO tokens.
+   * REPLACE before real launch with the registered details, and have a lawyer
+   * review the policy pages:
+   *  - legalName: the registered entity, e.g. "Cylix Research LLC"
+   *  - address: the registered business address for legal notices
+   *  - governingState: the specific US state whose law governs the Terms
+   */
+  legalName: "Cylix Research",
+  address: "the United States",
+  governingState: "the United States",
 
   supportEmail: "support@cylixlab.com",
   privacyEmail: "support@cylixlab.com",

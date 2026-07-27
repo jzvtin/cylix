@@ -7,13 +7,13 @@ import { getCacheOptions } from "./cookies"
 export const listRegions = async () => {
   const next = {
     ...(await getCacheOptions("regions")),
+    revalidate: 60,
   }
 
   return await sdk.client
     .fetch<{ regions: HttpTypes.StoreRegion[] }>(`/store/regions`, {
       method: "GET",
       next,
-      cache: "force-cache",
     })
     .then(({ regions }) => regions)
 }
@@ -21,13 +21,13 @@ export const listRegions = async () => {
 export const retrieveRegion = async (id: string) => {
   const next = {
     ...(await getCacheOptions(["regions", id].join("-"))),
+    revalidate: 60,
   }
 
   return await sdk.client
     .fetch<{ region: HttpTypes.StoreRegion }>(`/store/regions/${id}`, {
       method: "GET",
       next,
-      cache: "force-cache",
     })
     .then(({ region }) => region)
 }
