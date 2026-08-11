@@ -15,12 +15,19 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
             {product.collection.title}
           </span>
         )}
-        <h1
-          className="font-display text-[clamp(30px,4.5vw,46px)] font-black leading-[1.02] tracking-[-1.4px] text-ink"
-          data-testid="product-title"
-        >
-          {product.title}
-        </h1>
+        <div className="flex flex-col gap-y-1.5">
+          <h1
+            className="font-display text-[clamp(30px,4.5vw,44px)] font-extrabold leading-[1.05] tracking-[-0.02em] text-ink-900"
+            data-testid="product-title"
+          >
+            {product.title}
+          </h1>
+          {product.subtitle && (
+            <p className="font-display text-[15px] font-medium text-ink/50">
+              {sanitizeCompliance(product.subtitle)}
+            </p>
+          )}
+        </div>
 
         <Text
           className="max-w-[52ch] whitespace-pre-line text-[15px] leading-[1.7] text-ink/60"
