@@ -44,15 +44,16 @@ const Proof = () => {
         {/* The claim */}
         <Reveal>
           <div>
-            <div className="mb-[10px] font-display text-[10px] font-extrabold uppercase tracking-[1.4px] text-gold-600">
+            <div className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-gold-500/35 bg-gold-50 px-4 py-[7px] font-display text-[11px] font-extrabold uppercase tracking-[1.6px] text-gold-700">
+              <span className="inline-block h-[6px] w-[6px] rounded-full bg-gold-500" />
               The Proof
             </div>
-            <h2 className="mb-3 font-display text-[clamp(24px,3.6vw,34px)] font-extrabold leading-[1.1] tracking-[-0.8px] text-ink">
+            <h2 className="mb-4 font-display text-[clamp(30px,5vw,52px)] font-black leading-[1.02] tracking-[-1.6px] text-ink">
               We don&apos;t say &ldquo;trust us.&rdquo;
               <br />
-              We hand you the document.
+              We hand you the <span className="text-gold-500">document.</span>
             </h2>
-            <p className="mb-7 max-w-[440px] text-sm leading-[1.75] text-ink/55">
+            <p className="mb-8 max-w-[460px] text-[clamp(14px,1.3vw,17px)] leading-[1.7] text-ink/60">
               Every lot is sent to Janoshik Analytical — an independent lab — for
               HPLC identity and purity testing. The Certificate of Analysis lands
               in your inbox with the order. No marketing grade. A number.
@@ -63,9 +64,9 @@ const Proof = () => {
                 { big: "100%", small: "Batches tested" },
                 { big: "3rd-party", small: "Independent lab" },
               ].map((s) => (
-                <div key={s.small} className="rounded-[14px] border border-cream bg-sand px-5 py-3">
-                  <div className="font-display text-[22px] font-black leading-none text-gold-600">{s.big}</div>
-                  <div className="mt-1 text-[11px] text-ink/50">{s.small}</div>
+                <div key={s.small} className="rounded-[16px] border border-cream bg-sand px-6 py-4">
+                  <div className="font-display text-[clamp(24px,2.6vw,30px)] font-black leading-none text-gold-600">{s.big}</div>
+                  <div className="mt-[6px] text-[12px] font-semibold text-ink/55">{s.small}</div>
                 </div>
               ))}
             </div>

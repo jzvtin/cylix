@@ -22,13 +22,16 @@ const CtaBand = () => {
 
       <Reveal>
         <div className="relative mx-auto flex max-w-[860px] flex-col items-center text-center">
-          <div className="mb-3 font-display text-[10px] font-extrabold uppercase tracking-[1.6px] text-ink/60">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-ink/20 bg-ink/5 px-4 py-[7px] font-display text-[11px] font-extrabold uppercase tracking-[1.6px] text-ink/70">
+            <span className="inline-block h-[6px] w-[6px] rounded-full bg-ink" />
             Research-grade, verified
           </div>
-          <h2 className="mb-4 font-display text-[clamp(26px,4.5vw,44px)] font-black leading-[1.08] tracking-[-1px] text-ink">
-            Know exactly what you&apos;re getting.
+          <h2 className="mb-5 font-display text-[clamp(32px,6vw,68px)] font-black leading-[0.98] tracking-[-2px] text-ink">
+            Know exactly what
+            <br />
+            you&apos;re getting.
           </h2>
-          <p className="mb-8 max-w-[520px] text-sm leading-[1.75] text-ink/70">
+          <p className="mb-9 max-w-[560px] text-[clamp(15px,1.5vw,18px)] leading-[1.65] text-ink/70">
             99%+ purity, third-party tested, with a Certificate of Analysis on
             every batch. Browse the catalog and see the documentation for
             yourself.

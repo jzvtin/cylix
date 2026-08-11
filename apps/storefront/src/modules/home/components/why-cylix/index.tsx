@@ -45,14 +45,15 @@ const WhyCylix = () => {
     <section className="border-t border-cream bg-sand px-[clamp(18px,5vw,32px)] py-[clamp(40px,8vw,72px)]">
       <div className="mx-auto max-w-[1200px]">
         <Reveal>
-          <div className="mb-11">
-            <div className="mb-[10px] font-display text-[10px] font-extrabold uppercase tracking-[1.4px] text-gold-600">
+          <div className="mb-14">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-gold-500/35 bg-gold-50 px-4 py-[7px] font-display text-[11px] font-extrabold uppercase tracking-[1.6px] text-gold-700">
+              <span className="inline-block h-[6px] w-[6px] rounded-full bg-gold-500" />
               Why Cylix
             </div>
-            <h2 className="mb-2 font-display text-[clamp(22px,3.5vw,30px)] font-extrabold tracking-[-0.6px] text-ink">
-              Built different, for a reason.
+            <h2 className="mb-4 font-display text-[clamp(28px,4.6vw,50px)] font-black leading-[1.02] tracking-[-1.5px] text-ink">
+              Built different, <span className="text-gold-500">for a reason.</span>
             </h2>
-            <p className="max-w-[480px] text-sm leading-[1.7] text-ink/50">
+            <p className="max-w-[520px] text-[clamp(14px,1.3vw,17px)] leading-[1.7] text-ink/55">
               The research compound space is full of noise. We cut through it with
               one standard: you deserve to know exactly what you&apos;re getting.
             </p>
@@ -62,12 +63,12 @@ const WhyCylix = () => {
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {ITEMS.map(({ Icon, title, body }, i) => (
             <Reveal key={title} delay={i * 70}>
-              <div className="group h-full rounded-[16px] border border-cream bg-white p-7 transition-all duration-200 hover:-translate-y-1 hover:border-gold-500/60 hover:shadow-[0_18px_40px_-24px_rgba(201,150,58,0.55)]">
-                <div className="mb-[14px] flex h-11 w-11 items-center justify-center rounded-[12px] bg-cream text-gold-600 transition-colors duration-200 group-hover:bg-gold-500 group-hover:text-white">
+              <div className="group h-full rounded-[20px] border border-cream bg-white p-8 transition-all duration-200 hover:-translate-y-1 hover:border-gold-500/60 hover:shadow-[0_22px_48px_-26px_rgba(201,150,58,0.6)]">
+                <div className="mb-5 flex h-[52px] w-[52px] items-center justify-center rounded-[14px] bg-cream text-gold-600 transition-colors duration-200 group-hover:bg-gold-500 group-hover:text-white">
                   <Icon />
                 </div>
-                <div className="mb-[7px] font-display text-[13px] font-extrabold text-ink">{title}</div>
-                <p className="m-0 text-xs leading-[1.72] text-ink/55">{body}</p>
+                <div className="mb-2 font-display text-[clamp(15px,1.6vw,18px)] font-extrabold tracking-[-0.2px] text-ink">{title}</div>
+                <p className="m-0 text-[13px] leading-[1.72] text-ink/55">{body}</p>
               </div>
             </Reveal>
           ))}

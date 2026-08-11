@@ -42,19 +42,20 @@ export default async function Home(props: {
       <Reveal>
         <section className="border-t border-cream bg-white px-[clamp(18px,5vw,32px)] py-[clamp(40px,7vw,64px)]">
           <div className="mx-auto max-w-[1200px]">
-            <div className="mb-7 flex flex-wrap items-end justify-between gap-[14px]">
+            <div className="mb-10 flex flex-wrap items-end justify-between gap-[14px]">
               <div>
-                <div className="mb-[6px] font-display text-[10px] font-extrabold uppercase tracking-[1.4px] text-gold-600">
+                <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-gold-500/35 bg-gold-50 px-4 py-[7px] font-display text-[11px] font-extrabold uppercase tracking-[1.6px] text-gold-700">
+                  <span className="inline-block h-[6px] w-[6px] rounded-full bg-gold-500" />
                   Featured Products
                 </div>
-                <h2 className="font-display text-[clamp(20px,3vw,26px)] font-extrabold tracking-[-0.4px] text-ink">
-                  Research-grade compounds
+                <h2 className="font-display text-[clamp(28px,4.4vw,48px)] font-black leading-[1.02] tracking-[-1.4px] text-ink">
+                  Research-grade <span className="text-gold-500">compounds.</span>
                 </h2>
-                <p className="mt-1 text-[13px] text-ink/50">Third-party verified, every batch.</p>
+                <p className="mt-3 text-[clamp(14px,1.3vw,16px)] text-ink/55">Third-party verified, every batch.</p>
               </div>
               <a
                 href="/store"
-                className="rounded-[20px] border border-cream px-[14px] py-[7px] font-display text-xs font-bold text-ink/60 transition-colors hover:border-gold-500 hover:text-ink"
+                className="rounded-full border border-cream bg-white px-5 py-[10px] font-display text-[13px] font-bold text-ink/70 transition-colors hover:border-gold-500 hover:text-gold-700"
               >
                 View all →
               </a>

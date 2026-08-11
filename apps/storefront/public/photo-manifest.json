@@ -1,0 +1,45 @@
+{
+  "generatedAt": "2026-08-11",
+  "model": "nano_banana_pro",
+  "generator": "Higgsfield (reference-grounded on public/products/premium/bpc-157.png for consistent vial + label identity)",
+  "artDirection": {
+    "style": "warm editorial premium analytical-lab studio product photography",
+    "palette": ["#F9F7F4", "#E8E4DE", "gold accent", "near-black type"],
+    "lighting": "dramatic directional window/studio light, soft realistic shadows, shallow depth of field, subtle glass reflections",
+    "vial": "small clear glass vial, champagne/gold crimp cap over brushed-silver band, minimal cream 'CYLIX RESEARCH' label, bold near-black compound name, '99%+ PURITY / FOR RESEARCH USE ONLY', white lyophilized powder"
+  },
+  "hero": {
+    "16x9": {
+      "path": "/hero/photo/hero-16x9.png",
+      "aspect": "16:9",
+      "resolution": "4k",
+      "use": "homepage hero, wide banner (negative space on LEFT for headline, vial cluster weighted RIGHT)",
+      "vials": ["NAD+", "BPC-157", "GHK-Cu"]
+    },
+    "3x2": {
+      "path": "/hero/photo/hero-3x2.png",
+      "aspect": "3:2",
+      "resolution": "4k",
+      "use": "hero secondary crop / feature card (negative space on LEFT, vial cluster weighted RIGHT)",
+      "vials": ["BPC-157", "GHK-Cu", "NAD+"]
+    }
+  },
+  "products": {
+    "bpc-157": { "name": "BPC-157", "path": "/products/photo/bpc-157.png" },
+    "nad": { "name": "NAD+", "path": "/products/photo/nad.png" },
+    "ghk-cu": { "name": "GHK-Cu", "path": "/products/photo/ghk-cu.png" },
+    "tesamorelin": { "name": "Tesamorelin", "path": "/products/photo/tesamorelin.png" },
+    "retatrutide": { "name": "Retatrutide", "path": "/products/photo/retatrutide.png" },
+    "tirzepatide": { "name": "Tirzepatide", "path": "/products/photo/tirzepatide.png" },
+    "semaglutide": { "name": "Semaglutide", "path": "/products/photo/semaglutide.png" },
+    "tb-500": { "name": "TB-500", "path": "/products/photo/tb-500.png" },
+    "mots-c": { "name": "MOTS-C", "path": "/products/photo/mots-c.png" },
+    "cagrilintide": { "name": "Cagrilintide", "path": "/products/photo/cagrilintide.png" }
+  },
+  "productDefaults": {
+    "aspect": "4:5",
+    "resolution": "2k",
+    "surface": "soft warm cream/sand seamless",
+    "consistentLightingAndAngle": true
+  }
+}
