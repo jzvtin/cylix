@@ -44,6 +44,14 @@ const Reveal = ({ children, delay = 0, as = "div", className }: RevealProps) => 
     }
   }, [inView])
 
+  // Fail-safe: never leave content permanently hidden if the observer doesn't
+  // fire (above-the-fold content, or SSR→hydration timing). Reveal shortly
+  // after mount so the entrance still animates but content can't get stuck.
+  useEffect(() => {
+    const t = setTimeout(() => setRevealed(true), 120)
+    return () => clearTimeout(t)
+  }, [])
+
   const show = revealed || reducedMotion
 
   const classes = [
