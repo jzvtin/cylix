@@ -17,30 +17,24 @@ export default function DisclaimerPage() {
       intro="Read this before ordering. It defines what these materials are, and what they are not."
       updated="20 July 2026"
     >
-      <div
-        style={{
-          background: "#FDF6E9",
-          border: "1px solid #E8D5AE",
-          borderRadius: "10px",
-          padding: "20px 22px",
-          marginBottom: "34px",
-        }}
-      >
-        <p
-          style={{
-            fontFamily: "'Poppins',sans-serif",
-            fontSize: "14px",
-            fontWeight: 800,
-            color: "#7A5B1E",
-            lineHeight: 1.7,
-            margin: 0,
-          }}
+      <div className="mb-9 flex gap-4 rounded-2xl border border-gold-200 bg-gradient-to-br from-gold-50 to-[#FDF6E9] px-5 py-5 sm:px-6">
+        <div
+          aria-hidden
+          className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-gold-100 text-[18px]"
         >
-          Every material sold by {COMPANY.brand} is an analytical reference
-          standard for in-vitro laboratory research only. Nothing we sell is for
-          human or animal consumption, injection, dosing, topical application, or
-          administration of any kind.
-        </p>
+          ⚠️
+        </div>
+        <div>
+          <div className="mb-1 font-display text-[10px] font-extrabold uppercase tracking-[1.2px] text-gold-700">
+            For research use only
+          </div>
+          <p className="m-0 font-display text-[14px] font-bold leading-[1.7] text-gold-800">
+            Every material sold by {COMPANY.brand} is an analytical reference
+            standard for in-vitro laboratory research only. Nothing we sell is
+            for human or animal consumption, injection, dosing, topical
+            application, or administration of any kind.
+          </p>
+        </div>
       </div>
 
       <Section heading="Not a drug, not a supplement">

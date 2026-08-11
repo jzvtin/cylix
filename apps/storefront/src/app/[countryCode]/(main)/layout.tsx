@@ -6,6 +6,9 @@ import { StoreCartShippingOption } from "@medusajs/types"
 import CartMismatchBanner from "@modules/layout/components/cart-mismatch-banner"
 import Footer from "@modules/layout/templates/footer"
 import Nav from "@modules/layout/templates/nav"
+import SiteBackground from "@modules/layout/components/site-background"
+import AnnouncementBar from "@modules/marketing/announcement-bar"
+import EmailPopup from "@modules/marketing/email-popup"
 import FreeShippingPriceNudge from "@modules/shipping/components/free-shipping-price-nudge"
 
 export const metadata: Metadata = {
@@ -24,6 +27,8 @@ export default async function PageLayout(props: { children: React.ReactNode }) {
 
   return (
     <>
+      <SiteBackground />
+      <AnnouncementBar />
       <Nav />
       {customer && cart && (
         <CartMismatchBanner customer={customer} cart={cart} />
@@ -36,6 +41,7 @@ export default async function PageLayout(props: { children: React.ReactNode }) {
         />
       )}
       {props.children}
+      <EmailPopup />
       <Footer />
     </>
   )

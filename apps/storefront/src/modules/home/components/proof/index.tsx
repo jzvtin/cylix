@@ -39,7 +39,7 @@ const Chromatogram = () => (
 
 const Proof = () => {
   return (
-    <section className="border-t border-cream bg-cream px-[clamp(18px,5vw,32px)] py-[clamp(48px,8vw,80px)]">
+    <section className="border-t border-cream px-[clamp(18px,5vw,32px)] py-[clamp(48px,8vw,80px)]">
       <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-[clamp(28px,5vw,56px)] lg:grid-cols-2">
         {/* The claim */}
         <Reveal>

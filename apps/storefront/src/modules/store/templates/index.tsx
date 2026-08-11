@@ -5,8 +5,30 @@ import RefinementList from "@modules/store/components/refinement-list"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import PaginatedProducts from "./paginated-products"
 
+const TRUST = [
+  {
+    label: "99%+ purity",
+    path: "M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7l7-4z M9 12l2 2 4-4",
+  },
+  {
+    label: "CoA every lot",
+    path: "M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z M14 3v5h5 M9 13h6 M9 17h6",
+  },
+  {
+    label: "Free shipping",
+    path: "M3 7h11v8H3z M14 10h4l3 3v2h-7z M7.5 18a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z M17.5 18a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z",
+  },
+  {
+    label: "12–24h dispatch",
+    path: "M12 8v4l3 2 M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z",
+  },
+]
+
 const StoreTemplate = ({
-  sortBy, page, countryCode, optionValueIds,
+  sortBy,
+  page,
+  countryCode,
+  optionValueIds,
 }: {
   sortBy?: SortOptions
   page?: string
@@ -18,44 +40,116 @@ const StoreTemplate = ({
 
   return (
     <>
-      {/* CATALOG HEADER */}
-      <div style={{background:"#111",padding:"clamp(32px, 7vw, 48px) clamp(16px, 4vw, 32px) 40px"}}>
-        <div style={{maxWidth:"1200px",margin:"0 auto"}}>
-          <div style={{fontFamily:"'Poppins',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"1.4px",textTransform:"uppercase" as const,color:"#C9963A",marginBottom:"10px"}}>Full Catalog</div>
-          <h1 style={{fontFamily:"'Poppins',sans-serif",fontSize:"clamp(28px,5vw,44px)",fontWeight:900,color:"#fff",letterSpacing:"-1.2px",marginBottom:"8px",lineHeight:1.05}}>
-            Research <em style={{fontStyle:"normal",color:"#C9963A"}}>Compounds</em>
+      {/* ─── CATALOG HERO ─────────────────────────────────────────────── */}
+      <section className="relative overflow-hidden bg-ink text-white">
+        {/* gold glow */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(70% 120% at 88% 0%, rgba(201,150,58,0.30) 0%, rgba(201,150,58,0) 55%)," +
+              "radial-gradient(50% 90% at 6% 100%, rgba(201,150,58,0.12) 0%, rgba(201,150,58,0) 60%)",
+          }}
+        />
+        {/* chromatogram accent */}
+        <svg
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[70%] w-full"
+          viewBox="0 0 1440 240"
+          preserveAspectRatio="none"
+          fill="none"
+          style={{ opacity: 0.14 }}
+        >
+          <path
+            d="M0 230 H520 C560 230 566 60 596 60 C626 60 632 230 672 230 H980 C1030 230 1034 130 1060 130 C1086 130 1090 230 1140 230 H1440"
+            stroke="#C9963A"
+            strokeWidth="2"
+          />
+        </svg>
+
+        <div className="relative mx-auto max-w-[1200px] px-[clamp(16px,4vw,32px)] py-[clamp(40px,7vw,72px)]">
+          <div className="cx-eyebrow cx-eyebrow--light mb-5">Full Catalog</div>
+          <h1 className="cx-h max-w-[16ch] text-[clamp(32px,6vw,60px)] !text-white">
+            Research <em>Compounds.</em>
           </h1>
-          <p style={{fontSize:"14px",color:"rgba(255,255,255,0.45)",maxWidth:"440px",lineHeight:1.65}}>
-            30+ analytical-grade compounds. Third-party verified to 99%+ purity. Free shipping on every order.
+          <p className="mt-4 max-w-[460px] text-[clamp(14px,1.4vw,16px)] leading-[1.7] text-white/55">
+            Analytical-grade reference standards, third-party verified to 99%+
+            purity — each with a Certificate of Analysis. Free shipping, every
+            order.
           </p>
+
+          {/* trust chips */}
+          <div className="mt-8 flex flex-wrap gap-2.5">
+            {TRUST.map((t) => (
+              <span
+                key={t.label}
+                className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.06] px-3.5 py-2 font-display text-[12px] font-bold text-white/85 backdrop-blur-sm"
+              >
+                <svg
+                  aria-hidden
+                  viewBox="0 0 24 24"
+                  className="h-3.5 w-3.5 text-gold-400"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.9"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d={t.path} />
+                </svg>
+                {t.label}
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* CATALOG BODY */}
-      <div style={{background:"#F9F7F4",minHeight:"60vh"}}>
+      {/* ─── CATALOG BODY (transparent → atmosphere shows through) ─────── */}
+      <div className="relative min-h-[60vh]">
         <div className="catalog-layout">
-
           {/* SIDEBAR */}
-          <div className="catalog-sidebar">
-            <div style={{background:"#fff",border:"1px solid #E8E4DE",borderRadius:"12px",padding:"20px",marginBottom:"16px"}}>
-              <div style={{fontFamily:"'Poppins',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"1px",textTransform:"uppercase" as const,color:"#999",marginBottom:"14px"}}>Sort & Filter</div>
+          <aside className="catalog-sidebar flex flex-col gap-4">
+            <div className="cx-glass rounded-2xl p-5">
+              <div className="mb-4 font-display text-[10px] font-extrabold uppercase tracking-[1.2px] text-ink/45">
+                Sort &amp; Filter
+              </div>
               <RefinementList sortBy={sort} />
             </div>
-            {/* Trust sidebar */}
-            <div style={{background:"#fff",border:"1px solid #E8E4DE",borderRadius:"12px",padding:"16px"}}>
-              <div style={{fontFamily:"'Poppins',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"1px",textTransform:"uppercase" as const,color:"#C9963A",marginBottom:"12px"}}>Every Order</div>
-              {[
-                {icon:"🧪",text:"99%+ Purity"},
-                {icon:"📋",text:"CoA Included"},
-                {icon:"🚚",text:"Free Shipping"},
-                {icon:"⚡",text:"12–24hr Dispatch"},
-              ].map(b => (
-                <div key={b.text} style={{display:"flex",alignItems:"center",gap:"8px",fontSize:"11px",fontFamily:"'Poppins',sans-serif",fontWeight:600,color:"#444",padding:"6px 0",borderBottom:"1px solid #F0EDE8"}}>
-                  <span>{b.icon}</span>{b.text}
-                </div>
-              ))}
+
+            <div className="cx-glass rounded-2xl p-5">
+              <div className="mb-3 font-display text-[10px] font-extrabold uppercase tracking-[1.2px] text-gold-700">
+                Every Order
+              </div>
+              <ul className="flex flex-col">
+                {TRUST.map((t, i) => (
+                  <li
+                    key={t.label}
+                    className={
+                      "flex items-center gap-2.5 py-2.5 text-[12.5px] font-semibold text-ink/70" +
+                      (i < TRUST.length - 1 ? " border-b border-ink/[0.06]" : "")
+                    }
+                  >
+                    <span className="flex h-6 w-6 items-center justify-center rounded-md bg-gold-50 text-gold-700">
+                      <svg
+                        aria-hidden
+                        viewBox="0 0 24 24"
+                        className="h-3.5 w-3.5"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.9"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d={t.path} />
+                      </svg>
+                    </span>
+                    {t.label}
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
+          </aside>
 
           {/* GRID */}
           <div className="catalog-main">
@@ -71,10 +165,11 @@ const StoreTemplate = ({
         </div>
       </div>
 
-      {/* COMPLIANCE BAR */}
-      <div style={{background:"#F0EDE8",borderTop:"1px solid #E8E4DE",padding:"28px 32px",textAlign:"center" as const}}>
-        <p style={{fontSize:"11px",color:"#999",maxWidth:"600px",margin:"0 auto",lineHeight:1.7,fontFamily:"'Poppins',sans-serif"}}>
-          All products are for in-vitro laboratory research only. Not for human or animal consumption. Must be 21+ to purchase.
+      {/* ─── COMPLIANCE STRIP ─────────────────────────────────────────── */}
+      <div className="border-t border-ink/[0.07] bg-white/40 px-8 py-8 text-center backdrop-blur-sm">
+        <p className="mx-auto max-w-[620px] font-display text-[11px] leading-[1.8] text-ink/45">
+          All products are for in-vitro laboratory research only. Not for human
+          or animal consumption. Must be 21 or older to purchase.
         </p>
       </div>
     </>

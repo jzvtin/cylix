@@ -15,7 +15,7 @@ const Star = ({ filled }: { filled: boolean }) => (
 
 const Reviews = () => {
   return (
-    <section className="border-t border-cream bg-cream px-[clamp(18px,5vw,32px)] py-[clamp(44px,8vw,76px)]">
+    <section className="border-t border-cream px-[clamp(18px,5vw,32px)] py-[clamp(44px,8vw,76px)]">
       <div className="mx-auto max-w-[1200px]">
         <Reveal>
           <div className="mb-9 flex flex-wrap items-end justify-between gap-4">

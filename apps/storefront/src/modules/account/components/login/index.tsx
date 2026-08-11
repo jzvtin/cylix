@@ -13,25 +13,28 @@ const Login = ({ setCurrentView }: Props) => {
   const [message, formAction] = useActionState(login, null)
 
   return (
-    <div
-      className="max-w-sm w-full flex flex-col items-center"
-      data-testid="login-page"
-    >
-      <h1 className="text-large-semi uppercase mb-6">Welcome back</h1>
-      <p className="text-center text-base-regular text-ui-fg-base mb-8">
-        Sign in to access an enhanced shopping experience.
-      </p>
+    <div className="w-full flex flex-col" data-testid="login-page">
+      <div className="text-center mb-8">
+        <h1 className="cx-h text-3xl sm:text-4xl">
+          Welcome <em>back</em>
+        </h1>
+        <p className="text-ink/60 mt-3">
+          Sign in to your CoAs, orders, and lot history.
+        </p>
+      </div>
+
       {message?.state === "verification_required" && (
         <div
-          className="w-full mb-6 text-center text-base-regular text-ui-fg-base bg-ui-bg-subtle border border-ui-border-base rounded-rounded p-4"
+          className="w-full mb-6 text-center text-sm text-ink/80 bg-gold-50 border border-gold-200 rounded-2xl p-4"
           data-testid="login-verification-message"
         >
           We sent a verification link to <strong>{message.email}</strong>.
           Please verify your email, then sign in.
         </div>
       )}
+
       <form className="w-full" action={formAction}>
-        <div className="flex flex-col w-full gap-y-2">
+        <div className="flex flex-col w-full gap-y-3">
           <Input
             label="Email"
             name="email"
@@ -54,20 +57,20 @@ const Login = ({ setCurrentView }: Props) => {
           error={message?.state === "error" ? message.error : null}
           data-testid="login-error-message"
         />
-        <SubmitButton data-testid="sign-in-button" className="w-full mt-6">
+        <SubmitButton data-testid="sign-in-button" className="w-full mt-6 !rounded-full">
           Sign in
         </SubmitButton>
       </form>
-      <span className="text-center text-ui-fg-base text-small-regular mt-6">
+
+      <span className="text-center text-ink/60 text-sm mt-8">
         Not a member?{" "}
         <button
           onClick={() => setCurrentView(LOGIN_VIEW.REGISTER)}
-          className="underline"
+          className="text-gold-700 font-semibold underline underline-offset-2 hover:text-gold-600"
           data-testid="register-button"
         >
-          Join us
+          Join Cylix Research
         </button>
-        .
       </span>
     </div>
   )

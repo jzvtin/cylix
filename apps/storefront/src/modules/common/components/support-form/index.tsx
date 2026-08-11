@@ -3,29 +3,6 @@
 import { useState } from "react"
 import { COMPANY } from "@lib/company"
 
-const labelStyle = {
-  fontFamily: "'Poppins',sans-serif",
-  fontSize: "10px",
-  fontWeight: 700,
-  letterSpacing: "0.5px",
-  textTransform: "uppercase" as const,
-  color: "#999",
-  display: "block",
-  marginBottom: "5px",
-}
-
-const fieldStyle = {
-  width: "100%",
-  padding: "10px 13px",
-  border: "1.5px solid #E8E4DE",
-  borderRadius: "8px",
-  fontFamily: "'Plus Jakarta Sans',sans-serif",
-  fontSize: "13px",
-  color: "#111",
-  background: "#F9F7F4",
-  outline: "none",
-}
-
 const SUBJECTS = [
   "Order Inquiry",
   "CoA Request",
@@ -33,6 +10,11 @@ const SUBJECTS = [
   "Institutional Pricing",
   "Other",
 ]
+
+const labelCls =
+  "mb-1.5 block font-display text-[10px] font-bold uppercase tracking-[0.5px] text-ink/45"
+const fieldCls =
+  "w-full rounded-[10px] border border-cream bg-sand/70 px-3.5 py-2.5 font-sans text-[13.5px] text-ink outline-none transition-colors placeholder:text-ink/35 focus:border-gold-500 focus:bg-white"
 
 /**
  * Opens the visitor's mail client with the message pre-filled. This keeps the
@@ -73,38 +55,41 @@ const SupportForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "10px",
-          marginBottom: "12px",
-        }}
-      >
+      <div className="mb-3 grid grid-cols-2 gap-3">
         <div>
-          <label style={labelStyle}>First Name</label>
-          <input name="first_name" type="text" placeholder="Jane" style={fieldStyle} />
+          <label className={labelCls}>First Name</label>
+          <input
+            name="first_name"
+            type="text"
+            placeholder="Jane"
+            className={fieldCls}
+          />
         </div>
         <div>
-          <label style={labelStyle}>Last Name</label>
-          <input name="last_name" type="text" placeholder="Smith" style={fieldStyle} />
+          <label className={labelCls}>Last Name</label>
+          <input
+            name="last_name"
+            type="text"
+            placeholder="Smith"
+            className={fieldCls}
+          />
         </div>
       </div>
-      <div style={{ marginBottom: "12px" }}>
-        <label style={labelStyle}>Email</label>
+      <div className="mb-3">
+        <label className={labelCls}>Email</label>
         <input
           name="email"
           type="email"
           placeholder="you@example.com"
           required
-          style={fieldStyle}
+          className={fieldCls}
         />
       </div>
-      <div style={{ marginBottom: "12px" }}>
-        <label style={labelStyle}>Subject</label>
+      <div className="mb-3">
+        <label className={labelCls}>Subject</label>
         <select
           name="subject"
-          style={{ ...fieldStyle, appearance: "none" }}
+          className={`${fieldCls} appearance-none`}
           defaultValue={SUBJECTS[0]}
         >
           {SUBJECTS.map((s) => (
@@ -112,44 +97,20 @@ const SupportForm = () => {
           ))}
         </select>
       </div>
-      <div style={{ marginBottom: "16px" }}>
-        <label style={labelStyle}>Message</label>
+      <div className="mb-4">
+        <label className={labelCls}>Message</label>
         <textarea
           name="message"
           placeholder="Describe your inquiry…"
           required
           rows={5}
-          style={{ ...fieldStyle, resize: "vertical" }}
+          className={`${fieldCls} resize-y`}
         />
       </div>
-      <button
-        type="submit"
-        style={{
-          width: "100%",
-          padding: "13px",
-          background: "#111",
-          color: "#fff",
-          border: "none",
-          borderRadius: "20px",
-          fontFamily: "'Poppins',sans-serif",
-          fontSize: "13px",
-          fontWeight: 800,
-          cursor: "pointer",
-          letterSpacing: "0.3px",
-          textTransform: "uppercase",
-        }}
-      >
+      <button type="submit" className="cx-btn cx-btn-primary w-full !text-[13px] uppercase tracking-[0.3px]">
         Send Message →
       </button>
-      <p
-        style={{
-          fontSize: "11px",
-          color: "#999",
-          marginTop: "12px",
-          lineHeight: 1.6,
-          textAlign: "center",
-        }}
-      >
+      <p className="mt-3 text-center text-[11.5px] leading-relaxed text-ink/50">
         {sent
           ? `If your mail client didn't open, email us directly at ${COMPANY.supportEmail}.`
           : "CoA requests: include your order number and lot number."}

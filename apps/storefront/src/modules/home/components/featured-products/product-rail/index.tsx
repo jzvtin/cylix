@@ -1,10 +1,13 @@
 import { listProducts } from "@lib/data/products"
 import { HttpTypes } from "@medusajs/types"
-import { Text } from "@modules/common/components/ui"
 
-import InteractiveLink from "@modules/common/components/interactive-link"
 import ProductPreview from "@modules/products/components/product-preview"
 
+/**
+ * Just the product grid — the section header (eyebrow + heading + "View all")
+ * is rendered once by the home page's Featured section that wraps this, so the
+ * rail intentionally renders no header/padding of its own.
+ */
 export default async function ProductRail({
   collection,
   region,
@@ -22,26 +25,17 @@ export default async function ProductRail({
     },
   })
 
-  if (!pricedProducts) {
+  if (!pricedProducts || pricedProducts.length === 0) {
     return null
   }
 
   return (
-    <div className="content-container py-12 small:py-24">
-      <div className="flex justify-between mb-8">
-        <Text className="txt-xlarge">{collection.title}</Text>
-        <InteractiveLink href={`/collections/${collection.handle}`}>
-          View all
-        </InteractiveLink>
-      </div>
-      <ul className="grid grid-cols-2 small:grid-cols-3 gap-x-6 gap-y-24 small:gap-y-36">
-        {pricedProducts &&
-          pricedProducts.map((product) => (
-            <li key={product.id}>
-              <ProductPreview product={product} region={region} isFeatured />
-            </li>
-          ))}
-      </ul>
-    </div>
+    <ul className="grid grid-cols-2 gap-x-5 gap-y-8 small:grid-cols-3 medium:grid-cols-4">
+      {pricedProducts.slice(0, 8).map((product) => (
+        <li key={product.id}>
+          <ProductPreview product={product} region={region} />
+        </li>
+      ))}
+    </ul>
   )
 }

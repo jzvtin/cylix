@@ -23,29 +23,21 @@ export default async function Profile() {
 
   return (
     <div className="w-full" data-testid="profile-page-wrapper">
-      <div className="mb-8 flex flex-col gap-y-4">
-        <h1 className="text-2xl-semi">Profile</h1>
-        <p className="text-base-regular">
-          View and update your profile information, including your name, email,
-          and phone number. You can also update your billing address, or change
-          your password.
+      <div className="mb-8 flex flex-col">
+        <span className="cx-eyebrow mb-4">Your details</span>
+        <h1 className="cx-h text-4xl small:text-5xl mt-4">Profile</h1>
+        <p className="text-ink/55 mt-3 max-w-xl">
+          View and update your name, email, and phone number, and manage your
+          billing address.
         </p>
       </div>
-      <div className="flex flex-col gap-y-8 w-full">
+      <div className="flex flex-col gap-y-5 w-full">
         <ProfileName customer={customer} />
-        <Divider />
         <ProfileEmail customer={customer} />
-        <Divider />
         <ProfilePhone customer={customer} />
-        <Divider />
-        {/* <ProfilePassword customer={customer} />
-        <Divider /> */}
+        {/* <ProfilePassword customer={customer} /> */}
         <ProfileBillingAddress customer={customer} regions={regions} />
       </div>
     </div>
   )
-}
-
-const Divider = () => {
-  return <div className="w-full h-px bg-gray-200" />
 }

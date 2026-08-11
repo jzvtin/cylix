@@ -192,7 +192,7 @@ export default function CoaPage() {
                 {group.lots.map((lot, i) => (
                   <a
                     key={lot.lot}
-                    href={lot.url}
+                    href={`/api/coa/${lot.lot}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{

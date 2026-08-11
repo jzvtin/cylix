@@ -1,5 +1,5 @@
-import { EllipseMiniSolid } from "@medusajs/icons"
 import { Label, RadioGroup, Text, clx } from "@modules/common/components/ui"
+
 type FilterRadioGroupProps = {
   title: string
   items: {
@@ -19,39 +19,54 @@ const FilterRadioGroup = ({
   "data-testid": dataTestId,
 }: FilterRadioGroupProps) => {
   return (
-    <div className="flex gap-x-3 flex-col gap-y-3">
-      <Text className="txt-compact-small-plus text-ui-fg-muted">{title}</Text>
-      <RadioGroup data-testid={dataTestId}>
-        {items?.map((i) => (
-          <div
-            key={i.value}
-            className={clx("flex gap-x-2 items-center", {
-              "ml-[-23px]": i.value === value,
-            })}
-          >
-            {i.value === value && <EllipseMiniSolid />}
-            <RadioGroup.Item
-              checked={i.value === value}
-              onChange={() => handleChange(i.value)}
-              className="hidden peer"
-              id={i.value}
-              value={i.value}
-            />
+    <div className="flex flex-col gap-y-2.5">
+      <Text className="font-display text-[10px] font-extrabold uppercase tracking-[1.2px] text-ink/40">
+        {title}
+      </Text>
+      <RadioGroup data-testid={dataTestId} className="flex flex-col gap-y-1">
+        {items?.map((i) => {
+          const active = i.value === value
+          return (
             <Label
+              key={i.value}
               htmlFor={i.value}
-              className={clx(
-                "!txt-compact-small !transform-none text-ui-fg-subtle hover:cursor-pointer",
-                {
-                  "text-ui-fg-base": i.value === value,
-                }
-              )}
               data-testid="radio-label"
-              data-active={i.value === value}
+              data-active={active}
+              onClick={() => handleChange(i.value)}
+              className={clx(
+                "group flex cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13px] font-semibold !transform-none transition-colors",
+                active
+                  ? "bg-gold-50 text-ink"
+                  : "text-ink/55 hover:bg-ink/[0.03] hover:text-ink"
+              )}
             >
+              <span
+                aria-hidden
+                className={clx(
+                  "flex h-3.5 w-3.5 items-center justify-center rounded-full border transition-colors",
+                  active
+                    ? "border-gold-500"
+                    : "border-ink/25 group-hover:border-ink/40"
+                )}
+              >
+                <span
+                  className={clx(
+                    "h-1.5 w-1.5 rounded-full transition-transform",
+                    active ? "scale-100 bg-gold-500" : "scale-0 bg-transparent"
+                  )}
+                />
+              </span>
+              <RadioGroup.Item
+                checked={active}
+                onChange={() => handleChange(i.value)}
+                className="hidden peer"
+                id={i.value}
+                value={i.value}
+              />
               {i.label}
             </Label>
-          </div>
-        ))}
+          )
+        })}
       </RadioGroup>
     </div>
   )

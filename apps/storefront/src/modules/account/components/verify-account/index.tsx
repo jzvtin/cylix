@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from "react"
 import { useSearchParams } from "next/navigation"
-import { Button } from "@modules/common/components/ui"
 import { confirmEmailVerification } from "@lib/data/customer"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import Spinner from "@modules/common/icons/spinner"
 
 type VerificationState = "verifying" | "success" | "error"
 
@@ -34,36 +34,50 @@ const VerifyAccount = () => {
 
   return (
     <div
-      className="max-w-sm w-full flex flex-col items-center text-center gap-y-4"
+      className="max-w-md w-full cx-glass rounded-[28px] p-10 flex flex-col items-center text-center gap-y-4 my-12"
       data-testid="verify-account-page"
     >
-      <h1 className="text-large-semi uppercase">Email verification</h1>
+      <span className="cx-eyebrow mb-2">Cylix Research</span>
+      <h1 className="cx-h text-3xl">Email verification</h1>
 
       {state === "verifying" && (
-        <p className="text-base-regular text-ui-fg-base">
-          Verifying your email...
-        </p>
+        <div className="flex flex-col items-center gap-y-3 text-ink/60">
+          <Spinner size={28} />
+          <p>Verifying your email…</p>
+        </div>
       )}
 
       {state === "success" && (
         <>
-          <p className="text-base-regular text-ui-fg-base">
+          <span className="h-14 w-14 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl">
+            ✓
+          </span>
+          <p className="text-ink/60">
             Your email is verified. You can now sign in to your account.
           </p>
-          <LocalizedClientLink href="/account">
-            <Button variant="primary">Go to sign in</Button>
+          <LocalizedClientLink
+            href="/account"
+            className="cx-btn cx-btn-primary mt-2"
+          >
+            Go to sign in
           </LocalizedClientLink>
         </>
       )}
 
       {state === "error" && (
         <>
-          <p className="text-base-regular text-ui-fg-base">
+          <span className="h-14 w-14 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center text-2xl">
+            !
+          </span>
+          <p className="text-ink/60">
             This verification link is invalid or has expired. Sign in to receive
             a new verification email.
           </p>
-          <LocalizedClientLink href="/account">
-            <Button variant="secondary">Go to sign in</Button>
+          <LocalizedClientLink
+            href="/account"
+            className="cx-btn cx-btn-ghost mt-2"
+          >
+            Go to sign in
           </LocalizedClientLink>
         </>
       )}

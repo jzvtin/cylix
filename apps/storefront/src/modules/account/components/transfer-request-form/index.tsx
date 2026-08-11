@@ -23,15 +23,15 @@ export default function TransferRequestForm() {
   }, [state.success, state.order])
 
   return (
-    <div className="flex flex-col gap-y-4 w-full">
+    <div className="flex flex-col gap-y-4 w-full cx-glass rounded-[24px] p-6 small:p-8">
       <div className="grid sm:grid-cols-2 items-center gap-x-8 gap-y-4 w-full">
-        <div className="flex flex-col gap-y-1">
-          <Heading level="h3" className="!text-sm font-semibold text-neutral-950">
+        <div className="flex flex-col gap-y-2">
+          <Heading level="h3" className="font-display font-bold text-ink">
             Order transfers
           </Heading>
-          <p className="text-small-regular text-neutral-500">
+          <p className="text-sm text-ink/55">
             Can&apos;t find the order you are looking for?
-            <br /> Connect an order to your account.
+            <br /> Connect an existing order to your account.
           </p>
         </div>
         <form
@@ -43,7 +43,7 @@ export default function TransferRequestForm() {
             <SubmitButton
               variant="secondary"
               size="small"
-              className="w-fit whitespace-nowrap self-end"
+              className="w-fit whitespace-nowrap self-end !rounded-full"
             >
               Request transfer
             </SubmitButton>

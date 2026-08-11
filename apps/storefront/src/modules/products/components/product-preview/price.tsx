@@ -6,24 +6,27 @@ export default async function PreviewPrice({ price }: { price: VariantPrice }) {
     return null
   }
 
+  const isSale = price.price_type === "sale"
+
   return (
-    <>
-      {price.price_type === "sale" && (
+    <span className="inline-flex items-baseline gap-1.5">
+      {isSale && (
         <Text
-          className="line-through text-ui-fg-muted"
+          className="text-[12px] font-medium text-ink/40 line-through"
           data-testid="original-price"
         >
           {price.original_price}
         </Text>
       )}
       <Text
-        className={clx("text-ui-fg-muted", {
-          "text-ui-fg-interactive": price.price_type === "sale",
+        className={clx("font-display font-extrabold tracking-tight", {
+          "text-gold-600": isSale,
+          "text-ink": !isSale,
         })}
         data-testid="price"
       >
         {price.calculated_price}
       </Text>
-    </>
+    </span>
   )
 }

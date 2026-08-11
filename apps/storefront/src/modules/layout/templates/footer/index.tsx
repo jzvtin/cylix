@@ -1,4 +1,5 @@
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import Newsletter from "@modules/marketing/newsletter"
 
 const LINK_COLUMNS: { heading: string; links: { l: string; h: string }[] }[] = [
   {
@@ -6,6 +7,7 @@ const LINK_COLUMNS: { heading: string; links: { l: string; h: string }[] }[] = [
     links: [
       { l: "Contact", h: "/support" },
       { l: "FAQ", h: "/faq" },
+      { l: "Partner Program", h: "/affiliate" },
       { l: "Research Use Only", h: "/disclaimer" },
     ],
   },
@@ -13,6 +15,7 @@ const LINK_COLUMNS: { heading: string; links: { l: string; h: string }[] }[] = [
     heading: "Research",
     links: [
       { l: "Full Catalog", h: "/store" },
+      { l: "Education Library", h: "/education" },
       { l: "Certificates of Analysis", h: "/coa" },
       { l: "Shipping Info", h: "/shipping" },
     ],
@@ -45,6 +48,17 @@ const Footer = () => {
   return (
     <footer className="bg-ink px-6 pb-8 pt-14 text-sand md:px-8">
       <div className="mx-auto max-w-[1200px]">
+        {/* Newsletter CTA band */}
+        <div className="mb-12 grid grid-cols-1 items-center gap-6 rounded-[22px] border border-white/10 bg-gradient-to-b from-white to-[#FBF9F5] p-6 shadow-[0_30px_70px_-40px_rgba(0,0,0,0.6)] sm:p-8 md:grid-cols-[1.1fr_1fr]">
+          <div>
+            <div className="cx-eyebrow mb-3">Stay in the lab</div>
+            <h3 className="font-display text-[clamp(22px,3vw,30px)] font-black leading-[1.05] tracking-[-0.8px] text-ink">
+              Lot drops &amp; <span className="text-gold-500">CoAs</span>, first.
+            </h3>
+          </div>
+          <Newsletter heading="" subheading="Get a one-time welcome code plus new-lot and Certificate-of-Analysis alerts." />
+        </div>
+
         {/* Trust bar */}
         <div className="mb-12 flex flex-wrap items-center gap-x-8 gap-y-3 border-b border-white/10 pb-8">
           {TRUST_POINTS.map((point) => (

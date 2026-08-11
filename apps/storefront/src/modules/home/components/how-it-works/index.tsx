@@ -29,7 +29,7 @@ const STEPS = [
 
 const HowItWorks = () => {
   return (
-    <section className="border-t border-cream bg-sand px-[clamp(18px,5vw,32px)] py-[clamp(44px,8vw,76px)]">
+    <section className="border-t border-cream px-[clamp(18px,5vw,32px)] py-[clamp(44px,8vw,76px)]">
       <div className="mx-auto max-w-[1200px]">
         <Reveal>
           <div className="mb-14 flex flex-col items-center text-center">

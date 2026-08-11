@@ -9,7 +9,9 @@ import SideMenu from "@modules/layout/components/side-menu"
 import NavShell from "@modules/layout/components/nav-shell"
 
 const NAV_LINKS = [
-  { label: "Products", href: "/store" },
+  { label: "Catalog", href: "/store" },
+  { label: "Education", href: "/education" },
+  { label: "Partners", href: "/affiliate" },
   { label: "FAQ", href: "/faq" },
   { label: "Support", href: "/support" },
 ]

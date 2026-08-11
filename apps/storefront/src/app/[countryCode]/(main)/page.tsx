@@ -40,7 +40,7 @@ export default async function Home(props: {
 
       {/* FEATURED PRODUCTS */}
       <Reveal>
-        <section className="border-t border-cream bg-white px-[clamp(18px,5vw,32px)] py-[clamp(40px,7vw,64px)]">
+        <section className="border-t border-cream px-[clamp(18px,5vw,32px)] py-[clamp(40px,7vw,64px)]">
           <div className="mx-auto max-w-[1200px]">
             <div className="mb-10 flex flex-wrap items-end justify-between gap-[14px]">
               <div>
@@ -76,7 +76,7 @@ export default async function Home(props: {
       <CtaBand />
 
       {/* COMPLIANCE */}
-      <div className="border-t border-cream bg-[#F0EDE8] px-[clamp(18px,5vw,32px)] py-10">
+      <div className="border-t border-cream bg-white/40 px-[clamp(18px,5vw,32px)] py-10 backdrop-blur-sm">
         <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
           {[
             { label: "Documentation", text: "Every lot ships with a Certificate of Analysis from Janoshik Analytical. Identity and purity verified by independent third-party testing." },

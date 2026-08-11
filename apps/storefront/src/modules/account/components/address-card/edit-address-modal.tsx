@@ -63,29 +63,29 @@ const EditAddress: React.FC<EditAddressProps> = ({
     <>
       <div
         className={clx(
-          "border rounded-rounded p-5 min-h-[220px] h-full w-full flex flex-col justify-between transition-colors",
+          "cx-glass rounded-[24px] p-6 min-h-[230px] h-full w-full flex flex-col justify-between transition-colors",
           {
-            "border-gray-900": isActive,
+            "!border-gold-400 ring-1 ring-gold-400": isActive,
           }
         )}
         data-testid="address-container"
       >
         <div className="flex flex-col">
           <Heading
-            className="text-left text-base-semi"
+            className="text-left font-display font-bold text-ink"
             data-testid="address-name"
           >
             {address.first_name} {address.last_name}
           </Heading>
           {address.company && (
             <Text
-              className="txt-compact-small text-ui-fg-base"
+              className="text-sm text-ink/50"
               data-testid="address-company"
             >
               {address.company}
             </Text>
           )}
-          <Text className="flex flex-col text-left text-base-regular mt-2">
+          <Text className="flex flex-col text-left text-sm text-ink/70 mt-3 gap-0.5">
             <span data-testid="address-address">
               {address.address_1}
               {address.address_2 && <span>, {address.address_2}</span>}
@@ -99,17 +99,18 @@ const EditAddress: React.FC<EditAddressProps> = ({
             </span>
           </Text>
         </div>
-        <div className="flex items-center gap-x-4">
+        <div className="flex items-center gap-x-3 mt-5 pt-4 border-t cx-hairline">
           <button
-            className="text-small-regular text-ui-fg-base flex items-center gap-x-2"
+            className="text-sm font-medium text-ink/70 hover:text-ink flex items-center gap-x-1.5 transition-colors"
             onClick={open}
             data-testid="address-edit-button"
           >
             <Edit />
             Edit
           </button>
+          <span className="text-ink/15">|</span>
           <button
-            className="text-small-regular text-ui-fg-base flex items-center gap-x-2"
+            className="text-sm font-medium text-ink/50 hover:text-rose-600 flex items-center gap-x-1.5 transition-colors"
             onClick={removeAddress}
             data-testid="address-delete-button"
           >

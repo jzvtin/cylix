@@ -25,11 +25,12 @@ export default async function Addresses(props: {
 
   return (
     <div className="w-full" data-testid="addresses-page-wrapper">
-      <div className="mb-8 flex flex-col gap-y-4">
-        <h1 className="text-2xl-semi">Shipping Addresses</h1>
-        <p className="text-base-regular">
-          View and update your shipping addresses, you can add as many as you
-          like. Saving your addresses will make them available during checkout.
+      <div className="mb-8 flex flex-col">
+        <span className="cx-eyebrow mb-4">Shipping</span>
+        <h1 className="cx-h text-4xl small:text-5xl mt-4">Addresses</h1>
+        <p className="text-ink/55 mt-3 max-w-xl">
+          Save as many shipping addresses as you like — they&apos;ll be
+          available during checkout.
         </p>
       </div>
       <AddressBook customer={customer} region={region} />

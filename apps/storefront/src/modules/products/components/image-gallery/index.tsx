@@ -9,7 +9,7 @@ type ImageGalleryProps = {
 }
 
 const PLINTH =
-  "radial-gradient(ellipse 78% 78% at 50% 38%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 70%), linear-gradient(160deg, #EEF2F8 0%, #E3E9F2 100%)"
+  "radial-gradient(ellipse 80% 80% at 50% 32%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 68%), linear-gradient(160deg, #FBF7EF 0%, #EFEAE1 100%)"
 
 const ImageGallery = ({ images }: ImageGalleryProps) => {
   const valid = (images ?? []).filter((i) => !!i.url)

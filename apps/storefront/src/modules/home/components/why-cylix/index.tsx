@@ -42,7 +42,7 @@ const ITEMS = [
 
 const WhyCylix = () => {
   return (
-    <section className="border-t border-cream bg-sand px-[clamp(18px,5vw,32px)] py-[clamp(40px,8vw,72px)]">
+    <section className="border-t border-cream px-[clamp(18px,5vw,32px)] py-[clamp(40px,8vw,72px)]">
       <div className="mx-auto max-w-[1200px]">
         <Reveal>
           <div className="mb-14">

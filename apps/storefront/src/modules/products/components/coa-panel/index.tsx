@@ -43,9 +43,9 @@ const JanoshikBadge = () => (
   </span>
 )
 
-const ViewReportButton = ({ url, label }: { url: string; label: string }) => (
+const ViewReportButton = ({ lot, label }: { lot: string | number; label: string }) => (
   <a
-    href={url}
+    href={`/api/coa/${lot}`}
     target="_blank"
     rel="noopener noreferrer"
     style={{
@@ -94,7 +94,7 @@ const LotHistory = ({ lots, currentLot }: { lots: Coa[]; currentLot?: string }) 
           return (
             <a
               key={l.lot}
-              href={l.url}
+              href={`/api/coa/${l.lot}`}
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -288,7 +288,7 @@ const CoaPanel = ({ product }: CoaPanelProps) => {
           </p>
         )}
 
-        <ViewReportButton url={primary.url} label="View third-party report" />
+        <ViewReportButton lot={primary.lot} label="View third-party report" />
 
         <p style={{ fontSize: "11px", color: "#aaa", lineHeight: 1.55, margin: "12px 0 0", textAlign: "center" }}>
           Identity confirmed by mass spectrometry · purity by HPLC

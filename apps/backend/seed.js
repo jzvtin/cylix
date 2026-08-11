@@ -28,8 +28,8 @@ async function req(method, path, body, token) {
 }
 
 const PRODUCTS = [
-  { title: "RT3", description: "Retatrutide — GLP-1/GIP/Glucagon triple receptor agonist reference standard.", amount: 5500, variant: "10mg" },
-  { title: "TZ2", description: "Tirzepatide — GLP-1/GIP dual receptor agonist reference standard.", amount: 5500, variant: "10mg" },
+  { title: "RT3", description: "RT — triple receptor agonist reference standard.", amount: 5500, variant: "10mg" },
+  { title: "TZ2", description: "TZ — dual receptor agonist reference standard.", amount: 5500, variant: "10mg" },
   { title: "GHK-Cu", description: "Copper-binding tripeptide for cellular regeneration research.", amount: 3500, variant: "50mg" },
   { title: "Tesamorelin", description: "GHRH analogue for GH-axis and metabolic signaling research.", amount: 6700, variant: "10mg" },
   { title: "NAD+", description: "Nicotinamide adenine dinucleotide for mitochondrial function research.", amount: 10000, variant: "1000mg" },

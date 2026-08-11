@@ -1,22 +1,16 @@
 "use client"
 
-import { Button } from "@modules/common/components/ui"
-
 import OrderCard from "../order-card"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import Package from "@modules/common/icons/package"
 import { HttpTypes } from "@medusajs/types"
 
 const OrderOverview = ({ orders }: { orders: HttpTypes.StoreOrder[] }) => {
   if (orders?.length) {
     return (
-      <div className="flex flex-col gap-y-8 w-full">
+      <div className="flex flex-col gap-y-5 w-full">
         {orders.map((o) => (
-          <div
-            key={o.id}
-            className="border-b border-gray-200 pb-6 last:pb-0 last:border-none"
-          >
-            <OrderCard order={o} />
-          </div>
+          <OrderCard key={o.id} order={o} />
         ))}
       </div>
     )
@@ -24,20 +18,25 @@ const OrderOverview = ({ orders }: { orders: HttpTypes.StoreOrder[] }) => {
 
   return (
     <div
-      className="w-full flex flex-col items-center gap-y-4"
+      className="w-full cx-glass rounded-[24px] flex flex-col items-center text-center gap-y-4 py-16 px-6"
       data-testid="no-orders-container"
     >
-      <h2 className="text-large-semi">Nothing to see here</h2>
-      <p className="text-base-regular">
-        You don&apos;t have any orders yet, let us change that {":)"}
+      <span className="h-16 w-16 rounded-full bg-ink/5 text-ink/50 flex items-center justify-center">
+        <Package size={28} />
+      </span>
+      <h2 className="cx-h text-2xl">Nothing here yet</h2>
+      <p className="text-ink/55 max-w-sm">
+        You don&apos;t have any orders yet. Explore the catalog and your orders
+        will appear here.
       </p>
-      <div className="mt-4">
-        <LocalizedClientLink href="/" passHref>
-          <Button data-testid="continue-shopping-button">
-            Continue shopping
-          </Button>
-        </LocalizedClientLink>
-      </div>
+      <LocalizedClientLink
+        href="/store"
+        passHref
+        className="cx-btn cx-btn-primary mt-2"
+        data-testid="continue-shopping-button"
+      >
+        Continue shopping
+      </LocalizedClientLink>
     </div>
   )
 }

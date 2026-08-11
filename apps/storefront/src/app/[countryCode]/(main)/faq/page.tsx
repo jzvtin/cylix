@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export const metadata: Metadata = {
   title: "FAQ | Cylix Research",
@@ -33,49 +34,75 @@ const faqs = [
 
 export default function FAQPage() {
   return (
-    <>
+    <div className="relative">
       {/* HEADER */}
-      <div style={{background:"#111",padding:"clamp(36px, 8vw, 56px) clamp(18px, 5vw, 32px) 48px",textAlign:"center"}}>
-        <div style={{fontFamily:"'Poppins',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"1.4px",textTransform:"uppercase",color:"#C9963A",marginBottom:"10px"}}>Help Center</div>
-        <h1 style={{fontFamily:"'Poppins',sans-serif",fontSize:"clamp(28px,5vw,44px)",fontWeight:900,color:"#fff",letterSpacing:"-1.2px",marginBottom:"10px"}}>
-          Frequently Asked <em style={{fontStyle:"normal",color:"#C9963A"}}>Questions</em>
+      <div className="content-container pt-14 pb-6 text-center sm:pt-20">
+        <span className="cx-eyebrow">Help Center</span>
+        <h1 className="cx-h mx-auto mt-5 max-w-[15ch] text-[clamp(32px,6vw,56px)]">
+          Frequently Asked <em>Questions</em>
         </h1>
-        <p style={{fontSize:"14px",color:"rgba(255,255,255,0.45)",maxWidth:"440px",margin:"0 auto",lineHeight:1.65}}>
-          Answers to common questions about our research compounds, ordering, and protocols.
+        <p className="mx-auto mt-4 max-w-[460px] text-[15px] leading-relaxed text-ink/55">
+          Answers to common questions about our research compounds, ordering,
+          and protocols.
         </p>
       </div>
 
-      {/* FAQ BODY */}
-      <div style={{maxWidth:"720px",margin:"0 auto",padding:"52px clamp(18px, 5vw, 32px) 80px"}}>
+      {/* BODY */}
+      <div className="mx-auto max-w-[760px] px-5 pb-24 pt-8 sm:px-8">
         {faqs.map((group) => (
-          <div key={group.category} style={{marginBottom:"40px"}}>
-            <div style={{fontFamily:"'Poppins',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"1.4px",textTransform:"uppercase",color:"#C9963A",marginBottom:"16px",display:"flex",alignItems:"center",gap:"10px"}}>
-              {group.category}
-              <span style={{flex:1,height:"1px",background:"rgba(201,150,58,0.3)",display:"block"}}></span>
+          <div key={group.category} className="mb-10">
+            <div className="mb-4 flex items-center gap-3">
+              <span className="font-display text-[11px] font-extrabold uppercase tracking-[1.4px] text-gold-700">
+                {group.category}
+              </span>
+              <span className="h-px flex-1 bg-gold-300/40" />
             </div>
-            {group.items.map((item) => (
-              <details key={item.q} style={{background:"#fff",border:"1px solid #E8E4DE",borderRadius:"8px",marginBottom:"8px",overflow:"hidden"}}>
-                <summary style={{padding:"16px 18px",cursor:"pointer",fontFamily:"'Poppins',sans-serif",fontSize:"14px",fontWeight:700,color:"#111",listStyle:"none",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-                  {item.q}
-                  <span style={{color:"#C9963A",fontSize:"18px",fontWeight:300,flexShrink:0,marginLeft:"12px"}}>+</span>
-                </summary>
-                <div style={{padding:"0 18px 16px",fontSize:"13px",color:"#888",lineHeight:1.75,borderTop:"1px solid #E8E4DE",paddingTop:"14px"}}>
-                  {item.a}
-                </div>
-              </details>
-            ))}
+
+            <div className="flex flex-col gap-3">
+              {group.items.map((item) => (
+                <details
+                  key={item.q}
+                  className="group cx-glass overflow-hidden rounded-2xl transition-shadow"
+                >
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 [&::-webkit-details-marker]:hidden">
+                    <span className="font-display text-[14.5px] font-bold text-ink">
+                      {item.q}
+                    </span>
+                    {/* +/− affordance */}
+                    <span
+                      aria-hidden
+                      className="relative flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-gold-300/60 bg-gold-50"
+                    >
+                      <span className="absolute h-[2px] w-3 rounded-full bg-gold-600" />
+                      <span className="absolute h-3 w-[2px] rounded-full bg-gold-600 transition-transform duration-200 group-open:scale-y-0 motion-reduce:transition-none" />
+                    </span>
+                  </summary>
+                  <div className="border-t border-cream/70 px-5 pb-5 pt-4 text-[13.5px] leading-[1.8] text-ink/65">
+                    {item.a}
+                  </div>
+                </details>
+              ))}
+            </div>
           </div>
         ))}
 
         {/* CTA */}
-        <div style={{background:"#F9F7F4",border:"1px solid #E8E4DE",borderRadius:"12px",padding:"28px",textAlign:"center",marginTop:"16px"}}>
-          <div style={{fontFamily:"'Poppins',sans-serif",fontSize:"15px",fontWeight:800,color:"#111",marginBottom:"6px"}}>Still have questions?</div>
-          <p style={{fontSize:"13px",color:"#999",marginBottom:"16px"}}>Our support team responds within 12–24 hours.</p>
-          <a href="/support" style={{display:"inline-flex",alignItems:"center",gap:"8px",background:"#111",color:"#fff",padding:"11px 22px",borderRadius:"20px",fontFamily:"'Poppins',sans-serif",fontSize:"13px",fontWeight:700,textDecoration:"none"}}>
+        <div className="cx-card mt-4 rounded-[22px] px-7 py-9 text-center">
+          <div className="font-display text-[18px] font-extrabold tracking-[-0.3px] text-ink">
+            Still have questions?
+          </div>
+          <p className="mx-auto mt-2 max-w-[360px] text-[13.5px] leading-relaxed text-ink/55">
+            Our support team responds within 12–24 hours. Reach out and we&apos;ll
+            get you the documentation or answers you need.
+          </p>
+          <LocalizedClientLink
+            href="/support"
+            className="cx-btn cx-btn-primary mt-6 !text-[13px]"
+          >
             Contact Support →
-          </a>
+          </LocalizedClientLink>
         </div>
       </div>
-    </>
+    </div>
   )
 }

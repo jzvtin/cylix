@@ -336,6 +336,12 @@ html, body {
   overflow-x: hidden;
 }
 
+/* Warm cream base everywhere — never a white flash. The <SiteBackground>
+   fixed layer paints the full atmosphere on top of this. */
+html, body {
+  background-color: #F4F0E9;
+}
+
 /* ---- Header nav responsive ----
    The header rendered the hamburger + Products/FAQ/Support links + brand +
    Account + Cart all in one row, which overflowed on phones and clipped the
@@ -385,3 +391,93 @@ html, body {
 /* Aminoclub-style display type: tight tracking on geometric headings (Poppins). */
 .font-display { letter-spacing: -0.02em; }
 h1.font-display, h2.font-display, .display-tight { letter-spacing: -0.03em; }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   CYLIX DESIGN SYSTEM — shared primitives used across every redesigned page.
+   Tailwind-first components compose these; they exist so the vocabulary
+   (eyebrow, section header, glass surface, pill buttons) is identical
+   site-wide and matches the aminoclub / origin-labs reference language.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* Eyebrow pill — gold dot + uppercase micro-label above every section title. */
+.cx-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 150, 58, 0.35);
+  background: rgba(201, 150, 58, 0.08);
+  padding: 7px 15px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: #855F24;
+}
+.cx-eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #C9963A;
+}
+.cx-eyebrow--light { border-color: rgba(255,255,255,0.18); background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.85); }
+
+/* Section heading — heavy Poppins, tight tracking (the reference headline). */
+.cx-h {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  color: #0D0D0D;
+}
+.cx-h em { font-style: normal; color: #C9963A; }
+
+/* Glass surface — translucent white card that lets the atmosphere read through
+   while staying legible. The premium alternative to a flat #fff card. */
+.cx-glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  border: 1px solid rgba(13, 13, 13, 0.06);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 20px 48px -30px rgba(13,13,13,0.35);
+}
+
+/* Solid warm card (product image plinths, feature cards). */
+.cx-card {
+  background: linear-gradient(180deg,#FFFFFF 0%,#FBF9F5 100%);
+  border: 1px solid rgba(13,13,13,0.07);
+  border-radius: 20px;
+  box-shadow: 0 22px 50px -34px rgba(13,13,13,0.4);
+}
+
+/* Pill buttons. */
+.cx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 999px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 15px 30px;
+  transition: transform .2s ease, background-color .2s ease, border-color .2s ease, color .2s ease;
+  cursor: pointer;
+}
+.cx-btn-primary { background: #0D0D0D; color: #F9F7F4; box-shadow: 0 18px 36px -16px rgba(13,13,13,0.6); }
+.cx-btn-primary:hover { transform: translateY(-2px); background: #1a1a1a; }
+.cx-btn-gold { background: #C9963A; color: #0D0D0D; box-shadow: 0 18px 36px -16px rgba(201,150,58,0.7); }
+.cx-btn-gold:hover { transform: translateY(-2px); background: #D5A954; }
+.cx-btn-ghost { background: rgba(255,255,255,0.7); color: #0D0D0D; border: 1px solid rgba(13,13,13,0.15); }
+.cx-btn-ghost:hover { border-color: #C9963A; color: #855F24; }
+@media (prefers-reduced-motion: reduce) {
+  .cx-btn:hover { transform: none; }
+}
+
+/* Hairline divider that matches the warm palette. */
+.cx-hairline { border-color: rgba(13,13,13,0.08); }
+
+/* Gold underline accent for split headlines. */
+.cx-gold { color: #C9963A; }

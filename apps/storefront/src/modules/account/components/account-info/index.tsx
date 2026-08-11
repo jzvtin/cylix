@@ -42,30 +42,33 @@ const AccountInfo = ({
   }, [isSuccess, close])
 
   return (
-    <div className="text-small-regular" data-testid={dataTestid}>
-      <div className="flex items-end justify-between">
-        <div className="flex flex-col">
-          <span className="uppercase text-ui-fg-base">{label}</span>
-          <div className="flex items-center flex-1 basis-0 justify-end gap-x-4">
+    <div
+      className="cx-glass rounded-[20px] p-6 text-sm"
+      data-testid={dataTestid}
+    >
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-col min-w-0">
+          <span className="text-[11px] uppercase tracking-wider text-ink/45 font-semibold">
+            {label}
+          </span>
+          <div className="mt-1.5 text-ink font-medium">
             {typeof currentInfo === "string" ? (
-              <span className="font-semibold" data-testid="current-info">{currentInfo}</span>
+              <span data-testid="current-info">{currentInfo}</span>
             ) : (
               currentInfo
             )}
           </div>
         </div>
-        <div>
-          <Button
-            variant="secondary"
-            className="w-[100px] min-h-[25px] py-1"
-            onClick={handleToggle}
-            type={state ? "reset" : "button"}
-            data-testid="edit-button"
-            data-active={state}
-          >
-            {state ? "Cancel" : "Edit"}
-          </Button>
-        </div>
+        <Button
+          variant="secondary"
+          className="min-w-[92px] !rounded-full shrink-0"
+          onClick={handleToggle}
+          type={state ? "reset" : "button"}
+          data-testid="edit-button"
+          data-active={state}
+        >
+          {state ? "Cancel" : "Edit"}
+        </Button>
       </div>
 
       {/* Success state */}
@@ -117,12 +120,12 @@ const AccountInfo = ({
             }
           )}
         >
-          <div className="flex flex-col gap-y-2 py-4">
+          <div className="flex flex-col gap-y-4 pt-5 mt-5 border-t cx-hairline">
             <div>{children}</div>
-            <div className="flex items-center justify-end mt-2">
+            <div className="flex items-center justify-end">
               <Button
                 isLoading={pending}
-                className="w-full small:max-w-[140px]"
+                className="w-full small:max-w-[160px] !rounded-full"
                 type="submit"
                 data-testid="save-button"
               >
