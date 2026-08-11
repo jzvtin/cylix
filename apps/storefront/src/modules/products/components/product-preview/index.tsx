@@ -1,14 +1,17 @@
 import Image from "next/image"
-import { Text } from "@modules/common/components/ui"
 import { getProductPrice } from "@lib/util/get-product-price"
 import { HttpTypes } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { getProductImage } from "@lib/product-imagery"
-import PreviewPrice from "./price"
+import QuickAdd from "./quick-add"
 
+/**
+ * Origin-labs product card, reskinned for Cylix: white rounded-2xl card, image
+ * on a light plinth, hover-lift, hover quick-add overlay, title + scientific
+ * subtitle + "From $X". Uses real Medusa data (no fabricated stock/variants).
+ */
 export default async function ProductPreview({
   product,
-  isFeatured,
   region: _region,
 }: {
   product: HttpTypes.StoreProduct
@@ -16,110 +19,76 @@ export default async function ProductPreview({
   region: HttpTypes.StoreRegion
 }) {
   const { cheapestPrice } = getProductPrice({ product })
-
-  const eyebrow =
-    product.subtitle || product.collection?.title || "Research compound"
-
+  const subtitle = product.subtitle || product.collection?.title || ""
   const image = getProductImage(product)
   const multiVariant = (product.variants?.length ?? 0) > 1
+  const defaultVariantId = product.variants?.[0]?.id
 
   return (
-    <LocalizedClientLink
-      href={`/products/${product.handle}`}
-      className="group block"
-    >
-      <article
-        data-testid="product-wrapper"
-        className="relative flex h-full flex-col overflow-hidden rounded-[22px] border border-ink/[0.07] bg-gradient-to-b from-white to-[#FBF9F5] shadow-[0_22px_50px_-34px_rgba(13,13,13,0.4)] transition-all duration-300 ease-out will-change-transform group-hover:-translate-y-1.5 group-hover:border-gold-500/30 group-hover:shadow-[0_40px_70px_-40px_rgba(13,13,13,0.5)] motion-reduce:transition-none motion-reduce:group-hover:translate-y-0"
-      >
-        {/* IMAGE PANEL */}
-        <div className="relative aspect-[4/5] w-full overflow-hidden">
-          {/* warm studio gradient behind the vial */}
-          <div
-            aria-hidden
-            className="absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(120% 85% at 50% 16%, #FBF7EF 0%, #F3EEE4 55%, #EBE5D9 100%)",
-            }}
-          />
-          {/* gold plinth glow */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_70%_at_50%_20%,theme(colors.gold.50)_0%,transparent_58%)]"
-          />
-          {/* soft contact shadow ellipse */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-10 bottom-5 h-9 rounded-[100%] bg-ink/10 blur-xl"
-          />
-
+    <article className="group relative h-full overflow-hidden rounded-2xl border border-[#e4e4e7] bg-white shadow-sm transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1.5 hover:border-[#d4d4d8] hover:shadow-[0_18px_32px_-14px_rgba(23,23,23,0.22),0_4px_10px_-6px_rgba(201,150,58,0.14)] focus-within:-translate-y-1.5 motion-reduce:hover:translate-y-0">
+      {/* IMAGE */}
+      <div className="relative overflow-hidden">
+        <div className="relative aspect-[4/5] bg-[#fafafa] md:aspect-square">
           {image ? (
             <Image
               src={image}
-              alt={product.title || "Cylix Research vial"}
+              alt={`${product.title} — research material, for research use only`}
               fill
               quality={70}
-              sizes="(max-width:576px) 88vw, (max-width:1024px) 44vw, 300px"
-              draggable={false}
-              className="relative object-contain p-6 transition-transform duration-500 ease-out group-hover:scale-[1.06] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+              sizes="(max-width:768px) 45vw, 300px"
+              className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105 motion-reduce:group-hover:scale-100"
             />
           ) : (
-            <div className="absolute inset-0 flex items-center justify-center p-6">
-              <span className="text-center font-display text-lg font-bold tracking-tight text-ink/70">
-                {product.title}
-              </span>
+            <div className="absolute inset-0 flex items-center justify-center p-4 text-center font-display text-sm font-bold text-ink/70">
+              {product.title}
             </div>
           )}
-
-          {/* purity badge — top left */}
-          <span className="absolute left-3.5 top-3.5 inline-flex items-center gap-1.5 rounded-full bg-gold-500/15 px-2.5 py-1 font-display text-[11px] font-bold uppercase tracking-wide text-gold-700 backdrop-blur-[2px]">
-            <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />
-            99%+ purity
-          </span>
-
-          {/* CoA badge — top right */}
-          <span className="absolute right-3.5 top-3.5 inline-flex items-center gap-1 rounded-full border border-ink/10 bg-white/80 px-2.5 py-1 text-[11px] font-semibold text-ink/75 backdrop-blur-[2px]">
-            <svg aria-hidden viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M9 12l2 2 4-4" />
-              <path d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7l7-4z" />
-            </svg>
-            CoA
-          </span>
         </div>
 
-        {/* CONTENT */}
-        <div className="flex flex-1 flex-col border-t border-ink/[0.06] px-4 pb-4 pt-3.5">
-          <div className="mb-1 font-display text-[10px] font-bold uppercase tracking-[1.3px] text-ink/40 line-clamp-1">
-            {eyebrow}
-          </div>
-          <div className="flex items-baseline justify-between gap-x-3">
-            <Text
-              className="min-w-0 break-words font-display text-[17px] font-bold leading-snug tracking-tight text-ink transition-colors group-hover:text-gold-600"
-              data-testid="product-title"
+        {/* hover overlay — quick add (desktop) */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] hidden translate-y-[10px] p-3 opacity-0 [background-image:linear-gradient(to_top,rgba(0,0,0,0.64),rgba(0,0,0,0.16)_55%,transparent)] transition-[opacity,transform] duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 md:block">
+          {multiVariant ? (
+            <LocalizedClientLink
+              href={`/products/${product.handle}`}
+              className="relative z-[3] inline-flex h-10 w-full items-center justify-center rounded-xl bg-ink px-5 font-display text-sm font-semibold text-white shadow-md transition-colors hover:bg-gold-600"
             >
-              {product.title}
-            </Text>
-          </div>
+              Choose strength
+            </LocalizedClientLink>
+          ) : (
+            <QuickAdd variantId={defaultVariantId} />
+          )}
+        </div>
+      </div>
 
-          <div className="mt-auto flex items-end justify-between gap-x-3 pt-3">
-            <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-ink/55">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500/80" />
-              In stock · ships 12–24h
-            </span>
-            {cheapestPrice && (
-              <span className="flex items-baseline gap-1 font-display text-ink">
-                {multiVariant && (
-                  <span className="text-[11px] font-semibold text-ink/45">From</span>
-                )}
-                <span className="text-[16px] font-extrabold tracking-tight">
-                  <PreviewPrice price={cheapestPrice} />
-                </span>
+      {/* CONTENT — whole card links to PDP via the ::before overlay */}
+      <div className="p-2.5 md:p-4">
+        <LocalizedClientLink
+          href={`/products/${product.handle}`}
+          className="before:absolute before:inset-0 before:z-0 before:content-['']"
+        >
+          <p
+            className="line-clamp-1 font-display text-xs font-semibold text-[#0a0a0a] md:text-sm"
+            data-testid="product-title"
+          >
+            {product.title}
+          </p>
+        </LocalizedClientLink>
+        {subtitle && (
+          <p className="mt-0.5 line-clamp-1 text-[10px] text-[#71717a] md:text-xs">
+            {subtitle}
+          </p>
+        )}
+        <div className="mt-1 flex items-baseline gap-1.5 md:mt-1.5">
+          <p className="font-display text-xs font-bold text-[#0a0a0a] md:text-sm">
+            {multiVariant && (
+              <span className="text-[10px] font-medium text-[#71717a] md:text-xs">
+                From{" "}
               </span>
             )}
-          </div>
+            {cheapestPrice?.calculated_price}
+          </p>
         </div>
-      </article>
-    </LocalizedClientLink>
+      </div>
+    </article>
   )
 }
