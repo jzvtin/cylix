@@ -29,11 +29,11 @@
     "nad": { "name": "NAD+", "premium": "products/premium/nad.png", "original": "products/nad.png" },
     "ghk-cu": { "name": "GHK-Cu", "premium": "products/premium/ghk-cu.png", "original": "products/ghk-cu.png" },
     "tesamorelin": { "name": "Tesamorelin", "premium": "products/premium/tesamorelin.png", "original": "products/tesamorelin.png" },
-    "retatrutide": { "name": "Retatrutide", "premium": "products/premium/retatrutide.png", "original": null },
-    "tirzepatide": { "name": "Tirzepatide", "premium": "products/premium/tirzepatide.png", "original": "products/tz2.png" },
-    "semaglutide": { "name": "Semaglutide", "premium": "products/premium/semaglutide.png", "original": null },
+    "retatrutide": { "name": "RT", "premium": "products/premium/retatrutide.png", "original": null },
+    "tirzepatide": { "name": "TZ", "premium": "products/premium/tirzepatide.png", "original": "products/tz2.png" },
+    "semaglutide": { "name": "SM", "premium": "products/premium/semaglutide.png", "original": null },
     "tb-500": { "name": "TB-500", "premium": "products/premium/tb-500.png", "original": "products/tb-500.png" },
     "mots-c": { "name": "MOTS-C", "premium": "products/premium/mots-c.png", "original": null },
-    "cagrilintide": { "name": "Cagrilintide", "premium": "products/premium/cagrilintide.png", "original": null }
+    "cagrilintide": { "name": "Cagri", "premium": "products/premium/cagrilintide.png", "original": null }
   }
 }

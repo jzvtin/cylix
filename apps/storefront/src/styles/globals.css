@@ -381,3 +381,7 @@ html, body {
     grid-column: 1 / -1 !important;
   }
 }
+
+/* Aminoclub-style display type: tight tracking on geometric headings (Poppins). */
+.font-display { letter-spacing: -0.02em; }
+h1.font-display, h2.font-display, .display-tight { letter-spacing: -0.03em; }

@@ -29,12 +29,12 @@
     "nad": { "name": "NAD+", "path": "/products/photo/nad.png" },
     "ghk-cu": { "name": "GHK-Cu", "path": "/products/photo/ghk-cu.png" },
     "tesamorelin": { "name": "Tesamorelin", "path": "/products/photo/tesamorelin.png" },
-    "retatrutide": { "name": "Retatrutide", "path": "/products/photo/retatrutide.png" },
-    "tirzepatide": { "name": "Tirzepatide", "path": "/products/photo/tirzepatide.png" },
-    "semaglutide": { "name": "Semaglutide", "path": "/products/photo/semaglutide.png" },
+    "retatrutide": { "name": "RT", "path": "/products/photo/retatrutide.png" },
+    "tirzepatide": { "name": "TZ", "path": "/products/photo/tirzepatide.png" },
+    "semaglutide": { "name": "SM", "path": "/products/photo/semaglutide.png" },
     "tb-500": { "name": "TB-500", "path": "/products/photo/tb-500.png" },
     "mots-c": { "name": "MOTS-C", "path": "/products/photo/mots-c.png" },
-    "cagrilintide": { "name": "Cagrilintide", "path": "/products/photo/cagrilintide.png" }
+    "cagrilintide": { "name": "Cagri", "path": "/products/photo/cagrilintide.png" }
   },
   "productDefaults": {
     "aspect": "4:5",

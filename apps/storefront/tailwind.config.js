@@ -75,9 +75,9 @@ module.exports = {
         "3xl": "2rem",
       },
       fontFamily: {
-        // Headings / brand — geometric display
+        // Headings / brand — geometric display (Poppins, aminoclub-style)
         display: [
-          "Outfit",
+          "Poppins",
           "-apple-system",
           "BlinkMacSystemFont",
           "Segoe UI",

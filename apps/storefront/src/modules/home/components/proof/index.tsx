@@ -2,10 +2,10 @@ import Reveal from "@modules/common/components/reveal"
 import coaData from "../../../../data/coas.json"
 
 // Pull one real Janoshik CoA to make the proof concrete (link is live-verifiable).
-// Newest Retatrutide 30mg lot wins for the display sample.
+// Newest RT 30mg lot wins for the display sample.
 type Coa = { compound: string; mg: number; lot: string; url: string }
 const sample: Coa =
-  (coaData.coas as Coa[]).find((c) => c.compound === "Retatrutide" && c.mg === 30) ??
+  (coaData.coas as Coa[]).find((c) => c.compound === "RT" && c.mg === 30) ??
   (coaData.coas as Coa[])[0]
 
 // Analytical HPLC trace — a single dominant peak = high purity.
