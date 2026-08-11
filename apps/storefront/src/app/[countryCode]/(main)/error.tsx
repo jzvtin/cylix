@@ -22,7 +22,7 @@ export default function MainError({
       <div style={{ maxWidth: "460px", textAlign: "center" }}>
         <div
           style={{
-            fontFamily: "'Outfit',sans-serif",
+            fontFamily: "'Poppins',sans-serif",
             fontSize: "10px",
             fontWeight: 800,
             letterSpacing: "1.4px",
@@ -35,7 +35,7 @@ export default function MainError({
         </div>
         <h1
           style={{
-            fontFamily: "'Outfit',sans-serif",
+            fontFamily: "'Poppins',sans-serif",
             fontSize: "28px",
             fontWeight: 900,
             color: "#111",
@@ -72,7 +72,7 @@ export default function MainError({
               color: "#fff",
               border: "none",
               borderRadius: "20px",
-              fontFamily: "'Outfit',sans-serif",
+              fontFamily: "'Poppins',sans-serif",
               fontSize: "13px",
               fontWeight: 800,
               cursor: "pointer",
@@ -89,7 +89,7 @@ export default function MainError({
               color: "#111",
               border: "1.5px solid #E8E4DE",
               borderRadius: "20px",
-              fontFamily: "'Outfit',sans-serif",
+              fontFamily: "'Poppins',sans-serif",
               fontSize: "13px",
               fontWeight: 800,
               textDecoration: "none",

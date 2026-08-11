@@ -29,7 +29,7 @@ export default async function AgeVerificationPage(props: {
         justifyContent: "center",
         padding: "24px",
         background: "#0E0E0F",
-        fontFamily: "'Outfit', system-ui, sans-serif",
+        fontFamily: "'Poppins', system-ui, sans-serif",
       }}
     >
       <div

@@ -10,8 +10,8 @@ export default function SupportPage() {
   return (
     <>
       <div style={{background:"#111",padding:"clamp(36px, 8vw, 56px) clamp(18px, 5vw, 32px) 48px",textAlign:"center"}}>
-        <div style={{fontFamily:"'Outfit',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"1.4px",textTransform:"uppercase",color:"#C9963A",marginBottom:"10px"}}>Get Help</div>
-        <h1 style={{fontFamily:"'Outfit',sans-serif",fontSize:"clamp(28px,5vw,44px)",fontWeight:900,color:"#fff",letterSpacing:"-1.2px",marginBottom:"10px"}}>
+        <div style={{fontFamily:"'Poppins',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"1.4px",textTransform:"uppercase",color:"#C9963A",marginBottom:"10px"}}>Get Help</div>
+        <h1 style={{fontFamily:"'Poppins',sans-serif",fontSize:"clamp(28px,5vw,44px)",fontWeight:900,color:"#fff",letterSpacing:"-1.2px",marginBottom:"10px"}}>
           We&apos;re here to <em style={{fontStyle:"normal",color:"#C9963A"}}>help.</em>
         </h1>
         <p style={{fontSize:"14px",color:"rgba(255,255,255,0.45)",maxWidth:"400px",margin:"0 auto",lineHeight:1.65}}>
@@ -31,8 +31,8 @@ export default function SupportPage() {
           ].map((card) => (
             <div key={card.label} style={{background:"#fff",border:"1px solid #E8E4DE",borderRadius:"10px",padding:"18px 20px"}}>
               <div style={{fontSize:"20px",marginBottom:"10px"}}>{card.icon}</div>
-              <div style={{fontFamily:"'Outfit',sans-serif",fontSize:"10px",fontWeight:700,letterSpacing:"0.8px",textTransform:"uppercase",color:"#999",marginBottom:"3px"}}>{card.label}</div>
-              <div style={{fontFamily:"'Outfit',sans-serif",fontSize:"14px",fontWeight:800,color:"#111",marginBottom:"4px"}}>{card.value}</div>
+              <div style={{fontFamily:"'Poppins',sans-serif",fontSize:"10px",fontWeight:700,letterSpacing:"0.8px",textTransform:"uppercase",color:"#999",marginBottom:"3px"}}>{card.label}</div>
+              <div style={{fontFamily:"'Poppins',sans-serif",fontSize:"14px",fontWeight:800,color:"#111",marginBottom:"4px"}}>{card.value}</div>
               <div style={{fontSize:"12px",color:"#999",lineHeight:1.6}}>{card.detail}</div>
             </div>
           ))}
@@ -40,7 +40,7 @@ export default function SupportPage() {
 
         {/* CONTACT FORM */}
         <div style={{background:"#fff",border:"1px solid #E8E4DE",borderRadius:"12px",padding:"28px"}}>
-          <h2 style={{fontFamily:"'Outfit',sans-serif",fontSize:"18px",fontWeight:800,color:"#111",marginBottom:"20px",letterSpacing:"-0.3px"}}>Send a Message</h2>
+          <h2 style={{fontFamily:"'Poppins',sans-serif",fontSize:"18px",fontWeight:800,color:"#111",marginBottom:"20px",letterSpacing:"-0.3px"}}>Send a Message</h2>
           <SupportForm />
         </div>
       </div>

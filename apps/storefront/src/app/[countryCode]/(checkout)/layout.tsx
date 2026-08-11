@@ -9,7 +9,7 @@ export default function CheckoutLayout({
   return (
     <div
       className="w-full relative small:min-h-screen"
-      style={{ background: "#F9F7F4", fontFamily: "'Outfit', sans-serif" }}
+      style={{ background: "#F9F7F4", fontFamily: "'Poppins', sans-serif" }}
     >
       <div className="h-16" style={{ background: "#111" }}>
         <nav className="flex h-full items-center content-container justify-between">

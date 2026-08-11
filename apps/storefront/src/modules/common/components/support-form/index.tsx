@@ -4,7 +4,7 @@ import { useState } from "react"
 import { COMPANY } from "@lib/company"
 
 const labelStyle = {
-  fontFamily: "'Outfit',sans-serif",
+  fontFamily: "'Poppins',sans-serif",
   fontSize: "10px",
   fontWeight: 700,
   letterSpacing: "0.5px",
@@ -131,7 +131,7 @@ const SupportForm = () => {
           color: "#fff",
           border: "none",
           borderRadius: "20px",
-          fontFamily: "'Outfit',sans-serif",
+          fontFamily: "'Poppins',sans-serif",
           fontSize: "13px",
           fontWeight: 800,
           cursor: "pointer",

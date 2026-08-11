@@ -14,7 +14,7 @@ const JanoshikBadge = () => (
       border: "1px solid #E8E4DE",
       borderRadius: "999px",
       padding: "4px 10px 4px 8px",
-      fontFamily: "'Outfit',sans-serif",
+      fontFamily: "'Poppins',sans-serif",
       fontSize: "10px",
       fontWeight: 800,
       letterSpacing: "0.3px",
@@ -34,7 +34,7 @@ const JanoshikBadge = () => (
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
-        fontFamily: "'Outfit',sans-serif",
+        fontFamily: "'Poppins',sans-serif",
       }}
     >
       J
@@ -55,7 +55,7 @@ const ViewReportButton = ({ url, label }: { url: string; label: string }) => (
       gap: "8px",
       background: ink,
       color: "#fff",
-      fontFamily: "'Outfit',sans-serif",
+      fontFamily: "'Poppins',sans-serif",
       fontSize: "13px",
       fontWeight: 700,
       letterSpacing: "0.2px",
@@ -77,7 +77,7 @@ const LotHistory = ({ lots, currentLot }: { lots: Coa[]; currentLot?: string }) 
     <div style={{ marginTop: "16px", borderTop: "1px solid #E8E4DE", paddingTop: "14px" }}>
       <div
         style={{
-          fontFamily: "'Outfit',sans-serif",
+          fontFamily: "'Poppins',sans-serif",
           fontSize: "9px",
           fontWeight: 800,
           letterSpacing: "1px",
@@ -110,7 +110,7 @@ const LotHistory = ({ lots, currentLot }: { lots: Coa[]; currentLot?: string }) 
             >
               <span
                 style={{
-                  fontFamily: "'Outfit',sans-serif",
+                  fontFamily: "'Poppins',sans-serif",
                   fontSize: "12px",
                   fontWeight: 700,
                   color: ink,
@@ -169,7 +169,7 @@ const CoaPanel = ({ product }: CoaPanelProps) => {
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px", marginBottom: "10px" }}>
           <div
             style={{
-              fontFamily: "'Outfit',sans-serif",
+              fontFamily: "'Poppins',sans-serif",
               fontSize: "10px",
               fontWeight: 800,
               letterSpacing: "1.2px",
@@ -188,7 +188,7 @@ const CoaPanel = ({ product }: CoaPanelProps) => {
         <a
           href="mailto:support@cylixlab.com?subject=CoA%20request"
           style={{
-            fontFamily: "'Outfit',sans-serif",
+            fontFamily: "'Poppins',sans-serif",
             fontSize: "12px",
             fontWeight: 700,
             color: ink,
@@ -228,7 +228,7 @@ const CoaPanel = ({ product }: CoaPanelProps) => {
       >
         <div
           style={{
-            fontFamily: "'Outfit',sans-serif",
+            fontFamily: "'Poppins',sans-serif",
             fontSize: "11px",
             fontWeight: 800,
             letterSpacing: "1.2px",
@@ -247,7 +247,7 @@ const CoaPanel = ({ product }: CoaPanelProps) => {
           <div>
             <div
               style={{
-                fontFamily: "'Outfit',sans-serif",
+                fontFamily: "'Poppins',sans-serif",
                 fontSize: "40px",
                 fontWeight: 900,
                 lineHeight: 1,
@@ -259,7 +259,7 @@ const CoaPanel = ({ product }: CoaPanelProps) => {
             </div>
             <div
               style={{
-                fontFamily: "'Outfit',sans-serif",
+                fontFamily: "'Poppins',sans-serif",
                 fontSize: "9px",
                 fontWeight: 800,
                 letterSpacing: "0.8px",
@@ -272,7 +272,7 @@ const CoaPanel = ({ product }: CoaPanelProps) => {
             </div>
           </div>
           <div style={{ paddingBottom: "4px" }}>
-            <div style={{ fontFamily: "'Outfit',sans-serif", fontSize: "14px", fontWeight: 800, color: ink }}>
+            <div style={{ fontFamily: "'Poppins',sans-serif", fontSize: "14px", fontWeight: 800, color: ink }}>
               Lot #{primary.lot}
             </div>
             <div style={{ fontSize: "12px", color: "#888", marginTop: "2px" }}>

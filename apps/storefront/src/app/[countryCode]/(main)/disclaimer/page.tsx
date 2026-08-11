@@ -28,7 +28,7 @@ export default function DisclaimerPage() {
       >
         <p
           style={{
-            fontFamily: "'Outfit',sans-serif",
+            fontFamily: "'Poppins',sans-serif",
             fontSize: "14px",
             fontWeight: 800,
             color: "#7A5B1E",

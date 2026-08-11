@@ -28,7 +28,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontFamily: "'Outfit',sans-serif",
+          fontFamily: "'Poppins',sans-serif",
           fontSize: "12px",
           fontWeight: 700,
           color: "#9aa4b2",
@@ -83,7 +83,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
             style={{
               background: "rgba(13,13,13,0.55)",
               color: "#fff",
-              fontFamily: "'Outfit',sans-serif",
+              fontFamily: "'Poppins',sans-serif",
               fontSize: "10px",
               fontWeight: 700,
               letterSpacing: "0.3px",

@@ -36,8 +36,8 @@ export default function FAQPage() {
     <>
       {/* HEADER */}
       <div style={{background:"#111",padding:"clamp(36px, 8vw, 56px) clamp(18px, 5vw, 32px) 48px",textAlign:"center"}}>
-        <div style={{fontFamily:"'Outfit',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"1.4px",textTransform:"uppercase",color:"#C9963A",marginBottom:"10px"}}>Help Center</div>
-        <h1 style={{fontFamily:"'Outfit',sans-serif",fontSize:"clamp(28px,5vw,44px)",fontWeight:900,color:"#fff",letterSpacing:"-1.2px",marginBottom:"10px"}}>
+        <div style={{fontFamily:"'Poppins',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"1.4px",textTransform:"uppercase",color:"#C9963A",marginBottom:"10px"}}>Help Center</div>
+        <h1 style={{fontFamily:"'Poppins',sans-serif",fontSize:"clamp(28px,5vw,44px)",fontWeight:900,color:"#fff",letterSpacing:"-1.2px",marginBottom:"10px"}}>
           Frequently Asked <em style={{fontStyle:"normal",color:"#C9963A"}}>Questions</em>
         </h1>
         <p style={{fontSize:"14px",color:"rgba(255,255,255,0.45)",maxWidth:"440px",margin:"0 auto",lineHeight:1.65}}>
@@ -49,13 +49,13 @@ export default function FAQPage() {
       <div style={{maxWidth:"720px",margin:"0 auto",padding:"52px clamp(18px, 5vw, 32px) 80px"}}>
         {faqs.map((group) => (
           <div key={group.category} style={{marginBottom:"40px"}}>
-            <div style={{fontFamily:"'Outfit',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"1.4px",textTransform:"uppercase",color:"#C9963A",marginBottom:"16px",display:"flex",alignItems:"center",gap:"10px"}}>
+            <div style={{fontFamily:"'Poppins',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"1.4px",textTransform:"uppercase",color:"#C9963A",marginBottom:"16px",display:"flex",alignItems:"center",gap:"10px"}}>
               {group.category}
               <span style={{flex:1,height:"1px",background:"rgba(201,150,58,0.3)",display:"block"}}></span>
             </div>
             {group.items.map((item) => (
               <details key={item.q} style={{background:"#fff",border:"1px solid #E8E4DE",borderRadius:"8px",marginBottom:"8px",overflow:"hidden"}}>
-                <summary style={{padding:"16px 18px",cursor:"pointer",fontFamily:"'Outfit',sans-serif",fontSize:"14px",fontWeight:700,color:"#111",listStyle:"none",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                <summary style={{padding:"16px 18px",cursor:"pointer",fontFamily:"'Poppins',sans-serif",fontSize:"14px",fontWeight:700,color:"#111",listStyle:"none",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
                   {item.q}
                   <span style={{color:"#C9963A",fontSize:"18px",fontWeight:300,flexShrink:0,marginLeft:"12px"}}>+</span>
                 </summary>
@@ -69,9 +69,9 @@ export default function FAQPage() {
 
         {/* CTA */}
         <div style={{background:"#F9F7F4",border:"1px solid #E8E4DE",borderRadius:"12px",padding:"28px",textAlign:"center",marginTop:"16px"}}>
-          <div style={{fontFamily:"'Outfit',sans-serif",fontSize:"15px",fontWeight:800,color:"#111",marginBottom:"6px"}}>Still have questions?</div>
+          <div style={{fontFamily:"'Poppins',sans-serif",fontSize:"15px",fontWeight:800,color:"#111",marginBottom:"6px"}}>Still have questions?</div>
           <p style={{fontSize:"13px",color:"#999",marginBottom:"16px"}}>Our support team responds within 12–24 hours.</p>
-          <a href="/support" style={{display:"inline-flex",alignItems:"center",gap:"8px",background:"#111",color:"#fff",padding:"11px 22px",borderRadius:"20px",fontFamily:"'Outfit',sans-serif",fontSize:"13px",fontWeight:700,textDecoration:"none"}}>
+          <a href="/support" style={{display:"inline-flex",alignItems:"center",gap:"8px",background:"#111",color:"#fff",padding:"11px 22px",borderRadius:"20px",fontFamily:"'Poppins',sans-serif",fontSize:"13px",fontWeight:700,textDecoration:"none"}}>
             Contact Support →
           </a>
         </div>

@@ -26,7 +26,7 @@ export default async function OrderCompletedTemplate({
           <Heading
             level="h1"
             className="flex flex-col gap-y-3 text-ui-fg-base text-3xl mb-4"
-            style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800 }}
+            style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800 }}
           >
             <span>Thank you!</span>
             <span>Your order was placed successfully.</span>
@@ -41,7 +41,7 @@ export default async function OrderCompletedTemplate({
             <p
               className="text-xs uppercase mb-3"
               style={{
-                fontFamily: "'Outfit', sans-serif",
+                fontFamily: "'Poppins', sans-serif",
                 fontWeight: 800,
                 letterSpacing: "1.2px",
                 color: "#C9963A",

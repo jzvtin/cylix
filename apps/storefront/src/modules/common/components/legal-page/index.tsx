@@ -19,7 +19,7 @@ export const Section = ({
   <section style={{ marginBottom: "34px" }}>
     <h2
       style={{
-        fontFamily: "'Outfit',sans-serif",
+        fontFamily: "'Poppins',sans-serif",
         fontSize: "16px",
         fontWeight: 800,
         color: "#111",
@@ -63,7 +63,7 @@ const LegalPage = ({
       >
         <div
           style={{
-            fontFamily: "'Outfit',sans-serif",
+            fontFamily: "'Poppins',sans-serif",
             fontSize: "10px",
             fontWeight: 800,
             letterSpacing: "1.4px",
@@ -76,7 +76,7 @@ const LegalPage = ({
         </div>
         <h1
           style={{
-            fontFamily: "'Outfit',sans-serif",
+            fontFamily: "'Poppins',sans-serif",
             fontSize: "clamp(28px,5vw,44px)",
             fontWeight: 900,
             color: "#fff",
@@ -114,7 +114,7 @@ const LegalPage = ({
       >
         <p
           style={{
-            fontFamily: "'Outfit',sans-serif",
+            fontFamily: "'Poppins',sans-serif",
             fontSize: "11px",
             fontWeight: 700,
             letterSpacing: "0.8px",

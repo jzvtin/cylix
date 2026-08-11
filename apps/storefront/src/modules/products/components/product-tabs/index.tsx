@@ -45,7 +45,7 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
             >
               <span
                 style={{
-                  fontFamily: "'Outfit',sans-serif",
+                  fontFamily: "'Poppins',sans-serif",
                   fontSize: "14px",
                   fontWeight: 700,
                   letterSpacing: "-0.1px",
@@ -89,7 +89,7 @@ const Row = ({ label, value }: { label: string; value: string }) => (
   <div>
     <div
       style={{
-        fontFamily: "'Outfit',sans-serif",
+        fontFamily: "'Poppins',sans-serif",
         fontSize: "10px",
         fontWeight: 800,
         letterSpacing: "0.6px",
@@ -108,7 +108,7 @@ const Block = ({ heading, children }: { heading: string; children: React.ReactNo
   <div>
     <div
       style={{
-        fontFamily: "'Outfit',sans-serif",
+        fontFamily: "'Poppins',sans-serif",
         fontSize: "10px",
         fontWeight: 800,
         letterSpacing: "0.6px",

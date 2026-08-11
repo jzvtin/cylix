@@ -21,7 +21,7 @@ const JanoshikBadge = () => (
       border: "1px solid rgba(255,255,255,0.16)",
       borderRadius: "999px",
       padding: "6px 14px 6px 10px",
-      fontFamily: "'Outfit',sans-serif",
+      fontFamily: "'Poppins',sans-serif",
       fontSize: "11px",
       fontWeight: 800,
       letterSpacing: "0.4px",
@@ -41,7 +41,7 @@ const JanoshikBadge = () => (
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
-        fontFamily: "'Outfit',sans-serif",
+        fontFamily: "'Poppins',sans-serif",
       }}
     >
       J
@@ -51,7 +51,7 @@ const JanoshikBadge = () => (
 )
 
 const eyebrow = {
-  fontFamily: "'Outfit',sans-serif",
+  fontFamily: "'Poppins',sans-serif",
   fontSize: "10px",
   fontWeight: 800,
   letterSpacing: "1.4px",
@@ -70,7 +70,7 @@ export default function CoaPage() {
         <div style={{ ...eyebrow, marginBottom: "12px" }}>Documentation</div>
         <h1
           style={{
-            fontFamily: "'Outfit',sans-serif",
+            fontFamily: "'Poppins',sans-serif",
             fontSize: "clamp(30px,5vw,48px)",
             fontWeight: 900,
             color: "#fff",
@@ -126,7 +126,7 @@ export default function CoaPage() {
                 <div key={c.t}>
                   <div
                     style={{
-                      fontFamily: "'Outfit',sans-serif",
+                      fontFamily: "'Poppins',sans-serif",
                       fontSize: "13px",
                       fontWeight: 800,
                       color: ink,
@@ -160,7 +160,7 @@ export default function CoaPage() {
               >
                 <h2
                   style={{
-                    fontFamily: "'Outfit',sans-serif",
+                    fontFamily: "'Poppins',sans-serif",
                     fontSize: "20px",
                     fontWeight: 800,
                     color: ink,
@@ -172,7 +172,7 @@ export default function CoaPage() {
                 </h2>
                 <span
                   style={{
-                    fontFamily: "'Outfit',sans-serif",
+                    fontFamily: "'Poppins',sans-serif",
                     fontSize: "11px",
                     fontWeight: 700,
                     color: "#aaa",
@@ -215,7 +215,7 @@ export default function CoaPage() {
                     >
                       <span
                         style={{
-                          fontFamily: "'Outfit',sans-serif",
+                          fontFamily: "'Poppins',sans-serif",
                           fontSize: "10px",
                           fontWeight: 800,
                           letterSpacing: "0.6px",
@@ -227,7 +227,7 @@ export default function CoaPage() {
                       </span>
                       <span
                         style={{
-                          fontFamily: "'Outfit',sans-serif",
+                          fontFamily: "'Poppins',sans-serif",
                           fontSize: "10px",
                           fontWeight: 800,
                           color: "#666",
@@ -242,7 +242,7 @@ export default function CoaPage() {
                     </div>
                     <div
                       style={{
-                        fontFamily: "'Outfit',sans-serif",
+                        fontFamily: "'Poppins',sans-serif",
                         fontSize: "22px",
                         fontWeight: 900,
                         color: ink,
@@ -257,7 +257,7 @@ export default function CoaPage() {
                     </div>
                     <div
                       style={{
-                        fontFamily: "'Outfit',sans-serif",
+                        fontFamily: "'Poppins',sans-serif",
                         fontSize: "12px",
                         fontWeight: 700,
                         color: ink,

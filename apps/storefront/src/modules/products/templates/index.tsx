@@ -27,9 +27,9 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
       {/* BREADCRUMB */}
       <div style={{background:"#fff",borderBottom:"1px solid #E8E4DE",padding:"12px 32px"}}>
         <div style={{maxWidth:"1100px",margin:"0 auto",fontSize:"12px",color:"#999",display:"flex",gap:"6px",alignItems:"center"}}>
-          <a href="/store" style={{color:"#999",textDecoration:"none",fontFamily:"'Outfit',sans-serif",fontWeight:600}}>Catalog</a>
+          <a href="/store" style={{color:"#999",textDecoration:"none",fontFamily:"'Poppins',sans-serif",fontWeight:600}}>Catalog</a>
           <span>›</span>
-          <span style={{color:"#111",fontFamily:"'Outfit',sans-serif",fontWeight:700}}>{product.title}</span>
+          <span style={{color:"#111",fontFamily:"'Poppins',sans-serif",fontWeight:700}}>{product.title}</span>
         </div>
       </div>
 
@@ -48,7 +48,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
                 {icon:"🚚",text:"Free Shipping"},
                 {icon:"⚡",text:"12–24hr Dispatch"},
               ].map(b => (
-                <div key={b.text} style={{background:"#F9F7F4",border:"1px solid #E8E4DE",borderRadius:"8px",padding:"10px 12px",display:"flex",alignItems:"center",gap:"7px",fontSize:"11px",fontFamily:"'Outfit',sans-serif",fontWeight:700,color:"#444"}}>
+                <div key={b.text} style={{background:"#F9F7F4",border:"1px solid #E8E4DE",borderRadius:"8px",padding:"10px 12px",display:"flex",alignItems:"center",gap:"7px",fontSize:"11px",fontFamily:"'Poppins',sans-serif",fontWeight:700,color:"#444"}}>
                   <span>{b.icon}</span>{b.text}
                 </div>
               ))}
@@ -58,7 +58,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
           {/* RIGHT — info + actions */}
           <div style={{display:"flex",flexDirection:"column",gap:"24px"}}>
             <div>
-              <div style={{fontFamily:"'Outfit',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"1.2px",textTransform:"uppercase",color:"#C9963A",marginBottom:"8px"}}>
+              <div style={{fontFamily:"'Poppins',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"1.2px",textTransform:"uppercase",color:"#C9963A",marginBottom:"8px"}}>
                 Research Compound
               </div>
               <ProductInfo product={product} />
@@ -76,7 +76,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
 
             {/* Research use disclaimer */}
             <div style={{background:"rgba(201,150,58,0.06)",border:"1px solid rgba(201,150,58,0.2)",borderRadius:"10px",padding:"14px 16px"}}>
-              <div style={{fontFamily:"'Outfit',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"0.8px",textTransform:"uppercase",color:"#C9963A",marginBottom:"5px"}}>Research Use Only</div>
+              <div style={{fontFamily:"'Poppins',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"0.8px",textTransform:"uppercase",color:"#C9963A",marginBottom:"5px"}}>Research Use Only</div>
               <p style={{fontSize:"11px",color:"#888",lineHeight:1.65,margin:0}}>For in-vitro laboratory research and analytical method development only. Not for human or animal consumption. Must be 21+ to purchase.</p>
             </div>
 
@@ -89,8 +89,8 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
       {/* RELATED PRODUCTS */}
       <div style={{background:"#F9F7F4",borderTop:"1px solid #E8E4DE",padding:"52px 32px"}}>
         <div style={{maxWidth:"1100px",margin:"0 auto"}}>
-          <div style={{fontFamily:"'Outfit',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"1.4px",textTransform:"uppercase",color:"#C9963A",marginBottom:"8px"}}>You May Also Need</div>
-          <h2 style={{fontFamily:"'Outfit',sans-serif",fontSize:"22px",fontWeight:800,color:"#111",letterSpacing:"-0.4px",marginBottom:"24px"}}>Related Compounds</h2>
+          <div style={{fontFamily:"'Poppins',sans-serif",fontSize:"10px",fontWeight:800,letterSpacing:"1.4px",textTransform:"uppercase",color:"#C9963A",marginBottom:"8px"}}>You May Also Need</div>
+          <h2 style={{fontFamily:"'Poppins',sans-serif",fontSize:"22px",fontWeight:800,color:"#111",letterSpacing:"-0.4px",marginBottom:"24px"}}>Related Compounds</h2>
           <Suspense fallback={<SkeletonRelatedProducts />}>
             <RelatedProducts product={product} countryCode={countryCode} />
           </Suspense>
