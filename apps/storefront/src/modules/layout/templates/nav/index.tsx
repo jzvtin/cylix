@@ -28,7 +28,7 @@ export default async function Nav() {
       <header className="nav-header mx-auto flex h-[60px] max-w-[1200px] items-center justify-between gap-5 px-6 md:px-8">
         {/* LEFT — mobile menu + desktop nav links */}
         <div className="nav-side flex flex-1 items-center gap-6">
-          <div className="flex items-center text-[13px] font-medium text-ink/70 transition-colors hover:text-ink">
+          <div className="flex items-center text-[13px] font-medium text-ink/70 transition-colors hover:text-ink small:hidden">
             <SideMenu
               regions={regions}
               locales={locales}
