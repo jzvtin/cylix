@@ -98,7 +98,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
             </div>
 
             {/* Buy box */}
-            <div className="cx-glass rounded-2xl p-5 sm:p-6">
+            <div>
               <Suspense
                 fallback={<ProductActions disabled={true} product={product} region={region} />}
               >
@@ -107,7 +107,9 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
             </div>
 
             {/* Certificate of Analysis — visual proof */}
-            <CoaPanel product={product} />
+            <div id="cx-coa" className="scroll-mt-24">
+              <CoaPanel product={product} />
+            </div>
 
             {/* Research-use disclaimer */}
             <div className="rounded-2xl border border-gold-500/25 bg-gold-500/[0.06] px-5 py-4">
