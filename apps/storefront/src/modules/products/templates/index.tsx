@@ -2,6 +2,7 @@ import React, { Suspense } from "react"
 import ImageGallery from "@modules/products/components/image-gallery"
 import ProductActions from "@modules/products/components/product-actions"
 import ProductTabs from "@modules/products/components/product-tabs"
+import CoaPanel from "@modules/products/components/coa-panel"
 import RelatedProducts from "@modules/products/components/related-products"
 import ProductInfo from "@modules/products/templates/product-info"
 import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-related-products"
@@ -38,12 +39,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
 
           {/* LEFT — image */}
           <div style={{position:"sticky",top:"80px"}}>
-            <div style={{background:"#EBF0F8",borderRadius:"18px",overflow:"hidden",aspectRatio:"1",display:"flex",alignItems:"center",justifyContent:"center",padding:"40px",position:"relative"}}>
-              <div style={{position:"absolute",inset:0,background:"radial-gradient(ellipse 80% 80% at 50% 40%, rgba(255,255,255,0.7) 0%, transparent 70%)"}} />
-              <div style={{position:"relative",zIndex:1,width:"100%"}}>
-                <ImageGallery images={images} />
-              </div>
-            </div>
+            <ImageGallery images={images} />
             {/* Trust badges */}
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"8px",marginTop:"16px"}}>
               {[
@@ -74,6 +70,9 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
                 <ProductActionsWrapper id={product.id} region={region} />
               </Suspense>
             </div>
+
+            {/* Certificate of Analysis — visual proof */}
+            <CoaPanel product={product} />
 
             {/* Research use disclaimer */}
             <div style={{background:"rgba(201,150,58,0.06)",border:"1px solid rgba(201,150,58,0.2)",borderRadius:"10px",padding:"14px 16px"}}>

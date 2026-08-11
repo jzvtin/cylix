@@ -16,7 +16,9 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
   return (
     <div>
       <Text>
-        We have sent the order confirmation details to{" "}
+        Your order is confirmed. Save this page — you can check its status any
+        time from your account, or by contacting support with the order number
+        below. The account on file is{" "}
         <span
           className="text-ui-fg-medium-plus font-semibold"
           data-testid="order-email"

@@ -42,6 +42,12 @@ const Payment = ({
   const otherMethods =
     availablePaymentMethods?.filter((m) => !isStripeLike(m.id)) ?? []
 
+  // Only surface the SellAbroad ("Other") option when a merchant ID is actually
+  // configured. Without it the widget just renders a raw dev message telling the
+  // customer to set NEXT_PUBLIC_SELLABROAD_MERCHANT_ID, so keep it hidden and let
+  // Stripe be the sole, working default.
+  const showSellAbroad = !!process.env.NEXT_PUBLIC_SELLABROAD_MERCHANT_ID
+
   const searchParams = useSearchParams()
   const router = useRouter()
   const pathname = usePathname()
@@ -160,6 +166,7 @@ const Payment = ({
         <div className={isOpen ? "block" : "hidden"}>
           {!paidByGiftcard && (
             <>
+              {showSellAbroad && (
               <div
                 className="flex gap-x-1 mb-6 p-1 rounded-lg w-fit"
                 style={{ background: "#F1EEE9" }}
@@ -204,6 +211,7 @@ const Payment = ({
                   </button>
                 ))}
               </div>
+              )}
 
               {/*
                 SellAbroad takes the payment inside its own widget and the
@@ -213,7 +221,7 @@ const Payment = ({
                 The Medusa session is still initiated silently (see the effect
                 above) because completing the cart requires one.
               */}
-              {tab === "sellabroad" && (
+              {showSellAbroad && tab === "sellabroad" && (
                 <div className="flex flex-col gap-y-4">
                   <SellAbroadContainer cart={cart} />
                   <p className="text-xs" style={{ color: "#8A8A8A" }}>

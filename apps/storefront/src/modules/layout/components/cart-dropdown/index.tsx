@@ -38,6 +38,18 @@ const CartDropdown = ({
   const subtotal = cartState?.subtotal ?? 0
   const itemRef = useRef<number>(totalItems || 0)
 
+  // "Pop" the cart count whenever the number of items changes.
+  const [pop, setPop] = useState(false)
+  const prevItems = useRef<number>(totalItems)
+  useEffect(() => {
+    if (prevItems.current !== totalItems) {
+      prevItems.current = totalItems
+      setPop(true)
+      const t = setTimeout(() => setPop(false), 320)
+      return () => clearTimeout(t)
+    }
+  }, [totalItems])
+
   const timedOpen = () => {
     open()
 
@@ -82,10 +94,19 @@ const CartDropdown = ({
       <Popover className="relative h-full">
         <PopoverButton className="h-full">
           <LocalizedClientLink
-            className="hover:text-ui-fg-base"
+            className="inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-[7px] text-[12px] font-bold text-sand transition-colors duration-200 hover:bg-gold-600"
             href="/cart"
             data-testid="nav-cart-link"
-          >{`Cart (${totalItems})`}</LocalizedClientLink>
+          >
+            <span>Cart</span>
+            <span
+              className={`inline-block tabular-nums transition-transform duration-300 ease-out motion-reduce:transition-none ${
+                pop ? "scale-[1.35] text-gold-300" : "scale-100"
+              }`}
+            >
+              ({totalItems})
+            </span>
+          </LocalizedClientLink>
         </PopoverButton>
         <Transition
           show={cartDropdownOpen}

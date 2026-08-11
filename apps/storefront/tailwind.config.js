@@ -33,6 +33,23 @@ module.exports = {
           80: "#1F2937",
           90: "#111827",
         },
+        // ── Cylix Research brand tokens ──
+        gold: {
+          50: "#FBF6EC",
+          100: "#F5E9CF",
+          200: "#EBD3A1",
+          300: "#E0BC72",
+          400: "#D5A954",
+          500: "#C9963A",
+          600: "#A87B2E",
+          700: "#855F24",
+          800: "#5F441A",
+          900: "#3D2C11",
+          DEFAULT: "#C9963A",
+        },
+        ink: "#0D0D0D",
+        sand: "#F9F7F4",
+        cream: "#E8E4DE",
       },
       borderRadius: {
         none: "0px",
@@ -58,8 +75,20 @@ module.exports = {
         "3xl": "2rem",
       },
       fontFamily: {
+        // Headings / brand — geometric display
+        display: [
+          "Outfit",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Ubuntu",
+          "sans-serif",
+        ],
+        // Body — humanist sans
         sans: [
-          "Inter",
+          '"Plus Jakarta Sans"',
           "-apple-system",
           "BlinkMacSystemFont",
           "Segoe UI",

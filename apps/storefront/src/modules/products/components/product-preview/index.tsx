@@ -14,22 +14,20 @@ export default async function ProductPreview({
   isFeatured?: boolean
   region: HttpTypes.StoreRegion
 }) {
-  // const pricedProduct = await listProducts({
-  //   regionId: region.id,
-  //   queryParams: { id: [product.id!] },
-  // }).then(({ response }) => response.products[0])
-
-  // if (!pricedProduct) {
-  //   return null
-  // }
-
   const { cheapestPrice } = getProductPrice({
     product,
   })
 
+  // Optional editorial descriptor: subtitle or collection title if present.
+  const eyebrow =
+    product.subtitle || product.collection?.title || "Research compound"
+
   return (
-    <LocalizedClientLink href={`/products/${product.handle}`} className="group">
-      <div data-testid="product-wrapper">
+    <LocalizedClientLink
+      href={`/products/${product.handle}`}
+      className="group block"
+    >
+      <div data-testid="product-wrapper" className="flex flex-col">
         <Thumbnail
           thumbnail={product.thumbnail}
           images={product.images}
@@ -37,13 +35,50 @@ export default async function ProductPreview({
           isFeatured={isFeatured}
           title={product.title}
         />
-        <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 txt-compact-medium mt-3 justify-between">
-          <Text className="text-ui-fg-subtle min-w-0 break-words" data-testid="product-title">
+
+        {/* Trust chips */}
+        <div className="flex flex-wrap items-center gap-1.5 mt-3">
+          <span className="inline-flex items-center rounded-full bg-gold-500/12 px-2 py-0.5 text-[11px] font-semibold tracking-wide text-gold-500">
+            99%+ purity
+          </span>
+          <span className="inline-flex items-center gap-1 rounded-full border border-ink/10 px-2 py-0.5 text-[11px] font-medium text-ink/70">
+            <svg
+              aria-hidden
+              viewBox="0 0 24 24"
+              className="h-3 w-3"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M9 12l2 2 4-4" />
+              <path d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7l7-4z" />
+            </svg>
+            CoA
+          </span>
+        </div>
+
+        {/* Title + price */}
+        <div className="mt-2 flex items-baseline justify-between gap-x-3">
+          <Text
+            className="font-display font-semibold text-ink leading-snug tracking-tight min-w-0 break-words text-base transition-colors group-hover:text-gold-500"
+            data-testid="product-title"
+          >
             {product.title}
           </Text>
-          <div className="flex items-center gap-x-2 shrink-0 font-semibold text-ui-fg-base">
+          <div className="flex items-center gap-x-2 shrink-0 font-display font-bold text-ink text-[15px]">
             {cheapestPrice && <PreviewPrice price={cheapestPrice} />}
           </div>
+        </div>
+
+        {/* Eyebrow + availability */}
+        <Text className="mt-0.5 text-xs text-ink/45 line-clamp-1">
+          {eyebrow}
+        </Text>
+        <div className="mt-1 flex items-center gap-1.5 text-[11px] font-medium text-ink/55">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500/80" />
+          In stock · ships 12–24h
         </div>
       </div>
     </LocalizedClientLink>

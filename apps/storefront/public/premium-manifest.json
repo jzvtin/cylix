@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-08-11",
+  "model": "nano_banana_pro",
+  "referenceVial": "products/bpc-157.png",
+  "brand": {
+    "cream": "#F9F7F4",
+    "creamAlt": "#E8E4DE",
+    "gold": "#C9963A",
+    "ink": "#0D0D0D"
+  },
+  "hero": [
+    {
+      "id": "hero-cluster-1",
+      "path": "hero/hero-cluster-1.png",
+      "aspectRatio": "16:9",
+      "vials": ["BPC-157", "NAD+", "GHK-Cu", "TB-500"],
+      "note": "Vials on right third, empty cream space on left for headline."
+    },
+    {
+      "id": "hero-cluster-2",
+      "path": "hero/hero-cluster-2.png",
+      "aspectRatio": "21:9",
+      "vials": ["GHK-Cu", "BPC-157", "NAD+"],
+      "note": "Ultrawide, vials on right, expansive cream negative space on left."
+    }
+  ],
+  "products": {
+    "bpc-157": { "name": "BPC-157", "premium": "products/premium/bpc-157.png", "original": "products/bpc-157.png" },
+    "nad": { "name": "NAD+", "premium": "products/premium/nad.png", "original": "products/nad.png" },
+    "ghk-cu": { "name": "GHK-Cu", "premium": "products/premium/ghk-cu.png", "original": "products/ghk-cu.png" },
+    "tesamorelin": { "name": "Tesamorelin", "premium": "products/premium/tesamorelin.png", "original": "products/tesamorelin.png" },
+    "retatrutide": { "name": "Retatrutide", "premium": "products/premium/retatrutide.png", "original": null },
+    "tirzepatide": { "name": "Tirzepatide", "premium": "products/premium/tirzepatide.png", "original": "products/tz2.png" },
+    "semaglutide": { "name": "Semaglutide", "premium": "products/premium/semaglutide.png", "original": null },
+    "tb-500": { "name": "TB-500", "premium": "products/premium/tb-500.png", "original": "products/tb-500.png" },
+    "mots-c": { "name": "MOTS-C", "premium": "products/premium/mots-c.png", "original": null },
+    "cagrilintide": { "name": "Cagrilintide", "premium": "products/premium/cagrilintide.png", "original": null }
+  }
+}

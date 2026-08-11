@@ -17,8 +17,8 @@ const faqs = [
   {
     category: "Ordering & Payment",
     items: [
-      { q: "What payment methods do you accept?", a: "We accept credit cards, cryptocurrency (BTC, ETH, USDC), Zelle, Venmo, and bank wire for institutional orders. All transactions are processed through secure, encrypted payment gateways." },
-      { q: "How do I track my order?", a: "Tracking information is emailed as soon as your order ships. You can also view order history and tracking in your account dashboard. If tracking is not received within 48 hours, contact support@cylixlab.com." },
+      { q: "What payment methods do you accept?", a: "We accept major credit and debit cards at checkout. All transactions are processed through a secure, encrypted payment gateway." },
+      { q: "How do I track my order?", a: "You can view your order history and tracking in your account dashboard once your order ships. If you have any questions about your order status, contact support@cylixlab.com with your order number." },
       { q: "Do you offer institutional pricing?", a: "Yes. We offer discounted pricing for qualified research institutions, universities, and laboratories. Contact support@cylixlab.com with your institution name, credentials, and expected order volume." },
     ]
   },
@@ -26,7 +26,7 @@ const faqs = [
     category: "Shipping & Handling",
     items: [
       { q: "What are your shipping policies?", a: "Free shipping on all orders. Processing takes 12–24 hours on business days. Domestic delivery is typically 2–5 business days via USPS Priority or UPS Ground. All packages are labeled as laboratory research materials." },
-      { q: "What is your return policy?", a: "Given the nature of laboratory reference materials, we do not accept returns of opened or used materials. We will issue a replacement or full refund for materials arriving damaged, incorrect items shipped due to our error, or orders lost in transit. Contact us within 7 days of expected delivery." },
+      { q: "What is your return policy?", a: "Given the nature of laboratory reference materials, we cannot accept returns of opened or used materials. Unopened material in its original packaging may be returned within 14 days of delivery — email support@cylixlab.com first for a return authorisation. For materials arriving damaged, incorrect items shipped due to our error, or orders lost in transit, we will issue a replacement or full refund; contact us within 7 days of expected delivery." },
     ]
   },
 ]

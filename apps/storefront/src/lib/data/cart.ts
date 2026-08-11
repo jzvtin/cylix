@@ -266,16 +266,21 @@ export async function applyPromotions(codes: string[]) {
     ...(await getAuthHeaders()),
   }
 
-  return sdk.store.cart
-    .update(cartId, { promo_codes: codes }, {}, headers)
-    .then(async () => {
-      const cartCacheTag = await getCacheTag("carts")
-      revalidateTag(cartCacheTag)
+  try {
+    await sdk.store.cart.update(cartId, { promo_codes: codes }, {}, headers)
 
-      const fulfillmentCacheTag = await getCacheTag("fulfillment")
-      revalidateTag(fulfillmentCacheTag)
-    })
-    .catch(medusaError)
+    const cartCacheTag = await getCacheTag("carts")
+    revalidateTag(cartCacheTag)
+
+    const fulfillmentCacheTag = await getCacheTag("fulfillment")
+    revalidateTag(fulfillmentCacheTag)
+  } catch {
+    // Medusa returns a 400 for an unknown/expired code. Surface a friendly,
+    // customer-safe string rather than throwing — throwing from a server action
+    // renders the generic "error occurred in the Server Components render" page
+    // in production.
+    return "That code isn't valid. Please check it and try again."
+  }
 }
 
 export async function applyGiftCard(code: string) {
@@ -327,7 +332,7 @@ export async function submitPromotionForm(
 ) {
   const code = formData.get("code") as string
   try {
-    await applyPromotions([code])
+    return await applyPromotions([code])
   } catch (e: any) {
     return e.message
   }

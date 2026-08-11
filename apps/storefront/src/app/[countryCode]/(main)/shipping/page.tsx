@@ -45,10 +45,10 @@ export default function ShippingPage() {
 
       <Section heading="Tracking">
         <p>
-          A tracking number is emailed to you once the label is created. If you
-          have not received tracking within two business days of ordering, check
-          your spam folder and then contact {COMPANY.supportEmail} with your
-          order number.
+          A tracking number is attached to your order once the label is created,
+          and you can view it any time from your account. If tracking has not
+          appeared within two business days of ordering, contact{" "}
+          {COMPANY.supportEmail} with your order number.
         </p>
       </Section>
 
