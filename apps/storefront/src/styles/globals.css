@@ -342,6 +342,25 @@ html, body {
   background-color: #F4F0E9;
 }
 
+/* ── ORIGIN-LABS TYPE RESKIN ──
+   Match origin-labs.org exactly: Anek Latin for all headings/body, Poppins
+   reserved for buttons, eyebrows and the wordmark (their "font-ui"/button
+   font). This single swap shifts the whole site to the origin look. */
+body {
+  font-family: 'Anek Latin', 'Anek Latin Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+.font-display,
+.cx-h,
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Anek Latin', 'Anek Latin Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+  letter-spacing: -0.02em;
+}
+/* Buttons, eyebrows and the brand wordmark keep Poppins (origin's font-ui). */
+.cx-btn, .cx-eyebrow, .nav-brand,
+[data-testid="nav-store-link"], [data-testid="checkout-button"] {
+  font-family: 'Poppins', 'Poppins Fallback', sans-serif !important;
+}
+
 /* ---- Header nav responsive ----
    The header rendered the hamburger + Products/FAQ/Support links + brand +
    Account + Cart all in one row, which overflowed on phones and clipped the
