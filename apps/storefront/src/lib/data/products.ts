@@ -7,6 +7,17 @@ import { HttpTypes } from "@medusajs/types"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import { getAuthHeaders, getCacheOptions } from "./cookies"
 import { getRegion, retrieveRegion } from "./regions"
+import { sanitizeCompliance } from "@lib/util/compliance"
+
+// Recode any banned compound term the moment product data enters the app, so a
+// stale DB row can never leak one into a rendered string OR the serialized RSC
+// payload sent to client components. Single chokepoint for the whole catalog.
+const scrubProduct = (p: HttpTypes.StoreProduct): HttpTypes.StoreProduct => ({
+  ...p,
+  title: sanitizeCompliance(p.title),
+  subtitle: sanitizeCompliance(p.subtitle),
+  description: sanitizeCompliance(p.description),
+})
 
 type ProductListQueryParams = (HttpTypes.FindParams &
   HttpTypes.StoreProductListParams) & {
@@ -88,7 +99,7 @@ export const listProducts = async ({
 
       return {
         response: {
-          products,
+          products: products.map(scrubProduct),
           count,
         },
         nextPage: nextPage,

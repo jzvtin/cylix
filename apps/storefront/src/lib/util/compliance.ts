@@ -15,9 +15,11 @@ const REPLACEMENTS: Array<[RegExp, string]> = [
   [/tirzepatide/gi, "TZ"],
   [/semaglutide/gi, "SM"],
   [/cagrilintide/gi, "Cagri"],
-  // receptor-class phrasing that embeds the banned class name
-  [/glp-?1\s*\/\s*gip/gi, "dual receptor"],
-  [/gip\s*\/\s*glp-?1/gi, "dual receptor"],
+  // receptor-class phrasing that embeds the banned class name. The combined
+  // forms are dropped entirely (the surrounding copy already says "dual/triple
+  // receptor agonist"), leaving a clean sentence after the space tidy below.
+  [/glp-?1\s*\/\s*gip\s*/gi, ""],
+  [/gip\s*\/\s*glp-?1\s*/gi, ""],
   [/glp-?1/gi, "receptor"],
   [/\bglp\b/gi, "receptor"],
 ]
