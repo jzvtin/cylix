@@ -20,7 +20,7 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
         time from your account, or by contacting support with the order number
         below. The account on file is{" "}
         <span
-          className="text-ui-fg-medium-plus font-semibold"
+          className="text-ink font-semibold"
           data-testid="order-email"
         >
           {order.email}
@@ -33,7 +33,7 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
           {new Date(order.created_at).toDateString()}
         </span>
       </Text>
-      <Text className="mt-2 text-ui-fg-interactive">
+      <Text className="mt-2 text-gold-600">
         Order number: <span data-testid="order-id">{order.display_id}</span>
       </Text>
 
@@ -42,14 +42,14 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
           <>
             <Text>
               Order status:{" "}
-              <span className="text-ui-fg-subtle " data-testid="order-status">
+              <span className="text-ink/60 " data-testid="order-status">
                 {formatStatus(order.fulfillment_status)}
               </span>
             </Text>
             <Text>
               Payment status:{" "}
               <span
-                className="text-ui-fg-subtle "
+                className="text-ink/60 "
                 sata-testid="order-payment-status"
               >
                 {formatStatus(order.payment_status)}
