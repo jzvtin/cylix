@@ -183,7 +183,10 @@ const Payment = ({
         <div className={isOpen ? "block" : "hidden"}>
           {!paidByGiftcard && (
             <>
-              {(showSellAbroad || showSquare) && (
+              {/* Only show the method switcher when there's actually more than
+                  one method to pick. A single card path (Square-only, no
+                  SellAbroad) rendered a lone orphaned pill, so hide the bar. */}
+              {showSellAbroad && (
               <div
                 className="flex gap-x-1 mb-6 p-1 rounded-lg w-fit"
                 style={{ background: "#F1EEE9" }}
