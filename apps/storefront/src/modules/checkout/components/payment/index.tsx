@@ -6,6 +6,7 @@ import { CheckCircleSolid, CreditCard } from "@medusajs/icons"
 import ErrorMessage from "@modules/checkout/components/error-message"
 import { StripeCardContainer } from "@modules/checkout/components/payment-container"
 import SellAbroadContainer from "@modules/checkout/components/sellabroad-container"
+import SquareBridgeContainer from "@modules/checkout/components/square-bridge-container"
 import Divider from "@modules/common/components/divider"
 import {
   Button,
@@ -36,7 +37,14 @@ const Payment = ({
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(
     activeSession?.provider_id ?? ""
   )
-  const [tab, setTab] = useState<"sellabroad" | "stripe">("stripe")
+  // Square-via-bridge is Cylix's real, working processor. When it's enabled the
+  // inline Stripe card element is a broken skeleton (no client_secret ever
+  // reaches it), so Square is the default tab and the Stripe tab is hidden.
+  const squareEnabled =
+    process.env.NEXT_PUBLIC_SQUARE_BRIDGE_ENABLED === "true"
+  const [tab, setTab] = useState<"sellabroad" | "stripe" | "square">(
+    squareEnabled ? "square" : "stripe"
+  )
 
   const stripeMethod = availablePaymentMethods?.find((m) => isStripeLike(m.id))
   const otherMethods =
@@ -48,6 +56,10 @@ const Payment = ({
   // Stripe be the sole, working default.
   const showSellAbroad = !!process.env.NEXT_PUBLIC_SELLABROAD_MERCHANT_ID
 
+  // Square-via-bridge tab. Uses the system/manual session (like SellAbroad); the
+  // order is completed by the bridge webhook once Square reports payment.
+  const showSquare = squareEnabled
+
   const searchParams = useSearchParams()
   const router = useRouter()
   const pathname = usePathname()
@@ -57,7 +69,10 @@ const Payment = ({
   const setPaymentMethod = async (method: string) => {
     setError(null)
     setSelectedPaymentMethod(method)
-    if (isStripeLike(method)) {
+    // Stripe needs a session for its card element; the system/manual provider
+    // (used by the Square-bridge and SellAbroad tabs) needs one so the cart can
+    // be completed once payment is confirmed off-site. Either way, initiate.
+    if (method) {
       await initiatePaymentSession(cart, {
         provider_id: method,
       })
@@ -128,7 +143,9 @@ const Payment = ({
     if (!isOpen || selectedPaymentMethod) return
     if (tab === "stripe" && stripeMethod) {
       setPaymentMethod(stripeMethod.id)
-    } else if (tab === "sellabroad" && otherMethods[0]) {
+    } else if ((tab === "sellabroad" || tab === "square") && otherMethods[0]) {
+      // Square + SellAbroad both ride on the system/manual session so the cart
+      // can be completed once the off-site webhook confirms payment.
       setPaymentMethod(otherMethods[0].id)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -166,7 +183,7 @@ const Payment = ({
         <div className={isOpen ? "block" : "hidden"}>
           {!paidByGiftcard && (
             <>
-              {showSellAbroad && (
+              {(showSellAbroad || showSquare) && (
               <div
                 className="flex gap-x-1 mb-6 p-1 rounded-lg w-fit"
                 style={{ background: "#F1EEE9" }}
@@ -174,8 +191,14 @@ const Payment = ({
               >
                 {(
                   [
-                    { key: "stripe", label: "Pay by card" },
-                    { key: "sellabroad", label: "Other (SellAbroad)" },
+                    // When Square is live it's the working card path; the inline
+                    // Stripe card element is broken, so hide its tab entirely.
+                    ...(showSquare
+                      ? [{ key: "square", label: "Pay by card" } as const]
+                      : [{ key: "stripe", label: "Pay by card" } as const]),
+                    ...(showSellAbroad
+                      ? [{ key: "sellabroad", label: "Other (SellAbroad)" } as const]
+                      : []),
                   ] as const
                 ).map(({ key, label }) => (
                   <button
@@ -195,6 +218,11 @@ const Payment = ({
                        * webhook captures it once SellAbroad confirms.
                        */
                       if (key === "sellabroad" && otherMethods[0]) {
+                        setPaymentMethod(otherMethods[0].id)
+                      }
+                      // Square also rides on the system/manual session so the
+                      // cart can be completed once the webhook confirms payment.
+                      if (key === "square" && otherMethods[0]) {
                         setPaymentMethod(otherMethods[0].id)
                       }
                     }}
@@ -228,6 +256,10 @@ const Payment = ({
                     Your order is confirmed as soon as payment completes above.
                   </p>
                 </div>
+              )}
+
+              {showSquare && tab === "square" && (
+                <SquareBridgeContainer cart={cart} />
               )}
 
               {tab === "stripe" &&
