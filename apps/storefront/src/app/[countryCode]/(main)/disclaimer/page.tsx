@@ -46,7 +46,7 @@ export default function DisclaimerPage() {
         </p>
         <p>
           No statement anywhere on this site should be read as a claim that any
-          material diagnoses, treats, cures, or prevents any disease or
+          material diagnoses, treats, mitigates, or prevents any disease or
           condition.
         </p>
       </Section>

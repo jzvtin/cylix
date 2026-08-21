@@ -1,5 +1,6 @@
 import { getBaseURL } from "@lib/util/env"
 import { Metadata } from "next"
+import AgeGate from "@modules/common/components/age-gate"
 import MarketingPixels from "@modules/marketing/pixels"
 import "styles/globals.css"
 
@@ -62,6 +63,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
         <main className="relative" style={{fontFamily: "'Plus Jakarta Sans', sans-serif"}}>
           {props.children}
         </main>
+        <AgeGate />
       </body>
     </html>
   )

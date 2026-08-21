@@ -1,8 +1,6 @@
 import { HttpTypes } from "@medusajs/types"
 import { NextRequest, NextResponse } from "next/server"
 
-import { AGE_COOKIE } from "@lib/age-gate"
-
 const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
 const PUBLISHABLE_API_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY
 // Cylix sells to the US only, so the store defaults everyone to the US region.
@@ -99,30 +97,11 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // Search-engine crawlers are exempt from the age gate so they can index the
-  // real storefront. Otherwise every bot is 307-redirected to the noindex
-  // /age-verification page and nothing on the site is ever indexed (the site
-  // simply never appears in Google). Serving the underlying content to search
-  // crawlers is the standard, sanctioned pattern for age-restricted sites;
-  // human visitors still hit the gate below.
-  const ua = request.headers.get("user-agent") || ""
-  const isSearchCrawler =
-    /googlebot|bingbot|slurp|duckduckbot|baiduspider|yandex|applebot|petalbot|google-inspectiontool/i.test(
-      ua
-    )
-
-  // Age / research-use gate. Until the visitor has confirmed 21+ on the
-  // /age-verification page (which sets this httpOnly cookie), send every
-  // storefront page there first. Enforced server-side so it can't be skipped.
-  const ageVerified = request.cookies.get(AGE_COOKIE)?.value === "true"
-  if (!ageVerified && !isSearchCrawler) {
-    const returnTo = request.nextUrl.pathname + (request.nextUrl.search || "")
-    const gateUrl = new URL("/age-verification", request.nextUrl.origin)
-    if (returnTo && returnTo !== "/") {
-      gateUrl.searchParams.set("returnTo", returnTo)
-    }
-    return NextResponse.redirect(gateUrl, 307)
-  }
+  // Age / research-use gate is enforced CLIENT-SIDE (see modules/common/
+  // components/age-gate). The middleware deliberately does NOT redirect by
+  // user-agent: every visitor AND every crawler receives the same server-
+  // rendered storefront HTML, so the site can never diverge by user-agent
+  // (no cloaking risk). Humans get the 21+ overlay on top in the browser.
 
   const cacheIdCookie = request.cookies.get("_medusa_cache_id")
   const cacheId = cacheIdCookie?.value || crypto.randomUUID()

@@ -297,7 +297,7 @@ export default async function Home(props: {
           <p className="mx-auto max-w-[80ch] text-center text-[12px] leading-[1.7] text-ink/45">
             All Cylix Research products are sold strictly for laboratory research
             use only. They are not for human or animal consumption and are not
-            intended to diagnose, treat, cure, or prevent any condition.
+            intended to diagnose, treat, mitigate, or prevent any condition.
           </p>
         </div>
       </section>

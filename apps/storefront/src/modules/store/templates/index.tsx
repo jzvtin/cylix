@@ -56,7 +56,7 @@ const StoreTemplate = ({
         <p className="max-w-2xl text-sm text-[#71717a]">
           All Cylix Research products are sold strictly for laboratory research
           use only. They are not for human or animal consumption and are not
-          intended to diagnose, treat, cure, or prevent any condition. Must be
+          intended to diagnose, treat, mitigate, or prevent any condition. Must be
           21 or older to purchase.
         </p>
       </div>
