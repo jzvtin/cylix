@@ -4,7 +4,7 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 
 export const metadata: Metadata = {
   title: "404",
-  description: "Something went wrong",
+  description: "The page you were looking for could not be found.",
 }
 
 export default function NotFound() {
