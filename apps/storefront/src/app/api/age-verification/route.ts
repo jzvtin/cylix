@@ -6,9 +6,12 @@ export const runtime = "nodejs"
 
 /**
  * Records an age/qualification confirmation. Posted from the plain <form> on
- * /age-verification, so we redirect rather than return JSON. The confirmation is
- * stored in an httpOnly cookie the middleware checks on every request — the gate
- * is enforced server-side and cannot be skipped by disabling JavaScript.
+ * /age-verification (the no-JS fallback), so we redirect rather than return JSON.
+ *
+ * The cookie is deliberately NOT httpOnly: the primary gate is the client overlay
+ * which reads this same cookie via document.cookie. An httpOnly cookie here would
+ * be invisible to (and un-overwritable by) that overlay, making the gate re-show
+ * on every refresh. Keeping it readable keeps both entry paths consistent.
  */
 export async function POST(req: NextRequest) {
   const form = await req.formData().catch(() => null)
@@ -35,7 +38,7 @@ export async function POST(req: NextRequest) {
 
   const res = NextResponse.redirect(new URL(returnTo, origin), 303)
   res.cookies.set(AGE_COOKIE, "true", {
-    httpOnly: true,
+    httpOnly: false,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
     path: "/",
