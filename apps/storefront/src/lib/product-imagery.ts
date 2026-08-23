@@ -22,6 +22,12 @@ const BY_HANDLE: Record<string, string> = {
   tz2: "/products/web/tz.jpg",
   klow: "/products/web/klow.jpg",
   "glow-stack": "/products/web/glow.jpg",
+  "tb-500": "/products/web/tb-500.jpg",
+  "igf-1": "/products/web/igf-1.jpg",
+  "wolverine-blend": "/products/web/wolverine-blend.jpg",
+  semax: "/products/web/semax.jpg",
+  "cjc-ipamorelin": "/products/web/cjc-ipamorelin.jpg",
+  "mots-c": "/products/web/mots-c.jpg",
 }
 
 type ProductLike = {
