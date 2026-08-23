@@ -10,21 +10,9 @@ type ItemsTemplateProps = {
 
 const ItemsTemplate = ({ cart }: ItemsTemplateProps) => {
   const items = cart?.items
-  const count = items?.reduce((n, i) => n + i.quantity, 0) ?? 0
 
   return (
     <div>
-      <div className="mb-5 flex items-baseline justify-between">
-        <h1 className="cx-h text-[clamp(28px,4vw,40px)]" data-testid="cart-heading">
-          Your <em>cart.</em>
-        </h1>
-        {count > 0 && (
-          <span className="font-display text-[13px] font-bold text-ink/50">
-            {count} {count === 1 ? "item" : "items"}
-          </span>
-        )}
-      </div>
-
       <div className="flex flex-col gap-3">
         {items
           ? items
