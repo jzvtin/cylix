@@ -19,9 +19,11 @@ const OrderSummary = ({ order }: OrderSummaryProps) => {
 
   return (
     <div>
-      <h2 className="text-base-semi">Order Summary</h2>
-      <div className="text-small-regular text-ink my-2">
-        <div className="flex items-center justify-between text-base-regular text-ink mb-2">
+      <h2 className="font-display text-[clamp(18px,2.5vw,22px)] font-bold text-ink">
+        Order Summary
+      </h2>
+      <div className="my-2 text-[14px] text-ink/60">
+        <div className="mb-2 flex items-center justify-between font-display text-[13px] font-bold text-ink">
           <span>Subtotal</span>
           <span>{getAmount(order.subtotal)}</span>
         </div>
@@ -47,10 +49,10 @@ const OrderSummary = ({ order }: OrderSummaryProps) => {
             <span>{getAmount(order.tax_total)}</span>
           </div>
         </div>
-        <div className="h-px w-full border-b border-gray-200 border-dashed my-4" />
-        <div className="flex items-center justify-between text-base-regular text-ink mb-2">
+        <div className="my-4 h-px w-full border-b border-ink/[0.08]" />
+        <div className="mb-2 flex items-center justify-between font-display text-[15px] font-bold text-ink">
           <span>Total</span>
-          <span>{getAmount(order.total)}</span>
+          <span className="font-extrabold">{getAmount(order.total)}</span>
         </div>
       </div>
     </div>
