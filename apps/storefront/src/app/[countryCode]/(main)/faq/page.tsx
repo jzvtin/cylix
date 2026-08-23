@@ -26,7 +26,7 @@ const faqs = [
   {
     category: "Shipping & Handling",
     items: [
-      { q: "What are your shipping policies?", a: "Free shipping on all orders. Processing takes 12–24 hours on business days. Domestic delivery is typically 2–5 business days via USPS Priority or UPS Ground. All packages are labeled as laboratory research materials." },
+      { q: "What are your shipping policies?", a: "Free U.S. shipping on orders of $100 or more; orders under $100 are a flat $15. Processing takes 12–24 hours on business days. Domestic delivery is typically 2–5 business days via USPS Priority or UPS Ground. All packages are labeled as laboratory research materials." },
       { q: "What is your return policy?", a: "Given the nature of laboratory reference materials, we cannot accept returns of opened or used materials. Unopened material in its original packaging may be returned within 14 days of delivery — email support@cylixlab.com first for a return authorisation. For materials arriving damaged, incorrect items shipped due to our error, or orders lost in transit, we will issue a replacement or full refund; contact us within 7 days of expected delivery." },
     ]
   },

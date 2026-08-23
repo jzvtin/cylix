@@ -18,7 +18,7 @@ const MARQUEE = [
   "Third-Party Tested",
   "2–3 Day Shipping",
   "Secure Checkout",
-  "Free Shipping",
+  "Free Shipping Over $100",
   "99%+ Purity · COA-Verified",
 ]
 

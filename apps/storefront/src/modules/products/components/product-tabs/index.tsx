@@ -192,8 +192,9 @@ const ShippingInfoTab = () => (
   <div style={{ paddingBottom: "22px", display: "flex", flexDirection: "column", gap: "16px", maxWidth: "36rem" }}>
     <Block heading="Dispatch">
       Orders placed before 2pm EST on a business day are dispatched the same day.
-      Everything else goes out within 12–24 hours. Free shipping on all US orders,
-      with tracking available in your account once the label is created.
+      Everything else goes out within 12–24 hours. Free U.S. shipping on orders
+      $100 and up (a flat $15 applies under $100), with tracking available in
+      your account once the label is created.
     </Block>
     <Block heading="Damaged, incorrect, or lost orders">
       If material arrives damaged, the wrong item was shipped due to our error, or an

@@ -22,7 +22,7 @@ const Inbox = () => (
 )
 
 const STEPS = [
-  { n: "01", Icon: Cart, title: "Order", body: "Choose your compound and check out. Free shipping, always — no threshold, no fine print." },
+  { n: "01", Icon: Cart, title: "Order", body: "Choose your compound and check out. Free U.S. shipping on orders $100 and up." },
   { n: "02", Icon: Vial, title: "Tested lot", body: "Your specific lot is HPLC-tested by Janoshik Analytical for identity and purity before it dispatches." },
   { n: "03", Icon: Inbox, title: "CoA in your inbox", body: "The Certificate of Analysis for your lot lands in your inbox — the document, not a promise." },
 ]

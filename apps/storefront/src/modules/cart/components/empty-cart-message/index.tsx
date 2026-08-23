@@ -14,7 +14,7 @@ const EmptyCartMessage = () => {
       </h2>
       <p className="mt-3 max-w-[38ch] text-[14px] leading-relaxed text-ink/55">
         No reference standards yet. Browse the catalog — every lot ships with a
-        Certificate of Analysis and free U.S. shipping.
+        Certificate of Analysis and free U.S. shipping over $100.
       </p>
       <LocalizedClientLink
         href="/store"

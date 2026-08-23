@@ -45,7 +45,7 @@ const Summary = ({ cart }: SummaryProps) => {
         <svg aria-hidden viewBox="0 0 24 24" className="h-3.5 w-3.5 text-gold-600" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
           <path d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7l7-4z" />
         </svg>
-        Secure checkout · free U.S. shipping
+        Secure checkout · free shipping over $100
       </div>
     </div>
   )

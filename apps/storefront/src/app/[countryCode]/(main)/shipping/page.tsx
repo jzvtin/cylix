@@ -38,8 +38,8 @@ export default function ShippingPage() {
 
       <Section heading="Cost">
         <p>
-          Shipping is free on all US orders. It still appears as a selectable
-          option at checkout; it is simply priced at $0.00.
+          U.S. shipping is free on orders of $100 or more. Orders under $100 are
+          charged a flat $15 shipping fee, shown at checkout before you pay.
         </p>
       </Section>
 

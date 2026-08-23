@@ -35,7 +35,7 @@ const ITEMS = [
   { Icon: Flask, title: "Independent Third-Party Testing", body: "Every batch tested by Janoshik Analytical — not us. Their HPLC results ship with your order." },
   { Icon: Shield, title: "99%+ Purity, Not “Research Grade”", body: "We specify purity by percentage on every CoA — above 99% across our entire catalog, or it doesn't ship." },
   { Icon: Bolt, title: "12–24hr Dispatch", body: "Orders before 2pm EST ship same day. We don't batch orders once a week." },
-  { Icon: Truck, title: "Free Shipping, Always", body: "No threshold. No fine print. The price you see is the price you pay." },
+  { Icon: Truck, title: "Free Shipping Over $100", body: "Orders $100 and up ship free. A flat $15 applies under $100 — shown before you pay." },
   { Icon: Headset, title: "Real Human Support", body: "A real person responds within 12–24 hours — not a bot with canned answers." },
   { Icon: Box, title: "Discreet Packaging", body: "Plain, unmarked packaging labeled as laboratory research materials." },
 ]

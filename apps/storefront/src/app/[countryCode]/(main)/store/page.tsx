@@ -6,7 +6,7 @@ import StoreTemplate from "@modules/store/templates"
 
 export const metadata: Metadata = {
   title: "Research Catalog | Cylix Research",
-  description: "Browse our full catalog of analytical-grade research compounds. 99%+ purity, Certificate of Analysis on every lot. Free shipping on all orders.",
+  description: "Browse our full catalog of analytical-grade research compounds. 99%+ purity, Certificate of Analysis on every lot. Free U.S. shipping on orders $100+.",
 }
 
 type StorePageSearchParams = Record<string, string | string[] | undefined> & {

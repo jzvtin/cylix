@@ -55,7 +55,7 @@ const CartTemplate = ({
               <div className="mt-1 grid grid-cols-1 gap-2 sm:grid-cols-3">
                 {[
                   { icon: "🧪", label: "99%+ purity — COA verified" },
-                  { icon: "🚚", label: "Free U.S. shipping" },
+                  { icon: "🚚", label: "Free U.S. shipping over $100" },
                   { icon: "↩️", label: "Damaged-on-arrival reship" },
                 ].map((t) => (
                   <div

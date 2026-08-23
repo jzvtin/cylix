@@ -93,12 +93,33 @@ export default function CylixCheckout({ cart, shippingOptions }: Props) {
 
   const appliedPromo = cart.promotions?.find((p) => p.code)
 
-  // Free shipping: pick the $0 option when present, else the first option.
-  const freeOption = useMemo(() => {
+  // Shipping: free on orders $100+, otherwise a flat paid option. Pick the $0
+  // option once the subtotal clears the threshold; below it, the paid option.
+  const FREE_SHIP_THRESHOLD = 10000 // $100.00 in minor units (item_subtotal)
+  const qualifiesForFreeShip = (cart.item_subtotal ?? 0) >= FREE_SHIP_THRESHOLD
+  const chosenOption = useMemo(() => {
     const opts = shippingOptions ?? []
-    return opts.find((o) => (o.amount ?? 0) === 0) ?? opts[0] ?? null
-  }, [shippingOptions])
+    const free = opts.find((o) => (o.amount ?? 0) === 0)
+    const paid = opts.find((o) => (o.amount ?? 0) > 0)
+    return qualifiesForFreeShip
+      ? free ?? opts[0] ?? null
+      : paid ?? free ?? opts[0] ?? null
+  }, [shippingOptions, qualifiesForFreeShip])
   const shippingIsFree = (cart.shipping_total ?? 0) === 0
+
+  // Keep the cart's shipping method in sync with the chosen option BEFORE
+  // payment, so the displayed shipping line + grand total are server-accurate
+  // (not just applied at submit). Guarded on the current option id so the
+  // router.refresh() re-pull cannot loop.
+  useEffect(() => {
+    if (!chosenOption) return
+    const current = cart.shipping_methods?.[0]?.shipping_option_id
+    if (current === chosenOption.id) return
+    setShippingMethod({ cartId: cart.id, shippingMethodId: chosenOption.id })
+      .then(() => router.refresh())
+      .catch(() => {})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chosenOption?.id, cart.shipping_methods?.[0]?.shipping_option_id])
 
   // ── Promo apply ──────────────────────────────────────────────────────────
   const handleApplyPromo = async () => {
@@ -172,11 +193,12 @@ export default function CylixCheckout({ cart, shippingOptions }: Props) {
         billing_address: shippingAddress,
       } as HttpTypes.StoreUpdateCart)
 
-      // 2. Ensure a shipping method exists (free option).
-      if ((cart.shipping_methods?.length ?? 0) === 0 && freeOption) {
+      // 2. Ensure the correct shipping method is set (free at $100+, else paid).
+      const currentOpt = cart.shipping_methods?.[0]?.shipping_option_id
+      if (chosenOption && currentOpt !== chosenOption.id) {
         await setShippingMethod({
           cartId: cart.id,
-          shippingMethodId: freeOption.id,
+          shippingMethodId: chosenOption.id,
         })
       }
 
@@ -580,7 +602,7 @@ export default function CylixCheckout({ cart, shippingOptions }: Props) {
                   fontWeight: 600,
                 }}
               >
-                Free shipping · Fast dispatch · COA-verified purity
+                Free shipping over $100 · Fast dispatch · COA-verified purity
               </p>
             </div>
           </div>
@@ -839,7 +861,7 @@ export default function CylixCheckout({ cart, shippingOptions }: Props) {
                 >
                   {[
                     "🧪 99%+ Purity — COA Verified",
-                    "🚚 Free shipping",
+                    "🚚 Free shipping over $100",
                     "↩️ Damaged-on-arrival reship",
                   ].map((t) => (
                     <div
