@@ -52,6 +52,35 @@ export async function retrieveCart(cartId?: string, fields?: string) {
     .catch(() => null)
 }
 
+/**
+ * Like retrieveCart but bypasses the cache (cache: "no-store"). Use right after
+ * a server-side cart mutation (e.g. setShippingMethod) when you need the updated
+ * totals in the SAME request — revalidateTag only refreshes the tagged cache on
+ * the NEXT request, so a cached read here would return pre-mutation values.
+ */
+export async function retrieveCartFresh(cartId?: string, fields?: string) {
+  const id = cartId || (await getCartId())
+  if (!id) {
+    return null
+  }
+  fields ??=
+    "*items, *region, *items.product, *items.variant, *items.thumbnail, *items.metadata, +items.total, *promotions, +shipping_methods.name"
+
+  const headers = {
+    ...(await getAuthHeaders()),
+  }
+
+  return await sdk.client
+    .fetch<HttpTypes.StoreCartResponse>(`/store/carts/${id}`, {
+      method: "GET",
+      query: { fields },
+      headers,
+      cache: "no-store",
+    })
+    .then(({ cart }: { cart: HttpTypes.StoreCart }) => cart)
+    .catch(() => null)
+}
+
 export async function getOrSetCart(countryCode: string) {
   const region = await getRegion(countryCode)
 
