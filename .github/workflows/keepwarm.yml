@@ -1,0 +1,29 @@
+name: Keep backend warm
+
+# Pings the Medusa backend on a schedule so the Railway service never idles
+# long enough to cold-start (the source of the intermittent "Bad Gateway" 502
+# seen at the checkout payment step). Hits /health (web process) and a store
+# endpoint (warms the DB connection pool).
+
+on:
+  schedule:
+    - cron: "*/5 * * * *" # every 5 minutes (GitHub may delay under load)
+  workflow_dispatch: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Warm web process + DB pool
+        run: |
+          BASE="https://dynamic-liberation-production-c2cb.up.railway.app"
+          PK="pk_028626cefc0dc7b088a2589dbea460bf82b5d27a342d6c00ac7fcd71c21b1ba5"
+          h=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$BASE/health")
+          s=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 \
+            -H "x-publishable-api-key: $PK" "$BASE/store/products?limit=1")
+          echo "health=$h store=$s"
+          # Fail the run only if both endpoints are down (so a single blip is tolerated).
+          if [ "$h" != "200" ] && [ "$s" != "200" ]; then
+            echo "backend appears down"; exit 1
+          fi
