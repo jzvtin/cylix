@@ -7,7 +7,7 @@ import "styles/globals.css"
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
   title: {
-    default: "Cylix Research — Analytical-Grade Research Peptides",
+    default: "Cylix Research — Analytical-Grade Research Compounds",
     template: "%s | Cylix Research",
   },
   description:
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Cylix Research",
-    title: "Cylix Research — Analytical-Grade Research Peptides",
+    title: "Cylix Research — Analytical-Grade Research Compounds",
     description:
       "Third-party tested reference standards with a Certificate of Analysis on every lot. For in-vitro laboratory research only.",
     // Social share image comes from the file-based src/app/opengraph-image.jpg
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cylix Research — Analytical-Grade Research Peptides",
+    title: "Cylix Research — Analytical-Grade Research Compounds",
     description:
       "Third-party tested reference standards with a Certificate of Analysis on every lot. For in-vitro laboratory research only.",
     // Share image comes from the file-based src/app/twitter-image.jpg.

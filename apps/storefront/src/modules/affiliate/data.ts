@@ -369,7 +369,7 @@ function buildLeaderboard(
   }
   const field: LeaderboardRow[] = [
     { rank: 1, handle: "researchlab_ada", orders: 42, commission: 1260 },
-    { rank: 2, handle: "peptide.notes", orders: 31, commission: 930 },
+    { rank: 2, handle: "compound.notes", orders: 31, commission: 930 },
     { rank: 3, handle: "the_bench_files", orders: 24, commission: 720 },
   ]
   const merged = [...field, you]

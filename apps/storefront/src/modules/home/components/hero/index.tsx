@@ -53,13 +53,13 @@ const Hero = () => {
           <Reveal>
             <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-gold-500/35 bg-gold-50 px-4 py-[7px] font-display text-[11px] font-extrabold uppercase tracking-[1.6px] text-gold-700">
               <span className="inline-block h-[6px] w-[6px] rounded-full bg-gold-500" />
-              Research-Grade Peptides
+              Research-Grade Compounds
             </div>
           </Reveal>
 
           <Reveal delay={80}>
             <h1 className="mb-6 max-w-[13ch] font-display text-[clamp(44px,8vw,92px)] font-black leading-[0.94] tracking-[-2.5px] text-ink">
-              Peptides you
+              Compounds you
               <br />
               can <span className="text-gold-500">verify.</span>
             </h1>
@@ -120,7 +120,7 @@ const Hero = () => {
           />
           <Image
             src={HERO_IMAGE}
-            alt="Cylix Research peptide vials"
+            alt="Cylix Research compound vials"
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 48vw"

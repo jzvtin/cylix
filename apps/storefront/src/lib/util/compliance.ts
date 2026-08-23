@@ -22,6 +22,17 @@ const REPLACEMENTS: Array<[RegExp, string]> = [
   [/gip\s*\/\s*glp-?1\s*/gi, ""],
   [/glp-?1/gi, "receptor"],
   [/\bglp\b/gi, "receptor"],
+  // Category-language scrub: drop "metabolic" and "tissue" wholesale (with any
+  // trailing hyphen/space so "metabolic-receptor" → "receptor" and
+  // "tissue-repair" → "repair"), and swap the flagged word "peptide" for the
+  // neutral "compound". Case-specific entries preserve the original casing.
+  [/metabolic[-\s]?/gi, ""],
+  [/tissues?[-\s]?/gi, ""],
+  [/Peptides/g, "Compounds"],
+  [/peptides/g, "compounds"],
+  [/Peptide/g, "Compound"],
+  [/peptide/g, "compound"],
+  [/PEPTIDE/g, "COMPOUND"],
 ]
 
 export function sanitizeCompliance<T extends string | null | undefined>(

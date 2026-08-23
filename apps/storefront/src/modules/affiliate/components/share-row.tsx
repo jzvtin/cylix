@@ -51,7 +51,7 @@ const TARGETS: ShareTarget[] = [
  */
 export default function ShareRow({ url, message }: ShareRowProps) {
   const msg =
-    message ?? "Research-grade peptides with a Certificate of Analysis on every batch."
+    message ?? "Research-grade compounds with a Certificate of Analysis on every batch."
 
   const nativeShare = async () => {
     if (typeof navigator !== "undefined" && navigator.share) {

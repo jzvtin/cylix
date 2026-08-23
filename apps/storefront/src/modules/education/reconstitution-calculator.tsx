@@ -5,7 +5,7 @@ import React, { useMemo, useState } from "react"
 /**
  * Reconstitution math helper — NEUTRAL LABORATORY MATH ONLY.
  *
- * Given a peptide amount (mg), a bacteriostatic-water volume (mL) and a desired
+ * Given a compound amount (mg), a bacteriostatic-water volume (mL) and a desired
  * draw, it reports the resulting concentration and the corresponding mark on a
  * standard 100-unit ("U-100") insulin syringe. This is a units→mL conversion,
  * NOT a dosing recommendation. Outputs are labelled "for reconstitution math
@@ -99,7 +99,7 @@ const ReconstitutionCalculator = ({
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="rc-mg" className={labelClass}>
-            Peptide amount (mg)
+            Compound amount (mg)
           </label>
           <input
             id="rc-mg"
