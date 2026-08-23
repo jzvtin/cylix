@@ -132,6 +132,30 @@ export default async function Home(props: {
             </Reveal>
           </div>
         </div>
+
+        {/* Floating trust chips over the product photo (desktop) — depth + proof */}
+        <div className="pointer-events-none absolute right-[clamp(24px,4vw,56px)] top-[24%] z-10 hidden lg:block">
+          <Reveal delay={220}>
+            <div className="flex items-center gap-2.5 rounded-2xl border border-white/10 bg-ink/80 px-3.5 py-2.5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.9)] backdrop-blur-md">
+              <span className="text-[15px]" aria-hidden>🔬</span>
+              <div className="leading-tight">
+                <div className="font-display text-[9.5px] font-extrabold uppercase tracking-[1.2px] text-gold-500">Every lot</div>
+                <div className="font-display text-[13px] font-bold text-white">Signed COA</div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+        <div className="pointer-events-none absolute bottom-[16%] right-[clamp(24px,7vw,110px)] z-10 hidden lg:block">
+          <Reveal delay={320}>
+            <div className="flex items-center gap-2.5 rounded-2xl border border-white/10 bg-ink/80 px-3.5 py-2.5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.9)] backdrop-blur-md">
+              <span className="text-[15px]" aria-hidden>🧪</span>
+              <div className="leading-tight">
+                <div className="font-display text-[9.5px] font-extrabold uppercase tracking-[1.2px] text-gold-500">HPLC-tested</div>
+                <div className="font-display text-[13px] font-bold text-white">99%+ purity</div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
       </section>
 
       {/* ── b. TRUST STRIP ────────────────────────────────────── */}
