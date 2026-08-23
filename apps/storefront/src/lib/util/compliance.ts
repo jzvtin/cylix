@@ -27,6 +27,7 @@ const REPLACEMENTS: Array<[RegExp, string]> = [
   // "tissue-repair" → "repair"), and swap the flagged word "peptide" for the
   // neutral "compound". Case-specific entries preserve the original casing.
   [/metabolic[-\s]?/gi, ""],
+  [/metabolism/gi, "activity"],
   [/tissues?[-\s]?/gi, ""],
   [/Peptides/g, "Compounds"],
   [/peptides/g, "compounds"],

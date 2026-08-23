@@ -304,7 +304,7 @@ export default function CylixCheckout({ cart, shippingOptions }: Props) {
                 color: INK,
               }}
             >
-              CYLIX<span style={{ color: GOLD }}> LAB</span>
+              CYLIX<span style={{ color: GOLD }}> RESEARCH</span>
             </span>
           </Link>
           <span
@@ -606,7 +606,7 @@ export default function CylixCheckout({ cart, shippingOptions }: Props) {
                 <div style={{ fontSize: "36px", marginBottom: "12px" }}>🧪</div>
                 <p style={{ fontSize: "14px", marginBottom: "14px" }}>Your cart is empty.</p>
                 <Link
-                  href="/us"
+                  href="/us/store"
                   style={{
                     display: "inline-block",
                     padding: "10px 20px",

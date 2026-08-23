@@ -95,7 +95,7 @@ export const COMPOUNDS: CompoundReference[] = [
     storage:
       "Store lyophilized at −20 °C, desiccated and light-protected. Reconstituted solution is unstable at room temperature — hold cold and use promptly.",
     researchSummary:
-      "NAD+ (nicotinamide adenine dinucleotide) is a fundamental redox coenzyme supplied as a reference standard for cellular-metabolism and enzymology research. In vitro it is central to electron-transfer chemistry and serves as a co-substrate in a broad range of oxidoreductase assays. It is offered exclusively as a laboratory reference material.",
+      "NAD+ (nicotinamide adenine dinucleotide) is a fundamental redox coenzyme supplied as a reference standard for cellular-energy and enzymology research. In vitro it is central to electron-transfer chemistry and serves as a co-substrate in a broad range of oxidoreductase assays. It is offered exclusively as a laboratory reference material.",
     image: "nad",
     reconstitution: { vialMg: 100, bacWaterMl: 5 },
   },
