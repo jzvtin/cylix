@@ -41,65 +41,86 @@ export default function CategoryTemplate({
 
   return (
     <div
-      className="flex flex-col small:flex-row small:items-start py-6 content-container"
+      className="mx-auto max-w-[1200px] px-4 pb-14 pt-6 md:px-8 md:pb-20 md:pt-10"
       data-testid="category-container"
     >
-      <RefinementList
-        sortBy={sort}
-        data-testid="sort-by-container"
-        hideOptionsPicker
-      />
-      <div className="w-full">
-        <div className="flex flex-row mb-8 text-2xl-semi gap-4">
-          {parents &&
-            parents.map((parent) => (
-              <span key={parent.id} className="text-ink/60">
-                <LocalizedClientLink
-                  className="mr-4 hover:text-black"
-                  href={`/categories/${parent.handle}`}
-                  data-testid="sort-by-link"
-                >
-                  {parent.name}
-                </LocalizedClientLink>
-                /
+      {/* HEADER — origin-labs light catalog header */}
+      <div className="mb-6 flex flex-col items-start justify-between gap-5 min-[480px]:flex-row min-[480px]:items-end md:mb-8">
+        <div className="flex flex-col gap-2">
+          <p className="font-display text-xs font-semibold uppercase tracking-widest text-gold-700">
+            {parents && parents.length > 0 ? (
+              <span className="flex flex-wrap items-center gap-x-2">
+                {parents.map((parent) => (
+                  <span key={parent.id} className="flex items-center gap-x-2">
+                    <LocalizedClientLink
+                      className="transition-colors hover:text-gold-600"
+                      href={`/categories/${parent.handle}`}
+                      data-testid="sort-by-link"
+                    >
+                      {parent.name}
+                    </LocalizedClientLink>
+                    <span className="text-ink/30">/</span>
+                  </span>
+                ))}
               </span>
-            ))}
-          <h1 data-testid="category-page-title">{category.name}</h1>
+            ) : (
+              "Category"
+            )}
+          </p>
+          <h1
+            className="text-2xl font-extrabold leading-[1.2] tracking-tight text-[#0a0a0a] md:text-3xl"
+            data-testid="category-page-title"
+          >
+            {category.name}
+          </h1>
+          {category.description ? (
+            <p className="max-w-2xl text-xs text-[#71717a]">
+              {category.description}
+            </p>
+          ) : (
+            <p className="text-xs text-[#71717a]">
+              Lyophilized research compounds with per-batch Certificates of
+              Analysis, for in-vitro laboratory use only.
+            </p>
+          )}
         </div>
-        {category.description && (
-          <div className="mb-8 text-base-regular">
-            <p>{category.description}</p>
-          </div>
-        )}
-        {category.category_children && (
-          <div className="mb-8 text-base-large">
-            <ul className="grid grid-cols-1 gap-2">
-              {category.category_children?.map((c) => (
-                <li key={c.id}>
-                  <InteractiveLink href={`/categories/${c.handle}`}>
-                    {c.name}
-                  </InteractiveLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-        <Suspense
-          fallback={
-            <SkeletonProductGrid
-              numberOfProducts={category.products?.length ?? 8}
-            />
-          }
-        >
-          <PaginatedProducts
+        {/* Sort control */}
+        <div className="w-full min-[480px]:w-auto">
+          <RefinementList
             sortBy={sort}
-            page={pageNumber}
-            categoryId={category.id}
-            countryCode={countryCode}
-            optionValueIds={optionValueIds}
+            data-testid="sort-by-container"
+            hideOptionsPicker
           />
-        </Suspense>
+        </div>
       </div>
+
+      {/* SUBCATEGORIES */}
+      {category.category_children && category.category_children.length > 0 && (
+        <div className="mb-8 flex flex-wrap gap-x-6 gap-y-2 border-b border-ink/[0.08] pb-6">
+          {category.category_children?.map((c) => (
+            <InteractiveLink key={c.id} href={`/categories/${c.handle}`}>
+              {c.name}
+            </InteractiveLink>
+          ))}
+        </div>
+      )}
+
+      {/* GRID */}
+      <Suspense
+        fallback={
+          <SkeletonProductGrid
+            numberOfProducts={category.products?.length ?? 8}
+          />
+        }
+      >
+        <PaginatedProducts
+          sortBy={sort}
+          page={pageNumber}
+          categoryId={category.id}
+          countryCode={countryCode}
+          optionValueIds={optionValueIds}
+        />
+      </Suspense>
     </div>
   )
 }

@@ -82,7 +82,7 @@ const Hero = () => {
                 <span aria-hidden>→</span>
               </LocalizedClientLink>
               <LocalizedClientLink
-                href="/store"
+                href="/coa"
                 className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-white px-8 py-[15px] font-display text-[15px] font-bold text-ink transition-colors duration-200 hover:border-gold-500 hover:text-gold-700"
               >
                 See a live CoA
@@ -144,6 +144,39 @@ const Hero = () => {
                 "linear-gradient(to top, rgba(13,13,13,0.28) 0%, rgba(13,13,13,0) 100%)",
             }}
           />
+
+          {/* Floating trust chips — depth + proof over the product photo */}
+          <Reveal delay={200}>
+            <div className="absolute left-[clamp(16px,3vw,28px)] top-[clamp(16px,3vw,28px)] z-[4] flex items-center gap-2.5 rounded-2xl border border-white/10 bg-ink/80 px-3.5 py-2.5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.9)] backdrop-blur-md">
+              <span className="text-[15px]" aria-hidden>
+                🔬
+              </span>
+              <div className="leading-tight">
+                <div className="font-display text-[9.5px] font-extrabold uppercase tracking-[1.2px] text-gold-500">
+                  Every lot
+                </div>
+                <div className="font-display text-[13px] font-bold text-white">
+                  Signed COA
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={300}>
+            <div className="absolute bottom-[clamp(16px,3vw,28px)] right-[clamp(16px,3vw,28px)] z-[4] flex items-center gap-2.5 rounded-2xl border border-white/10 bg-ink/80 px-3.5 py-2.5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.9)] backdrop-blur-md">
+              <span className="text-[15px]" aria-hidden>
+                🧪
+              </span>
+              <div className="leading-tight">
+                <div className="font-display text-[9.5px] font-extrabold uppercase tracking-[1.2px] text-gold-500">
+                  HPLC-tested
+                </div>
+                <div className="font-display text-[13px] font-bold text-white">
+                  99%+ purity
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </div>
 

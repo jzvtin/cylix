@@ -25,7 +25,7 @@ const LineItemUnitPrice = ({
     <div className="flex flex-col text-ink/50 justify-center h-full">
       {hasReducedPrice && (
         <>
-          <p>
+          <p className="text-[12px]">
             {style === "default" && (
               <span className="text-ink/50">Original: </span>
             )}
@@ -40,12 +40,12 @@ const LineItemUnitPrice = ({
             </span>
           </p>
           {style === "default" && (
-            <span className="text-gold-600">-{percentage_diff}%</span>
+            <span className="text-[12px] text-gold-600">-{percentage_diff}%</span>
           )}
         </>
       )}
       <span
-        className={clx("text-base-regular", {
+        className={clx("font-sans text-[12px] font-medium", {
           "text-gold-600": hasReducedPrice,
         })}
         data-testid="product-unit-price"

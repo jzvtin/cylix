@@ -24,12 +24,12 @@ const LineItemPrice = ({
       <div className="text-left">
         {hasReducedPrice && (
           <>
-            <p>
+            <p className="text-[12px]">
               {style === "default" && (
                 <span className="text-ink/60">Original: </span>
               )}
               <span
-                className="line-through text-ink/50"
+                className="line-through text-ink/45"
                 data-testid="product-original-price"
               >
                 {convertToLocale({
@@ -39,14 +39,14 @@ const LineItemPrice = ({
               </span>
             </p>
             {style === "default" && (
-              <span className="text-gold-600">
+              <span className="text-[12px] text-gold-600">
                 -{getPercentageDiff(originalPrice, currentPrice || 0)}%
               </span>
             )}
           </>
         )}
         <span
-          className={clx("text-base-regular", {
+          className={clx("font-display text-[15px] font-bold text-ink", {
             "text-gold-600": hasReducedPrice,
           })}
           data-testid="product-price"

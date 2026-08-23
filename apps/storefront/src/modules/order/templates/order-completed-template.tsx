@@ -1,6 +1,3 @@
-import { Heading } from "@modules/common/components/ui"
-import { cookies as nextCookies } from "next/headers"
-
 import CartTotals from "@modules/common/components/cart-totals"
 import Help from "@modules/order/components/help"
 import Items from "@modules/order/components/items"
@@ -17,75 +14,83 @@ export default async function OrderCompletedTemplate({
   order,
 }: OrderCompletedTemplateProps) {
   return (
-    <div className="py-6 min-h-[calc(100vh-64px)]">
-      <div className="content-container flex flex-col justify-center items-center gap-y-10 max-w-4xl h-full w-full">
+    <div className="min-h-[calc(100vh-64px)] px-[clamp(16px,4vw,32px)] py-[clamp(28px,5vw,56px)]">
+      <div className="mx-auto w-full max-w-[720px]">
         <div
-          className="flex flex-col gap-4 max-w-4xl h-full bg-white w-full py-10"
+          className="flex flex-col gap-6"
           data-testid="order-complete-container"
         >
-          <Heading
-            level="h1"
-            className="flex flex-col gap-y-3 text-ink text-3xl mb-4"
-            style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800 }}
-          >
-            <span>Thank you!</span>
-            <span>Your order was placed successfully.</span>
-          </Heading>
+          {/* Confirmation header */}
+          <div className="flex flex-col gap-4">
+            <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-gold-500/30 bg-gold-50 text-gold-700">
+              <svg
+                aria-hidden
+                viewBox="0 0 24 24"
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+            </span>
+            <h1 className="cx-h text-[clamp(26px,4vw,38px)]">
+              Thank you<em>.</em>
+            </h1>
+            <p className="text-[15px] leading-relaxed text-ink/60">
+              Your order was placed successfully.
+            </p>
+          </div>
+
           <OrderDetails order={order} />
 
           <div
-            className="rounded-xl p-6 my-2"
-            style={{ background: "#F9F7F4", border: "1px solid #E8E4DE" }}
+            className="rounded-2xl border border-ink/[0.08] bg-sand p-6"
             data-testid="what-happens-next"
           >
-            <p
-              className="text-xs uppercase mb-3"
-              style={{
-                fontFamily: "'Poppins', sans-serif",
-                fontWeight: 800,
-                letterSpacing: "1.2px",
-                color: "#C9963A",
-              }}
-            >
-              What happens next
-            </p>
-            <p className="text-sm mb-4" style={{ color: "#555" }}>
+            <p className="cx-eyebrow mb-3 text-gold-700">What happens next</p>
+            <p className="mb-4 text-[14px] text-ink/60">
               Your order number is{" "}
-              <span style={{ fontWeight: 700, color: "#111" }}>
+              <span className="font-display font-bold text-ink">
                 #{order.display_id}
               </span>
               . Keep it handy — quote it in any email about this order.
             </p>
-            <ol
-              className="text-sm flex flex-col gap-y-2"
-              style={{ color: "#555", lineHeight: 1.6 }}
-            >
+            <ol className="flex flex-col gap-y-2 text-[14px] leading-relaxed text-ink/60">
               <li>
-                <strong style={{ color: "#111" }}>1. Confirmation.</strong> Save
-                your order number above — that&apos;s your confirmation of this
-                order.
+                <strong className="font-display font-bold text-ink">
+                  1. Confirmation.
+                </strong>{" "}
+                Save your order number above — that&apos;s your confirmation of
+                this order.
               </li>
               <li>
-                <strong style={{ color: "#111" }}>2. Processing.</strong> Orders
-                are dispatched within 12–24 hours.
+                <strong className="font-display font-bold text-ink">
+                  2. Processing.
+                </strong>{" "}
+                Orders are dispatched within 12–24 hours.
               </li>
               <li>
-                <strong style={{ color: "#111" }}>3. Shipping.</strong> For a
-                tracking update, email{" "}
+                <strong className="font-display font-bold text-ink">
+                  3. Shipping.
+                </strong>{" "}
+                For a tracking update, email{" "}
                 <a
                   href="mailto:support@cylixlab.com"
-                  style={{ color: "#C9963A", fontWeight: 700 }}
+                  className="font-semibold text-gold-700 underline-offset-2 hover:underline"
                 >
                   support@cylixlab.com
                 </a>{" "}
                 with your order number.
               </li>
             </ol>
-            <p className="text-sm mt-4" style={{ color: "#555" }}>
+            <p className="mt-4 text-[14px] text-ink/60">
               Questions? Email{" "}
               <a
                 href="mailto:support@cylixlab.com"
-                style={{ color: "#C9963A", fontWeight: 700 }}
+                className="font-semibold text-gold-700 underline-offset-2 hover:underline"
               >
                 support@cylixlab.com
               </a>
@@ -93,9 +98,7 @@ export default async function OrderCompletedTemplate({
             </p>
           </div>
 
-          <Heading level="h2" className="flex flex-row text-3xl-regular">
-            Summary
-          </Heading>
+          <h2 className="cx-h text-[26px]">Summary</h2>
           <Items order={order} />
           <CartTotals totals={order} />
           <ShippingDetails order={order} />

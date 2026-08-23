@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 
 export default function VerifyAccountPage() {
   return (
-    <div className="w-full flex justify-center px-8 py-12">
+    <div className="flex w-full justify-center px-[clamp(16px,4vw,32px)] py-[clamp(28px,5vw,56px)]">
       <Suspense
         fallback={
-          <p className="text-base-regular text-ink">
+          <p className="text-[15px] leading-relaxed text-ink/60">
             Verifying your email...
           </p>
         }
