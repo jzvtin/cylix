@@ -19,9 +19,9 @@ export default function PrivacyPage() {
     >
       <Section heading="1. Who controls your data">
         <p>
-          {COMPANY.legalName}, of {COMPANY.address}, is the controller of the
-          personal information described here. For any privacy question or
-          request, contact {COMPANY.privacyEmail}.
+          {COMPANY.legalName} is the controller of the personal information
+          described here. For any privacy question or request, contact{" "}
+          {COMPANY.privacyEmail}.
         </p>
       </Section>
 

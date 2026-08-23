@@ -20,8 +20,8 @@ export default function TermsPage() {
       <Section heading="1. Who we are">
         <p>
           This site is operated by {COMPANY.legalName} (&ldquo;
-          {COMPANY.brand}&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;), registered
-          at {COMPANY.address}. You can reach us at {COMPANY.supportEmail}.
+          {COMPANY.brand}&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;), operating in{" "}
+          {COMPANY.address}. You can reach us at {COMPANY.supportEmail}.
         </p>
         <p>
           By accessing this site or placing an order you agree to these terms. If
@@ -180,17 +180,16 @@ export default function TermsPage() {
 
       <Section heading="12. Governing law">
         <p>
-          These terms are governed by the laws of the State of{" "}
-          {COMPANY.governingState} and the federal laws of the United States, and
-          the courts of {COMPANY.governingState} have exclusive jurisdiction over
-          any dispute.
+          These terms are governed by, and construed in accordance with, the
+          laws of {COMPANY.governingState}, together with the applicable federal
+          laws of the United States. You agree to the exclusive jurisdiction of
+          the competent courts for any dispute arising under them.
         </p>
       </Section>
 
       <Section heading="13. Contact">
         <p>
-          Questions about these terms: {COMPANY.supportEmail}, or write to us at{" "}
-          {COMPANY.address}.
+          Questions about these terms? Contact us at {COMPANY.supportEmail}.
         </p>
       </Section>
     </LegalPage>

@@ -9,12 +9,15 @@ export const COMPANY = {
   brand: "Cylix Research",
 
   /**
-   * INTERIM honest defaults so the legal pages don't show raw TODO tokens.
-   * REPLACE before real launch with the registered details, and have a lawyer
-   * review the policy pages:
+   * INTERIM honest defaults so the legal pages read cleanly (and truthfully)
+   * before the registered details are available. REPLACE before real launch,
+   * and have a lawyer review the policy pages:
    *  - legalName: the registered entity, e.g. "Cylix Research LLC"
-   *  - address: the registered business address for legal notices
-   *  - governingState: the specific US state whose law governs the Terms
+   *  - address: the registered business address for legal notices, e.g.
+   *    "Wilmington, Delaware, USA" (renders as "operating in <address>")
+   *  - governingState: the governing-law phrase, e.g. "the State of Delaware"
+   *    (renders as "the laws of <governingState>"); the generic default below
+   *    reads as "the laws of the United States" until a state is set.
    */
   legalName: "Cylix Research",
   address: "the United States",
