@@ -57,8 +57,9 @@ const SupportForm = () => {
     <form onSubmit={handleSubmit}>
       <div className="mb-3 grid grid-cols-2 gap-3">
         <div>
-          <label className={labelCls}>First Name</label>
+          <label htmlFor="sf-first" className={labelCls}>First Name</label>
           <input
+            id="sf-first"
             name="first_name"
             type="text"
             placeholder="Jane"
@@ -66,8 +67,9 @@ const SupportForm = () => {
           />
         </div>
         <div>
-          <label className={labelCls}>Last Name</label>
+          <label htmlFor="sf-last" className={labelCls}>Last Name</label>
           <input
+            id="sf-last"
             name="last_name"
             type="text"
             placeholder="Smith"
@@ -76,8 +78,9 @@ const SupportForm = () => {
         </div>
       </div>
       <div className="mb-3">
-        <label className={labelCls}>Email</label>
+        <label htmlFor="sf-email" className={labelCls}>Email</label>
         <input
+          id="sf-email"
           name="email"
           type="email"
           placeholder="you@example.com"
@@ -86,8 +89,9 @@ const SupportForm = () => {
         />
       </div>
       <div className="mb-3">
-        <label className={labelCls}>Subject</label>
+        <label htmlFor="sf-subject" className={labelCls}>Subject</label>
         <select
+          id="sf-subject"
           name="subject"
           className={`${fieldCls} appearance-none`}
           defaultValue={SUBJECTS[0]}
@@ -98,8 +102,9 @@ const SupportForm = () => {
         </select>
       </div>
       <div className="mb-4">
-        <label className={labelCls}>Message</label>
+        <label htmlFor="sf-message" className={labelCls}>Message</label>
         <textarea
+          id="sf-message"
           name="message"
           placeholder="Describe your inquiry…"
           required
