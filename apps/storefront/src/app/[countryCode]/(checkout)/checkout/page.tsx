@@ -33,7 +33,12 @@ export default async function Checkout() {
   const current = cart.shipping_methods?.[0]?.shipping_option_id
 
   if (chosen && current !== chosen.id) {
-    await setShippingMethod({ cartId: cart.id, shippingMethodId: chosen.id })
+    await setShippingMethod({
+      cartId: cart.id,
+      shippingMethodId: chosen.id,
+      // render-safe: no revalidateTag here; we re-read with retrieveCartFresh below
+      skipRevalidate: true,
+    })
     const fresh = await retrieveCartFresh(cart.id)
     if (fresh) {
       cart = fresh

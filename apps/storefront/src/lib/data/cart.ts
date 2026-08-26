@@ -249,9 +249,16 @@ export async function deleteLineItem(lineId: string) {
 export async function setShippingMethod({
   cartId,
   shippingMethodId,
+  skipRevalidate = false,
 }: {
   cartId: string
   shippingMethodId: string
+  // When called during a Server Component render (e.g. the checkout page picks
+  // the shipping method server-side for a correct first paint), revalidateTag()
+  // is illegal — Next throws "revalidateTag ... used during render". The caller
+  // that runs in render re-reads the cart with a no-store fetch, so it does not
+  // need the tag revalidation; pass skipRevalidate to stay render-safe.
+  skipRevalidate?: boolean
 }) {
   const headers = {
     ...(await getAuthHeaders()),
@@ -260,6 +267,9 @@ export async function setShippingMethod({
   return sdk.store.cart
     .addShippingMethod(cartId, { option_id: shippingMethodId }, {}, headers)
     .then(async () => {
+      if (skipRevalidate) {
+        return
+      }
       const cartCacheTag = await getCacheTag("carts")
       revalidateTag(cartCacheTag)
     })
