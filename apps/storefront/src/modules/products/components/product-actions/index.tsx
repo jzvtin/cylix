@@ -156,7 +156,11 @@ export default function ProductActions({
       ?.scrollIntoView({ behavior: "smooth", block: "start" })
   }
 
-  const outOfStock = !inStock || !isValidVariant
+  // On multi-variant products, no size is chosen on load. Treat that as
+  // "needs a selection" — NOT out of stock — so the button doesn't read as
+  // broken before the customer picks a size.
+  const needsSelection = (product.variants?.length ?? 0) > 1 && !selectedVariant
+  const outOfStock = !needsSelection && (!inStock || !isValidVariant)
 
   return (
     <>
@@ -228,7 +232,7 @@ export default function ProductActions({
           <button
             type="button"
             onClick={handleAddToCart}
-            disabled={outOfStock || !selectedVariant || !!disabled || isAdding}
+            disabled={outOfStock || needsSelection || !selectedVariant || !!disabled || isAdding}
             data-testid="add-product-button"
             className="inline-flex h-[54px] items-center justify-center gap-2 rounded-full bg-ink px-6 font-display text-[15px] font-bold text-sand shadow-[0_18px_36px_-16px_rgba(13,13,13,0.6)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#1a1a1a] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 motion-reduce:hover:translate-y-0"
           >
@@ -243,6 +247,8 @@ export default function ProductActions({
               ? "Adding…"
               : justAdded
               ? "Added ✓"
+              : needsSelection
+              ? "Select a size"
               : outOfStock
               ? "Out of stock"
               : "Add to cart"}
