@@ -231,7 +231,7 @@ const Payment = ({
                     }}
                     className="px-4 py-2 rounded-md text-sm transition-colors"
                     style={{
-                      fontFamily: "'Poppins', sans-serif",
+                      fontFamily: "var(--font-poppins), sans-serif",
                       fontWeight: 700,
                       background: tab === key ? "#111" : "transparent",
                       color: tab === key ? "#C9963A" : "#7A7370",

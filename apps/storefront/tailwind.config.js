@@ -89,7 +89,7 @@ module.exports = {
       fontFamily: {
         // Headings / brand — geometric display (Poppins, aminoclub-style)
         display: [
-          "Poppins",
+          "var(--font-poppins)",
           "-apple-system",
           "BlinkMacSystemFont",
           "Segoe UI",
@@ -100,7 +100,7 @@ module.exports = {
         ],
         // Body — humanist sans
         sans: [
-          '"Plus Jakarta Sans"',
+          "var(--font-jakarta)",
           "-apple-system",
           "BlinkMacSystemFont",
           "Segoe UI",

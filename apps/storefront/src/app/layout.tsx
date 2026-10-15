@@ -2,7 +2,29 @@ import { getBaseURL } from "@lib/util/env"
 import { Metadata } from "next"
 import AgeGate from "@modules/common/components/age-gate"
 import MarketingPixels from "@modules/marketing/pixels"
+import { Anek_Latin, Poppins, Plus_Jakarta_Sans } from "next/font/google"
 import "styles/globals.css"
+
+// Self-hosted via next/font: no render-blocking Google Fonts stylesheet, no
+// cross-origin handshake, size-adjusted fallbacks (no layout shift on swap).
+const anek = Anek_Latin({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-anek",
+})
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  variable: "--font-poppins",
+})
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-jakarta",
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
@@ -52,15 +74,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout(props: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-mode="light">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Anek+Latin:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-      </head>
+    <html
+      lang="en"
+      data-mode="light"
+      className={`${anek.variable} ${poppins.variable} ${jakarta.variable}`}
+    >
       <body>
         <MarketingPixels />
-        <main className="relative" style={{fontFamily: "'Plus Jakarta Sans', sans-serif"}}>
+        <main className="relative" style={{fontFamily: "var(--font-jakarta), sans-serif"}}>
           {props.children}
         </main>
         <AgeGate />

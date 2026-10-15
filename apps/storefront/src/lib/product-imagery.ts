@@ -28,6 +28,8 @@ const BY_HANDLE: Record<string, string> = {
   semax: "/products/web/semax.jpg",
   "cjc-ipamorelin": "/products/web/cjc-ipamorelin.jpg",
   "mots-c": "/products/web/mots-c.jpg",
+  "mt-1": "/products/web/mt-1.jpg",
+  "cylix-h20": "/products/web/cylix-h20.jpg",
 }
 
 type ProductLike = {

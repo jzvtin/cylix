@@ -15,7 +15,7 @@ export default function AdminLayout({
   return (
     <div
       className="min-h-screen"
-      style={{ background: "#F9F7F4", fontFamily: "'Poppins', sans-serif" }}
+      style={{ background: "#F9F7F4", fontFamily: "var(--font-poppins), sans-serif" }}
     >
       {children}
     </div>

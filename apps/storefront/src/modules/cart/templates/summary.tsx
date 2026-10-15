@@ -29,7 +29,10 @@ const Summary = ({ cart }: SummaryProps) => {
       <DiscountCode cart={cart} />
 
       <div className="border-t border-ink/[0.08] pt-4">
-        <CartTotals totals={cart} />
+        <CartTotals
+          totals={cart}
+          shippingPending={!cart.shipping_methods?.length}
+        />
       </div>
 
       <LocalizedClientLink

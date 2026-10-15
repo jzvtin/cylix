@@ -188,7 +188,7 @@
 /* ── CYLIX RESEARCH BRAND OVERRIDES ── */
 
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-jakarta), sans-serif;
 }
 
 /* Checkout page */
@@ -202,7 +202,7 @@ button[data-testid="submit-delivery-option-button"],
 button[data-testid="submit-payment-button"] {
   background: #111 !important;
   border-radius: 20px !important;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: var(--font-poppins), sans-serif !important;
   font-weight: 800 !important;
   letter-spacing: 0.3px !important;
   text-transform: uppercase !important;
@@ -220,20 +220,20 @@ a[data-testid="checkout-button"],
 button[data-testid="checkout-button"] {
   background: #111 !important;
   border-radius: 20px !important;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: var(--font-poppins), sans-serif !important;
   font-weight: 800 !important;
 }
 
 /* Headings in checkout */
 h1, h2, h3 {
-  font-family: 'Poppins', sans-serif !important;
+  font-family: var(--font-poppins), sans-serif !important;
   font-weight: 800 !important;
   letter-spacing: -0.4px !important;
 }
 
 /* Cart page */
 [data-testid="cart-container"] h1 {
-  font-family: 'Poppins', sans-serif !important;
+  font-family: var(--font-poppins), sans-serif !important;
   font-weight: 900 !important;
   font-size: 32px !important;
   letter-spacing: -1px !important;
@@ -246,7 +246,7 @@ input[type="tel"],
 input[type="password"],
 select {
   border-radius: 8px !important;
-  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-family: var(--font-jakarta), sans-serif !important;
 }
 
 input[type="text"]:focus,
@@ -259,7 +259,7 @@ input[type="password"]:focus {
 
 /* Nav brand */
 [data-testid="nav-store-link"] {
-  font-family: 'Poppins', sans-serif !important;
+  font-family: var(--font-poppins), sans-serif !important;
   font-weight: 900 !important;
   font-size: 15px !important;
 }
@@ -272,7 +272,7 @@ input[type="password"]:focus {
 /* Go to checkout button */
 [data-testid="checkout-button"] {
   border-radius: 20px !important;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: var(--font-poppins), sans-serif !important;
   font-weight: 800 !important;
   background: #111 !important;
 }
@@ -281,14 +281,14 @@ input[type="password"]:focus {
 [data-testid="addresses-header"],
 [data-testid="shipping-header"],
 [data-testid="payment-header"] {
-  font-family: 'Poppins', sans-serif !important;
+  font-family: var(--font-poppins), sans-serif !important;
   font-weight: 900 !important;
 }
 
 /* Promo code */
 [data-testid="add-promo-code"] {
   color: #C9963A !important;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: var(--font-poppins), sans-serif !important;
   font-weight: 700 !important;
 }
 /* ---- Catalog (/store) responsive layout ----
@@ -347,18 +347,18 @@ html, body {
    reserved for buttons, eyebrows and the wordmark (their "font-ui"/button
    font). This single swap shifts the whole site to the origin look. */
 body {
-  font-family: 'Anek Latin', 'Anek Latin Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-anek), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 .font-display,
 .cx-h,
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Anek Latin', 'Anek Latin Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+  font-family: var(--font-anek), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
   letter-spacing: -0.02em;
 }
 /* Buttons, eyebrows and the brand wordmark keep Poppins (origin's font-ui). */
 .cx-btn, .cx-eyebrow, .nav-brand,
 [data-testid="nav-store-link"], [data-testid="checkout-button"] {
-  font-family: 'Poppins', 'Poppins Fallback', sans-serif !important;
+  font-family: var(--font-poppins), sans-serif !important;
 }
 
 /* ---- Header nav responsive ----
@@ -427,7 +427,7 @@ h1.font-display, h2.font-display, .display-tight { letter-spacing: -0.03em; }
   border: 1px solid rgba(201, 150, 58, 0.35);
   background: rgba(201, 150, 58, 0.08);
   padding: 7px 15px;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-poppins), sans-serif;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 1.6px;
@@ -445,7 +445,7 @@ h1.font-display, h2.font-display, .display-tight { letter-spacing: -0.03em; }
 
 /* Section heading — heavy Poppins, tight tracking (the reference headline). */
 .cx-h {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-poppins), sans-serif;
   font-weight: 900;
   letter-spacing: -0.035em;
   line-height: 1.02;
@@ -478,7 +478,7 @@ h1.font-display, h2.font-display, .display-tight { letter-spacing: -0.03em; }
   justify-content: center;
   gap: 8px;
   border-radius: 999px;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-poppins), sans-serif;
   font-weight: 700;
   font-size: 15px;
   padding: 15px 30px;

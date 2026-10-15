@@ -42,8 +42,8 @@ const GOLD_DARK = "#855F24"
 const LINE = "#E7E2D9"
 const MUTED = "#8A8279"
 const FONT_DISPLAY =
-  "'Anek Latin','Anek Latin Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif"
-const FONT_UI = "'Poppins','Poppins Fallback',sans-serif"
+  "var(--font-anek),-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif"
+const FONT_UI = "var(--font-poppins),sans-serif"
 
 // The manual/system provider. Square is taken off-site, so the Medusa order is
 // completed by the bridge confirm webhook, which needs a session to complete.
@@ -316,6 +316,20 @@ export default function CylixCheckout({ cart, shippingOptions }: Props) {
             zIndex: 50,
           }}
         >
+          <Link
+            href="/us/cart"
+            data-testid="back-to-cart-link"
+            style={{
+              textDecoration: "none",
+              fontFamily: FONT_UI,
+              fontSize: "12px",
+              fontWeight: 600,
+              color: MUTED,
+              flex: "1 1 0",
+            }}
+          >
+            ‹ Cart
+          </Link>
           <Link href="/us" style={{ textDecoration: "none" }}>
             <span
               style={{
@@ -338,6 +352,8 @@ export default function CylixCheckout({ cart, shippingOptions }: Props) {
               display: "flex",
               alignItems: "center",
               gap: "5px",
+              flex: "1 1 0",
+              justifyContent: "flex-end",
             }}
           >
             🔒 Secure Checkout

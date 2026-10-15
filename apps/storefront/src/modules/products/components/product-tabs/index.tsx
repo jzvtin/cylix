@@ -15,7 +15,6 @@ const meta = (product: HttpTypes.StoreProduct, key: string) => {
 const ProductTabs = ({ product }: ProductTabsProps) => {
   const tabs = [
     { label: "Specifications", component: <SpecificationsTab product={product} /> },
-    { label: "Handling & Storage", component: <HandlingTab product={product} /> },
     { label: "Shipping & Returns", component: <ShippingInfoTab /> },
   ]
 
@@ -45,7 +44,7 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
             >
               <span
                 style={{
-                  fontFamily: "'Poppins',sans-serif",
+                  fontFamily: "var(--font-poppins),sans-serif",
                   fontSize: "14px",
                   fontWeight: 700,
                   letterSpacing: "-0.1px",
@@ -89,7 +88,7 @@ const Row = ({ label, value }: { label: string; value: string }) => (
   <div>
     <div
       style={{
-        fontFamily: "'Poppins',sans-serif",
+        fontFamily: "var(--font-poppins),sans-serif",
         fontSize: "10px",
         fontWeight: 800,
         letterSpacing: "0.6px",
@@ -108,7 +107,7 @@ const Block = ({ heading, children }: { heading: string; children: React.ReactNo
   <div>
     <div
       style={{
-        fontFamily: "'Poppins',sans-serif",
+        fontFamily: "var(--font-poppins),sans-serif",
         fontSize: "10px",
         fontWeight: 800,
         letterSpacing: "0.6px",
@@ -161,32 +160,6 @@ const SpecificationsTab = ({ product }: ProductTabsProps) => {
     </div>
   )
 }
-
-const HandlingTab = ({ product }: ProductTabsProps) => (
-  <div style={{ paddingBottom: "22px", display: "flex", flexDirection: "column", gap: "16px", maxWidth: "36rem" }}>
-    <Block heading="Storage">
-      {meta(product, "storage") ??
-        "Store lyophilised powder at -20°C, protected from light. Material is shipped at ambient temperature and remains stable in transit."}
-    </Block>
-    <Block heading="Reconstitution">
-      {meta(product, "reconstitution") ??
-        "Reconstitute with bacteriostatic or sterile water as appropriate for your protocol. Once in solution, store at 4°C for short-term use or -20°C for longer-term storage. Avoid repeated freeze-thaw cycles."}
-    </Block>
-    <Block heading="Handling">
-      Handle in a suitably equipped laboratory using standard personal protective
-      equipment. Not for use outside a controlled research setting.
-    </Block>
-    <div style={{ borderTop: "1px solid #E8E4DE", paddingTop: "16px" }}>
-      <Block heading="Research use only">
-        This material is supplied for in-vitro laboratory research and analytical
-        method development only. It is not a drug, food, or cosmetic, and is not for
-        human or animal consumption, injection, dosing, or administration of any kind.
-        Purchaser must be 21 or older and assumes full responsibility for safe and
-        lawful handling.
-      </Block>
-    </div>
-  </div>
-)
 
 const ShippingInfoTab = () => (
   <div style={{ paddingBottom: "22px", display: "flex", flexDirection: "column", gap: "16px", maxWidth: "36rem" }}>

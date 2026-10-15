@@ -106,19 +106,6 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
               <CoaPanel product={product} />
             </div>
 
-            {/* Storage — static informational */}
-            <div>
-              <div className="mb-2 font-ui text-[11px] font-bold uppercase tracking-[1.5px] text-ink/45">
-                Storage
-              </div>
-              <p className="m-0 text-[13px] leading-[1.7] text-ink/55">
-                Supplied as a lyophilized (freeze-dried) powder. Refrigerate the
-                sealed vial at 2&ndash;8&deg;C on arrival; for long-term storage keep at
-                &minus;20&deg;C, protected from light and moisture. Keep any
-                reconstituted material refrigerated.
-              </p>
-            </div>
-
             {/* Research-use disclaimer */}
             <div>
               <div className="mb-2 font-ui text-[11px] font-bold uppercase tracking-[1.5px] text-ink/45">

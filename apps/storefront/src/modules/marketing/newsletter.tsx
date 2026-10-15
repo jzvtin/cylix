@@ -54,7 +54,7 @@ export default function Newsletter({
       <div className={className} aria-live="polite">
         <p
           className="text-ink font-semibold"
-          style={{ fontFamily: "'Poppins', sans-serif" }}
+          style={{ fontFamily: "var(--font-poppins), sans-serif" }}
         >
           You&rsquo;re in. Use{" "}
           <span className="text-gold-500 font-extrabold">{code}</span> at
@@ -69,7 +69,7 @@ export default function Newsletter({
       {heading ? (
         <p
           className="text-ink font-bold mb-1"
-          style={{ fontFamily: "'Poppins', sans-serif" }}
+          style={{ fontFamily: "var(--font-poppins), sans-serif" }}
         >
           {heading}
         </p>

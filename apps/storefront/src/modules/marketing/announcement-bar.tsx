@@ -106,7 +106,7 @@ export default function AnnouncementBar({
         }
         .cx-ann-msg {
           grid-area: 1 / 1;
-          font-family: "Poppins", sans-serif;
+          font-family: var(--font-poppins), sans-serif;
           font-size: 11px;
           font-weight: 700;
           letter-spacing: 1.4px;

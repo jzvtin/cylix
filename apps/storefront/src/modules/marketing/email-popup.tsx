@@ -244,7 +244,7 @@ export default function EmailPopup() {
         }
         .cx-popup-code {
           display: inline-block;
-          font-family: "Poppins", sans-serif;
+          font-family: var(--font-poppins), sans-serif;
           font-weight: 800;
           letter-spacing: 3px;
           font-size: 22px;
