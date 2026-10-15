@@ -1,4 +1,5 @@
 import { HttpTypes } from "@medusajs/types"
+import { getProductImage } from "@lib/product-imagery"
 import { Table, Text } from "@modules/common/components/ui"
 
 import LineItemOptions from "@modules/common/components/line-item-options"
@@ -17,7 +18,7 @@ const Item = ({ item, currencyCode }: ItemProps) => {
       <Table.Cell className="!pl-0 p-4 w-24">
         <div className="flex w-16">
           <Thumbnail
-            thumbnail={item.thumbnail}
+            thumbnail={getProductImage({ handle: item.product_handle, thumbnail: item.thumbnail })}
             size="square"
             title={item.product_title || item.title}
           />

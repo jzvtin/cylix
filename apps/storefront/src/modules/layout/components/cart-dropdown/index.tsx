@@ -1,5 +1,6 @@
 "use client"
 
+import { getProductImage } from "@lib/product-imagery"
 import {
   Popover,
   PopoverButton,
@@ -146,7 +147,7 @@ const CartDropdown = ({
                           className="w-24"
                         >
                           <Thumbnail
-                            thumbnail={item.thumbnail}
+                            thumbnail={getProductImage({ handle: item.product_handle, thumbnail: item.thumbnail })}
                             images={item.variant?.product?.images}
                             size="square"
                             title={item.product_title || item.title}

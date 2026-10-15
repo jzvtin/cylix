@@ -1,6 +1,7 @@
 "use client"
 
 import { Text } from "@modules/common/components/ui"
+import { getProductImage } from "@lib/product-imagery"
 import { updateLineItem } from "@lib/data/cart"
 import { HttpTypes } from "@medusajs/types"
 import ErrorMessage from "@modules/checkout/components/error-message"
@@ -47,7 +48,7 @@ const Item = ({ item, type = "full", currencyCode }: ItemProps) => {
       >
         <div className="w-[76px] sm:w-[92px]">
           <Thumbnail
-            thumbnail={item.thumbnail}
+            thumbnail={getProductImage({ handle: item.product_handle, thumbnail: item.thumbnail })}
             images={item.variant?.product?.images}
             size="square"
             title={item.product_title || item.title}

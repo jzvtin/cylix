@@ -4,6 +4,8 @@ import { useState, useEffect, useMemo } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { HttpTypes } from "@medusajs/types"
+import { getProductImage } from "@lib/product-imagery"
+
 
 import { convertToLocale } from "@lib/util/money"
 import {
@@ -278,6 +280,7 @@ export default function CylixCheckout({ cart, shippingOptions }: Props) {
         .cxco-press:not(:disabled):active { transform: scale(0.985); }
         .cxco-press:not(:disabled):hover { filter: brightness(1.05); }
         .cxco-mobilebar { display: none; }
+        @media (max-width: 480px) { .cxco-secure { display: none !important; } }
         @media (max-width: 860px) {
           .cxco-grid { grid-template-columns: 1fr; }
           .cxco-left { padding: 24px 18px 40px; border-right: none; order: 2; }
@@ -344,6 +347,7 @@ export default function CylixCheckout({ cart, shippingOptions }: Props) {
             </span>
           </Link>
           <span
+            className="cxco-secure"
             style={{
               fontFamily: FONT_UI,
               fontSize: "11px",
@@ -712,10 +716,10 @@ export default function CylixCheckout({ cart, shippingOptions }: Props) {
                         overflow: "hidden",
                       }}
                     >
-                      {item.thumbnail ? (
+                      {getProductImage({ handle: item.product_handle, thumbnail: item.thumbnail }) ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img
-                          src={item.thumbnail}
+                          src={getProductImage({ handle: item.product_handle, thumbnail: item.thumbnail })}
                           alt=""
                           style={{
                             width: "100%",
